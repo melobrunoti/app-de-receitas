@@ -1,9 +1,11 @@
 import React from 'react';
+import SearchBar from '../components/SearchBar';
 
-const foods = () => (
+const Foods = () => (
   <div>
-    <h1>FOODS</h1>
+    <h1 data-testid="search-top-btn">FOODS</h1>
+    <SearchBar />
   </div>
 );
 
-export default foods;
+export default Foods;
