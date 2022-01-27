@@ -3,7 +3,7 @@ import Header from '../components/Header';
 
 const DoneRecipes = () => (
   <div>
-    <Header pageName="Done Recipes" />
+    <Header pageName="Done Recipes" searchVisible={ false } />
     <h1>Done Recipes</h1>
   </div>
 );

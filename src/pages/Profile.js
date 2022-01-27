@@ -3,7 +3,7 @@ import Header from '../components/Header';
 
 const profile = () => (
   <div>
-    <Header pageName="Profile" />
+    <Header pageName="Profile" searchVisible={ false } />
     <h1>Profile</h1>
   </div>
 );
