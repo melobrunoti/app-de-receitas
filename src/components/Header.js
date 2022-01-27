@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
+import './Header.css';
+
 class Header extends React.Component {
   constructor() {
     super();
@@ -25,19 +27,27 @@ class Header extends React.Component {
     const { pageName, searchVisible } = this.props;
     const { isSearchVisible } = this.state;
     return (
-      <div>
-        <Link to="/profile">
-          <img data-testid="profile-top-btn" src={ profileIcon } alt="profile icon" />
-        </Link>
-        <p data-testid="page-title">{ pageName }</p>
-        {searchVisible ? (
-          <button type="button" onClick={ this.handleClick }>
-            <img data-testid="search-top-btn" src={ searchIcon } alt="search icon" />
-          </button>)
-          : null}
+      <div className="header-container">
+        <div className="header-icons-and-title">
+          <Link to="/profile">
+            <img data-testid="profile-top-btn" src={ profileIcon } alt="profile icon" />
+          </Link>
 
-        {isSearchVisible ? <input type="text" data-testid="search-input" /> : null}
+          <p data-testid="page-title" className="header-title">{ pageName }</p>
 
+          {searchVisible ? (
+            <button type="button" onClick={ this.handleClick }>
+              <img data-testid="search-top-btn" src={ searchIcon } alt="search icon" />
+            </button>)
+            : null}
+
+        </div>
+        {isSearchVisible ? (
+          <input
+            type="text"
+            data-testid="search-input"
+            className="header-input"
+          />) : null}
       </div>
     );
   }

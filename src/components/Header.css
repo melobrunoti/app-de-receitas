@@ -1,0 +1,35 @@
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-icons-and-title{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 100%;
+}
+
+.header-icons-and-title button {
+  background-color: transparent;
+  border: none;
+}
+
+@media (max-width: 360px) {
+  .header-container{
+    background-color: rgb(224, 224, 224);
+  }
+  .header-icons-and-title {
+    justify-content: space-evenly;
+  }
+
+  .header-title{
+    font-size: 1.5em;
+  }
+
+  .header-input{
+    width: 95%;
+  }
+}
