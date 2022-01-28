@@ -3,15 +3,15 @@ async function fetchApiFoodsWithFilters(radioFilter, endpoint) {
   const urlByName = `https://www.themealdb.com/api/json/v1/1/search.php?s=${endpoint}`;
   const urlByFirstLetter = `https://www.themealdb.com/api/json/v1/1/search.php?f=${endpoint}`;
 
-  if (state === 'ingredient') {
+  if (radioFilter === 'ingredient') {
     const result = await fetch(urlByIngredient).then((response) => response.json());
     return result.meals;
   }
-  if (state === 'name') {
+  if (radioFilter === 'name') {
     const result = await fetch(urlByName).then((response) => response.json());
     return result.meals;
   }
-  if (state === 'firstLetter') {
+  if (radioFilter === 'firstLetter') {
     const result = await fetch(urlByFirstLetter).then((response) => response.json());
     return result.meals;
   }
