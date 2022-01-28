@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Card from '../components/Card';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipesContext from '../context/RecipesContext';
@@ -29,6 +30,7 @@ function Drinks(props) {
   return (
     <div>
       <Header pageName="Drinks" searchVisible />
+      {(searchBarData && searchBarData.length > 0) && <Card />}
       {
         renderFooter()
       }
