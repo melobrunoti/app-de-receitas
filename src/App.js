@@ -15,13 +15,21 @@ import ExploreDrinks from './pages/ExploreDrinks';
 import ExploreDrinksIngredients from './pages/ExploreDrinksIngredients';
 import ExploreFoodIngredients from './pages/ExploreFoodIngredients';
 import ExploreFoodsNationality from './pages/ExplorFoodsNationality';
+import DetailsFoods from './pages/DetailsFood';
+import DetailsDrinks from './pages/DetailsDrinks';
+import InProgressFoods from './pages/InProgressFood';
+import InProgressDrinks from './pages/InProgressDrinks';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={ Login } />
-        <Route path="/drinks" component={ Drinks } />
+        <Route exact path="/drinks" component={ Drinks } />
+        <Route exact path="/foods/:id" component={ DetailsFoods } />
+        <Route exact path="/foods/:id/in-progress" component={ InProgressFoods } />
+        <Route exact path="/drinks/:id" component={ DetailsDrinks } />
+        <Route exact path="/drinks/:id/in-progress" component={ InProgressDrinks } />
         <Route exact path="/explore" component={ Explore } />
         <Route exact path="/explore/foods" component={ ExploreFoods } />
         <Route exact path="/explore/drinks" component={ ExploreDrinks } />
