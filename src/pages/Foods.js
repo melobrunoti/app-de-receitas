@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
+import RecipesContext from '../context/RecipesContext';
 
-const foods = () => (
-  <div>
-    <Header pageName="Foods" searchVisible />
-    <h1>FOODS</h1>
-  </div>
-);
+function Foods() {
+  const { searchBarData } = useContext(RecipesContext);
+  const history = useHistory();
 
-export default foods;
+  useEffect(() => {
+    if (searchBarData !== null && searchBarData.length === 1) {
+      history.push(`/foods/${searchBarData[0].idMeal}`);
+    }
+    if (!searchBarData) {
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    }
+  }, [searchBarData, history]);
+
+  return (
+    <div>
+      <Header pageName="Foods" searchVisible />
+    </div>
+  );
+}
+export default Foods;

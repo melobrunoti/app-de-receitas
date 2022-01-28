@@ -6,6 +6,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
 import './Header.css';
+import SearchBar from './SearchBar';
 
 class Header extends React.Component {
   constructor() {
@@ -43,11 +44,7 @@ class Header extends React.Component {
 
         </div>
         {isSearchVisible ? (
-          <input
-            type="text"
-            data-testid="search-input"
-            className="header-input"
-          />) : null}
+          <SearchBar />) : null}
       </div>
     );
   }
