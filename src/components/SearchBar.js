@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
-import fetchApiFoodsWithFilters from '../services/api';
+import fetchApiFoodsWithFilters, { fetchApiDrinksWithFilters } from '../services/api';
 
 function SearchBar() {
   const { setSearchBarData } = useContext(RecipesContext);
@@ -15,7 +15,8 @@ function SearchBar() {
       const response = await fetchApiFoodsWithFilters(radioSearch, searchInput);
       setSearchBarData(response);
     } else {
-      console.log('faio');
+      const response = await fetchApiDrinksWithFilters(radioSearch, searchInput);
+      setSearchBarData(response);
     }
   }
 
