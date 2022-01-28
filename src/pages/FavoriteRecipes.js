@@ -1,9 +1,9 @@
 import React from 'react';
 
-const favoriteRecipes = () => (
+const FavoriteRecipes = () => (
   <div>
     <h1>favorites</h1>
   </div>
 );
 
-export default favoriteRecipes;
+export default FavoriteRecipes;

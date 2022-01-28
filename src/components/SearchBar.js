@@ -1,40 +1,79 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import RecipesContext from '../context/RecipesContext';
+import fetchApiFoodsWithFilters from '../services/api';
 
 function SearchBar() {
+  const { setSearchBarData } = useContext(RecipesContext);
+  const [radioSearch, setRadioSearch] = useState('ingredient');
+  const [searchInput, setSearchInput] = useState('');
+  const { pathname } = useLocation();
+  // https://v5.reactrouter.com/web/api/Hooks
+
+  async function chooseApi() {
+    if (pathname.includes('foods')) {
+      const response = await fetchApiFoodsWithFilters(radioSearch, searchInput);
+      setSearchBarData(response);
+    } else {
+      console.log('faio');
+    }
+  }
+
+  function handleSearch() {
+    if (radioSearch === 'firstLetter' && searchInput.length > 1) {
+      global.alert('Your search must have only 1 (one) character');
+    } else {
+      chooseApi();
+    }
+  }
+
   return (
     <div>
+      <h1>{radioSearch}</h1>
+      <h1>{searchInput}</h1>
       <input
-        data-testid="search-input"
         type="text"
+        data-testid="search-input"
+        onChange={ ({ target }) => setSearchInput(target.value) }
       />
       <div>
-        <label htmlFor="ingredient-radio">
+        <label htmlFor="ingredient">
           <input
-            id="ingredient-radio"
             data-testid="ingredient-search-radio"
+            id="ingredient"
             type="radio"
+            value="ingredient"
+            checked={ radioSearch === 'ingredient' }
+            onChange={ (e) => { setRadioSearch(e.target.value); } }
           />
           Ingredient
         </label>
-        <label htmlFor="name-radio">
+        <label htmlFor="name">
           <input
-            id="name-radio"
-            type="radio"
             data-testid="name-search-radio"
+            id="name"
+            type="radio"
+            value="name"
+            checked={ radioSearch === 'name' }
+            onChange={ (e) => { setRadioSearch(e.target.value); } }
           />
           Name
         </label>
-        <label htmlFor="first-letter-radio">
+        <label htmlFor="firstLetter">
           <input
-            id="first-letter-radio"
             data-testid="first-letter-search-radio"
+            id="firstLetter"
             type="radio"
+            value="firstLetter"
+            checked={ radioSearch === 'firstLetter' }
+            onChange={ (e) => { setRadioSearch(e.target.value); } }
           />
-          First letter
+          First Letter
         </label>
         <button
-          data-testid="exec-search-btn"
           type="button"
+          data-testid="exec-search-btn"
+          onClick={ () => handleSearch() }
         >
           Search
         </button>
@@ -42,5 +81,4 @@ function SearchBar() {
     </div>
   );
 }
-
 export default SearchBar;

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Drinks from './pages/Drinks';
 import Explore from './pages/Explore';
 import FavoriteRecipes from './pages/FavoriteRecipes';
@@ -12,18 +12,16 @@ import Profile from './pages/Profile';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={ Login } />
-        <Route path="/drinks" component={ Drinks } />
-        <Route path="/explore" component={ Explore } />
-        <Route path="/favorites-recipes" component={ FavoriteRecipes } />
-        <Route path="/drinks" component={ Drinks } />
-        <Route path="/foods" component={ Foods } />
-        <Route path="/login" component={ Login } />
-        <Route path="/profile" component={ Profile } />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={ Login } />
+      <Route path="/drinks" component={ Drinks } />
+      <Route path="/explore" component={ Explore } />
+      <Route path="/favorites-recipes" component={ FavoriteRecipes } />
+      <Route path="/drinks" component={ Drinks } />
+      <Route path="/foods" component={ Foods } />
+      <Route path="/login" component={ Login } />
+      <Route path="/profile" component={ Profile } />
+    </Switch>
   );
 }
 
