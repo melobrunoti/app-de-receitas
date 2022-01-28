@@ -1,8 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const explore = () => (
   <div>
-    <h1>explore</h1>
+    <Header pageName="Explore" searchVisible={ false } />
+    <h1>Explore</h1>
   </div>);
 
 export default explore;

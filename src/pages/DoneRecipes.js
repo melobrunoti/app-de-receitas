@@ -1,8 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const DoneRecipes = () => (
   <div>
-    <h1>Done recipes</h1>
+    <Header pageName="Done Recipes" searchVisible={ false } />
+    <h1>Done Recipes</h1>
   </div>
 );
 
