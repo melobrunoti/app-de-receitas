@@ -1,0 +1,20 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(173, 169, 169);
+  border: solid none none none;
+  height: 45px;
+}
+
+footer button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+footer button img {
+  width: 40px;
+}
