@@ -1,12 +1,12 @@
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
   background-color: rgb(173, 169, 169);
   border: solid none none none;
+  bottom: 0;
+  display: flex;
   height: 45px;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
 }
 
 footer button {
