@@ -5,24 +5,12 @@ function Login() {
   const { user, setUser } = useContext(RecipesContext);
 
   const { login } = user;
-  const { email, password, disabled } = login;
-
-  const validateForm = () => {
-    const minCaractere = 6;
-    const regexEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.?$/i;
-    const validateEmail = regexEmail.test(String(email).toLowerCase());
-    const validatePassword = password.length > minCaractere;
-    if (validateEmail && validatePassword) {
-      setUser({ login: { ...user.login, disabled: false } });
-    } else {
-      setUser({ login: { ...user.login, disabled: true } });
-    }
-  };
+  const { email, password } = login;
+  const minNumber = 6;
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
     setUser({ login: { ...user.login, [name]: value } });
-    validateForm();
   };
 
   return (
@@ -48,7 +36,7 @@ function Login() {
         <button
           type="button"
           data-testid="login-submit-btn"
-          disabled={ disabled }
+          disabled={ password.length <= minNumber || !email.match(/\S+@\S+\.\S+/) }
         >
           Enter
         </button>
