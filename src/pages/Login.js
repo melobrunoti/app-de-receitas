@@ -5,7 +5,6 @@ import RecipesContext from '../context/RecipesContext';
 function Login() {
   const { user, setUser } = useContext(RecipesContext);
   const history = useHistory();
-
   const { login } = user;
   const { email, password } = login;
   const minNumber = 6;
