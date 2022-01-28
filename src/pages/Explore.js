@@ -1,10 +1,10 @@
 import React from 'react';
 import Footer from '../components/Footer';
 
-const explore = () => (
+const explore = (props) => (
   <div>
     <h1>explore</h1>
-    <Footer />
+    <Footer { ...props } />
   </div>);
 
 export default explore;

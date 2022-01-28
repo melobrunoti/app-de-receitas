@@ -1,46 +1,21 @@
 import React from 'react';
 import Footer from '../components/Footer';
 
-const foods = () => (
-  <div>
-    <h1>FOODS</h1>
-    a
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    a
-    a
-    a
-    a
-    a
-    a
-    a
-    a
-    aa
-    a
-    a
-    a
-    <Footer />
-  </div>
-);
+const foods = (props) => {
+  function renderFooter() {
+    const { pathname } = props.location;
+
+    if (pathname === '/foods') return <Footer { ...props } />;
+  }
+
+  return (
+    <div>
+      <h1>FOODS</h1>
+      {
+        renderFooter()
+      }
+    </div>
+  );
+};
 
 export default foods;
