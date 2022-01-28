@@ -1,11 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-<<<<<<< HEAD
 import Card from '../components/Card';
-=======
 import Footer from '../components/Footer';
->>>>>>> main-group-25
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 
