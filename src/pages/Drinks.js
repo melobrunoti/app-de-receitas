@@ -1,22 +1,45 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
+import RecipesContext from '../context/RecipesContext';
 
-const drinks = (props) => {
+function Drinks(props) {
+  const { searchBarData } = useContext(RecipesContext);
+  const history = useHistory();
+
   function renderFooter() {
-    const { pathname } = props.location;
+    const { location } = props;
+    const { pathname } = location;
     console.log(props);
 
     if (pathname === '/drinks') return <Footer { ...props } />;
   }
 
+  useEffect(() => {
+    if (searchBarData && searchBarData.length === 1) {
+      history.push(`/drinks/${searchBarData[0].idDrink}`);
+    }
+    if (!searchBarData) {
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    }
+  }, [searchBarData, history]);
+
   return (
     <div>
-      <h1>drinks</h1>
+      <Header pageName="Drinks" searchVisible />
       {
         renderFooter()
       }
     </div>
   );
-};
+}
 
-export default drinks;
+Drinks.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
+}.isRequired;
+
+export default Drinks;

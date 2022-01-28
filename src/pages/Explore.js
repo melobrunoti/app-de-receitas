@@ -1,9 +1,11 @@
 import React from 'react';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const explore = (props) => (
   <div>
-    <h1>explore</h1>
+    <Header pageName="Explore" searchVisible={ false } />
+    <h1>Explore</h1>
     <Footer { ...props } />
   </div>);
 

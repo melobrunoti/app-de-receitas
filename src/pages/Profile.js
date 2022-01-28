@@ -1,11 +1,13 @@
 import React from 'react';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
-const profile = () => (
+const Profile = () => (
   <div>
-    <h1>PERFIL</h1>
+    <Header pageName="Profile" searchVisible={ false } />
+    <h1>Profile</h1>
     <Footer />
   </div>
 );
 
-export default profile;
+export default Profile;
