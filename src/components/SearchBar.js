@@ -30,8 +30,6 @@ function SearchBar() {
 
   return (
     <div>
-      <h1>{radioSearch}</h1>
-      <h1>{searchInput}</h1>
       <input
         type="text"
         data-testid="search-input"

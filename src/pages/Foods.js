@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import SearchBar from '../components/SearchBar';
+import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 
 function Foods() {
@@ -18,8 +18,7 @@ function Foods() {
 
   return (
     <div>
-      <h1 data-testid="search-top-btn">FOODS</h1>
-      <SearchBar />
+      <Header pageName="Foods" searchVisible />
     </div>
   );
 }
