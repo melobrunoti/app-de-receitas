@@ -39,6 +39,3 @@ function Card() {
 }
 
 export default Card;
-
-// strDrink
-// strDrinkThumb
