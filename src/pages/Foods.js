@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import Card from '../components/Card';
+import { useHistory, useLocation } from 'react-router-dom';
+import RecipeList from '../components/RecipeList';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
@@ -9,11 +9,9 @@ import RecipesContext from '../context/RecipesContext';
 function Foods(props) {
   const { searchBarData } = useContext(RecipesContext);
   const history = useHistory();
+  const { pathname } = useLocation();
 
   function renderFooter() {
-    const { location } = props;
-    const { pathname } = location;
-
     if (pathname === '/foods') return <Footer { ...props } />;
   }
 
@@ -28,8 +26,9 @@ function Foods(props) {
 
   return (
     <div>
+
       <Header pageName="Foods" searchVisible />
-      {(searchBarData && searchBarData.length > 0) && <Card />}
+      { <RecipeList />}
       {
         renderFooter()
       }

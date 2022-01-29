@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
+import { fetchDrinksApi, fetchFoodApi } from '../services/api';
 
-function Card() {
-  const { searchBarData } = useContext(RecipesContext);
+function RecipeList() {
   const { pathname } = useLocation();
+  const { searchBarData, setSearchBarData } = useContext(RecipesContext);
   const searchNumber = 12;
   const eleven = 11;
   let limitedArr = searchBarData;
@@ -13,10 +14,22 @@ function Card() {
     limitedArr = searchBarData.slice(0, searchNumber);
   }
 
+  useEffect(() => {
+    const fetchAll = async () => {
+      if (pathname.includes('foods')) {
+        const response = await fetchFoodApi();
+        return setSearchBarData(response);
+      }
+      const response = await fetchDrinksApi();
+      return setSearchBarData(response);
+    };
+    fetchAll();
+  }, [setSearchBarData, pathname]);
+  console.log(searchBarData);
+
   return (
     <div>
-
-      { limitedArr.map((item, index) => (
+      { (limitedArr.length > 0) && limitedArr.map((item, index) => (
         <div
           key={ index }
           data-testid={ `${index}-recipe-card` }
@@ -38,4 +51,4 @@ function Card() {
   );
 }
 
-export default Card;
+export default RecipeList;

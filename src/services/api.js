@@ -35,4 +35,17 @@ export async function fetchApiDrinksWithFilters(radioFilter, endpoint) {
     return result.drinks;
   }
 }
+
+export async function fetchFoodApi() {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
+export async function fetchDrinksApi() {
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.drinks;
+}
+
 export default fetchApiFoodsWithFilters;
