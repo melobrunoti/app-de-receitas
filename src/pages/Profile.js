@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 function Profile() {
-  const userEmail = JSON.parse(localStorage.getItem('user')).email;
+  const [userEmail, setUserEmail] = useState('');
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      const getEmail = JSON.parse(localStorage.getItem('user')).email;
+      setUserEmail(getEmail);
+    }
+  }, []);
+
   const history = useHistory();
 
   const redirectDoneRecipes = () => {
