@@ -6,6 +6,7 @@ const Profile = () => (
   <div>
     <Header pageName="Profile" searchVisible={ false } />
     <h1>Profile</h1>
+
     <p data-testid="profile-email">email</p>
     <button type="button" data-testid="profile-done-btn">Done Recipes</button>
     <button type="button" data-testid="profile-favorite-btn">Favorite Recipes</button>
