@@ -79,7 +79,7 @@ function RecipeList() {
 
       </button>
       <div>
-        { (searchBarData.length > 0)
+        { (searchBarData && searchBarData.length > 0)
         && <Card cards={ chooseCards() } path={ pathname } />}
       </div>
 
