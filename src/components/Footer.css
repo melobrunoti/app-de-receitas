@@ -6,7 +6,7 @@ footer {
   height: 45px;
   justify-content: space-between;
   position: fixed;
-  width: 340px;
+  width: 100%;
 }
 
 footer button {
