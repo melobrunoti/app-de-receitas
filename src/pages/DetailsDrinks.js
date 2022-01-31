@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import DetailedCard from '../components/DetailedCard';
+import { fetchById } from '../services/api';
 
-const DetailsDrinks = () => (
-  <div>
-    <h1>Details Drinks</h1>
-  </div>);
+function DetailsDrinks() {
+  const [detaildDrinks, setDetaildDrinks] = useState([]);
+  const { pathname } = useLocation();
+  const { id } = useParams();
+
+  useEffect(() => {
+    (async () => {
+      const results = await fetchById(id, pathname);
+      console.log(results);
+      return setDetaildDrinks(results);
+    })();
+  }, [id, pathname, setDetaildDrinks]);
+  return (
+
+    <div>
+      <h1>Details Drinks</h1>
+
+      {(detaildDrinks && detaildDrinks.length > 0)
+      && <DetailedCard card={ detaildDrinks } /> }
+    </div>
+  );
+}
 
 export default DetailsDrinks;

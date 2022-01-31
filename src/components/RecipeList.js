@@ -80,7 +80,7 @@ function RecipeList() {
       </button>
       <div>
         { (searchBarData && searchBarData.length > 0)
-        && <Card cards={ chooseCards() } path={ pathname } />}
+        && <Card cards={ chooseCards() } path={ pathname } MAX_RENDER={ 12 } />}
       </div>
 
     </div>

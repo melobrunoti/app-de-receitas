@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-function Card({ cards, path }) {
-  const MAX_RENDER = 12;
+function Card({ cards, path, MAX_RENDER }) {
+  /*  const MAX_RENDER = 12; */
   const history = useHistory();
 
   return (
@@ -37,12 +37,9 @@ function Card({ cards, path }) {
 }
 
 Card.propTypes = {
-  cards: PropTypes.shape({
-    filter: PropTypes.func,
-  }).isRequired,
-  path: PropTypes.shape({
-    includes: PropTypes.func,
-  }).isRequired,
+  cards: PropTypes.instanceOf(Object).isRequired,
+  path: PropTypes.instanceOf(Object).isRequired,
+  MAX_RENDER: PropTypes.number.isRequired,
 };
 
 export default Card;
