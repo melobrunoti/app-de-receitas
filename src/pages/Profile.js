@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-function Profile() {
+function Profile(props) {
+  const history = useHistory();
+  const { pathname } = useLocation();
   const [userEmail, setUserEmail] = useState('');
   useEffect(() => {
     if (localStorage.getItem('user')) {
@@ -11,8 +13,6 @@ function Profile() {
       setUserEmail(getEmail);
     }
   }, []);
-
-  const history = useHistory();
 
   const redirectDoneRecipes = () => {
     history.push('/done-recipes');
@@ -26,6 +26,10 @@ function Profile() {
     history.push('/');
     localStorage.clear();
   };
+
+  function renderFooter() {
+    if (pathname === '/profile') return <Footer { ...props } />;
+  }
 
   return (
     <div>
@@ -58,7 +62,7 @@ function Profile() {
         Logout
 
       </button>
-      <Footer />
+      { renderFooter()}
     </div>
   );
 }

@@ -35,4 +35,40 @@ export async function fetchApiDrinksWithFilters(radioFilter, endpoint) {
     return result.drinks;
   }
 }
+
+export async function fetchFoodApi() {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
+export async function fetchDrinksApi() {
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.drinks;
+}
+
+export async function fetchFoodCategories() {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
+export async function fetchDrinksCategories() {
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.drinks;
+}
+
+export async function fetchByCategory(endpoint, path) {
+  const FOODS_URL = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${endpoint}`;
+  const DRINKS_URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${endpoint}`;
+  if (path.includes('foods')) {
+    const result = await fetch(FOODS_URL).then((response) => response.json());
+    return result.meals;
+  }
+  const result = await fetch(DRINKS_URL).then((response) => response.json());
+  return result.drinks;
+}
+
 export default fetchApiFoodsWithFilters;

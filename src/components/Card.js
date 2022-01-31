@@ -1,41 +1,48 @@
-import React, { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
-import RecipesContext from '../context/RecipesContext';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-function Card() {
-  const { searchBarData } = useContext(RecipesContext);
-  const { pathname } = useLocation();
-  const searchNumber = 12;
-  const eleven = 11;
-  let limitedArr = searchBarData;
-
-  if (searchBarData.length > eleven) {
-    limitedArr = searchBarData.slice(0, searchNumber);
-  }
+function Card({ cards, path }) {
+  const MAX_RENDER = 12;
+  const history = useHistory();
 
   return (
     <div>
-
-      { limitedArr.map((item, index) => (
-        <div
+      { cards.filter((items, i) => i < MAX_RENDER).map((item, index) => (
+        <button
+          type="button"
           key={ index }
           data-testid={ `${index}-recipe-card` }
+          onClick={ () => ((path.includes('drinks'))
+            ? history.push(`/drinks/${item.idDrink}`)
+            : history.push(`/foods/${item.idMeal}`)) }
         >
           <img
-            src={ (pathname.includes('drinks') ? item.strDrinkThumb : item.strMealThumb) }
-            alt={ (pathname.includes('drinks') ? item.strDrink : item.strMeal) }
+            src={ (path.includes('drinks')
+              ? item.strDrinkThumb : item.strMealThumb) }
+            alt={ (path.includes('drinks')
+              ? item.strDrink : item.strMeal) }
             data-testid={ `${index}-card-img` }
           />
           <p
             data-testid={ `${index}-card-name` }
           >
-            {(pathname.includes('drinks') ? item.strDrink : item.strMeal)}
+            {(path.includes('drinks') ? item.strDrink : item.strMeal)}
 
           </p>
-        </div>
+        </button>
       ))}
-    </div>
-  );
+
+    </div>);
 }
+
+Card.propTypes = {
+  cards: PropTypes.shape({
+    filter: PropTypes.func,
+  }).isRequired,
+  path: PropTypes.shape({
+    includes: PropTypes.func,
+  }).isRequired,
+};
 
 export default Card;
