@@ -1,52 +1,88 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useCallback, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
-import { fetchDrinksApi, fetchFoodApi } from '../services/api';
+import { fetchDrinksApi,
+  fetchFoodApi,
+  fetchFoodCategories,
+  fetchDrinksCategories,
+  fetchByCategory,
+} from '../services/api';
+import Card from './Card';
 
 function RecipeList() {
   const { pathname } = useLocation();
   const { searchBarData, setSearchBarData } = useContext(RecipesContext);
-  const searchNumber = 12;
-  const eleven = 11;
-  let limitedArr = searchBarData;
+  const [categories, setCategories] = useState([]);
+  const [filter, setFilter] = useState('');
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const categoryLimiter = 5;
 
-  if (searchBarData.length > eleven) {
-    limitedArr = searchBarData.slice(0, searchNumber);
-  }
+  // refatorar para uma function global
+  const foodOrDrink = useCallback(async (foodApi, drinkApi, state) => {
+    if (pathname.includes('foods')) {
+      const response = await foodApi();
+      return state(response);
+    }
+    const response = await drinkApi();
+    return state(response);
+  }, [pathname]);
+
+  const handleFilter = async ({ target }) => {
+    if (filter === target.innerText || target.innerText === 'All') {
+      setFilter('');
+      return setFilteredRecipes([]);
+    }
+    const response = await fetchByCategory(target.innerText, pathname);
+    setFilter(target.innerText);
+    return setFilteredRecipes(response);
+  };
 
   useEffect(() => {
     const fetchAll = async () => {
-      if (pathname.includes('foods')) {
-        const response = await fetchFoodApi();
-        return setSearchBarData(response);
-      }
-      const response = await fetchDrinksApi();
-      return setSearchBarData(response);
+      foodOrDrink(fetchFoodApi, fetchDrinksApi, setSearchBarData);
     };
     fetchAll();
-  }, [setSearchBarData, pathname]);
-  console.log(searchBarData);
+  }, [setSearchBarData, pathname, foodOrDrink]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      foodOrDrink(fetchFoodCategories, fetchDrinksCategories, setCategories);
+    };
+    fetchCategories();
+  }, [setCategories, pathname, foodOrDrink]);
+
+  function chooseCards() {
+    if (filteredRecipes.length > 0) {
+      return filteredRecipes;
+    }
+    return searchBarData;
+  }
 
   return (
-    <div>
-      { (limitedArr.length > 0) && limitedArr.map((item, index) => (
-        <div
-          key={ index }
-          data-testid={ `${index}-recipe-card` }
-        >
-          <img
-            src={ (pathname.includes('drinks') ? item.strDrinkThumb : item.strMealThumb) }
-            alt={ (pathname.includes('drinks') ? item.strDrink : item.strMeal) }
-            data-testid={ `${index}-card-img` }
-          />
-          <p
-            data-testid={ `${index}-card-name` }
+    <div className="recipe-container">
+      {(categories.length > 0) && categories.slice(0, categoryLimiter)
+        .map(({ strCategory }) => (
+          <button
+            data-testid={ `${strCategory}-category-filter` }
+            type="button"
+            key={ strCategory }
+            onClick={ (e) => handleFilter(e) }
           >
-            {(pathname.includes('drinks') ? item.strDrink : item.strMeal)}
+            {strCategory}
+          </button>)) }
+      <button
+        data-testid="All-category-filter"
+        type="button"
+        onClick={ (e) => handleFilter(e) }
+      >
+        All
 
-          </p>
-        </div>
-      ))}
+      </button>
+      <div>
+        { (searchBarData.length > 0)
+        && <Card cards={ chooseCards() } path={ pathname } />}
+      </div>
+
     </div>
   );
 }

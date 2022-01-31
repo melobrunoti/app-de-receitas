@@ -25,10 +25,12 @@ function Foods(props) {
   }, [searchBarData, history]);
 
   return (
-    <div>
+    <div className="food-container">
 
       <Header pageName="Foods" searchVisible />
-      { <RecipeList />}
+
+      <RecipeList />
+
       {
         renderFooter()
       }

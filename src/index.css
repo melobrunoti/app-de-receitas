@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.food-container {
+width: 340px
+
+}
+
+.recipe-container {
+  width: 100%;
+}
+
+img {
+  width: 100%;
+}
