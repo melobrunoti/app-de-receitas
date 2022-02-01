@@ -1,9 +1,12 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import { fetchFoodApi } from '../services/api';
 import RecommendationCard from './ RecommendationCard';
+import shareIcon from '../images/shareIcon.svg';
+import notFavorite from '../images/whiteHeartIcon.svg';
+import favorite from '../images/blackHeartIcon.svg';
 
 function DetailedDrinkCard({ card }) {
   const {
@@ -16,7 +19,9 @@ function DetailedDrinkCard({ card }) {
   } = card[0];
 
   const history = useHistory();
-  const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  const [favoriteRecipe, setFavoriteRecipe] = useState(false);
+  const [copied, setCopied] = useState(false);
+
   const ingredientsArr = [];
   const { pathname } = useLocation();
   const { recommendations, setRecommendations } = useContext(RecipesContext);
@@ -30,16 +35,14 @@ function DetailedDrinkCard({ card }) {
   }, [setRecommendations]);
 
   const handleClick = () => {
-    if (local) {
-      local.cocktails[idDrink] = ingredientsArr;
-      localStorage.setItem('inProgressRecipes', JSON.stringify(local));
-      history.push(`/drinks/${idDrink}/in-progress`);
-    }
-    localStorage
-      .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
+    const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    local.cocktails[idDrink] = ingredientsArr;
+    localStorage.setItem('inProgressRecipes', JSON.stringify(local));
+    history.push(`/drinks/${idDrink}/in-progress`);
   };
 
   const renderButton = () => {
+    const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (!local.cocktails[idDrink]) {
       return (
         <button
@@ -64,6 +67,15 @@ function DetailedDrinkCard({ card }) {
       </button>);
   };
 
+  const setStorage = () => {
+    if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
+      localStorage
+        .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
+    }
+
+    return renderButton();
+  };
+
   Object.entries(card[0]).forEach((key) => {
     if (key[0].includes('strIngredient') && key[1]) ingredientsArr.push(key[1]);
   });
@@ -71,6 +83,16 @@ function DetailedDrinkCard({ card }) {
   Object.entries(card[0]).forEach((key) => {
     if (key[0].includes('strMeasure') && key[1]) measureArr.push(key[1]);
   });
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+
+    setCopied(true);
+  };
+
+  const changeFavorite = () => {
+    setFavoriteRecipe(!favoriteRecipe);
+  };
 
   return (
     <div>
@@ -86,16 +108,20 @@ function DetailedDrinkCard({ card }) {
       <button
         type="button"
         data-testid="share-btn"
+        onClick={ () => copyToClipboard() }
       >
-        Share
+        <img src={ shareIcon } alt="share" />
       </button>
-      <button
-        type="button"
+      <input
+        type="image"
+        onClick={ () => changeFavorite() }
+        src={ favoriteRecipe ? favorite : notFavorite }
+        alt="favorite"
         data-testid="favorite-btn"
-      >
-        Favorite
-      </button>
-
+      />
+      {
+        (copied) && <span>Link copied!</span>
+      }
       <div data-testid="recipe-category">
         <p>{strCategory}</p>
 
@@ -121,7 +147,10 @@ function DetailedDrinkCard({ card }) {
             history={ history }
           />}
       </div>
-      {(local) ? renderButton() : (
+      {
+        setStorage()
+      }
+      {/* {(local) ? renderButton() : (
         <button
           className="start-button"
           type="button"
@@ -130,7 +159,7 @@ function DetailedDrinkCard({ card }) {
         >
           Start Recipe
 
-        </button>)}
+        </button>)} */}
     </div>
   );
 }

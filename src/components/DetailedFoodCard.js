@@ -1,23 +1,28 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import { fetchDrinksApi } from '../services/api';
 import RecommendationCard from './ RecommendationCard';
+import shareIcon from '../images/shareIcon.svg';
+import notFavorite from '../images/whiteHeartIcon.svg';
+import favorite from '../images/blackHeartIcon.svg';
 
 /* import Card from './Card'; */
 
 function DetailedFoodCard({ card }) {
-  const {
-    strMeal,
+  const { strMeal,
     strMealThumb,
     strCategory,
     strInstructions,
     strYoutube,
     idMeal,
-  } = card[0];
+    strArea } = card[0];
+
+  const [favoriteRecipe, setFavoriteRecipe] = useState(false);
+  const [copied, setCopied] = useState(false);
+
   const ingredientsArr = [];
-  const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const measureArr = [];
   const history = useHistory();
   const { pathname } = useLocation();
@@ -39,16 +44,14 @@ function DetailedFoodCard({ card }) {
   });
 
   const handleClick = () => {
-    if (local) {
-      local.meals[idMeal] = ingredientsArr;
-      localStorage.setItem('inProgressRecipes', JSON.stringify(local));
-      history.push(`/drinks/${idMeal}/in-progress`);
-    }
-    localStorage
-      .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
+    const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    local.meals[idMeal] = ingredientsArr;
+    localStorage.setItem('inProgressRecipes', JSON.stringify(local));
+    history.push(`/foods/${idMeal}/in-progress`);
   };
 
   const renderButton = () => {
+    const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (!local.meals[idMeal]) {
       return (
         <button
@@ -73,6 +76,45 @@ function DetailedFoodCard({ card }) {
       </button>);
   };
 
+  const setStorage = () => {
+    if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
+      localStorage
+        .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    }
+
+    return renderButton();
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+
+    setCopied(true);
+  };
+
+  const changeFavorite = () => {
+    const localRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    console.log(localRecipes);
+
+    if (favoriteRecipe) {
+      const newFavorites = localRecipes.filter((recipe) => recipe[id] !== idMeal);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+    } else {
+      const newFav = {
+        id: idMeal,
+        type: 'meal',
+        nationality: strArea,
+        category: strCategory,
+        alcoholicOrNot: '',
+        name: strMeal,
+        image: strMealThumb,
+      };
+      const newArray = localRecipes.push(newFav);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(newArray));
+    }
+    setFavoriteRecipe(!favoriteRecipe);
+  };
+
   return (
     <div>
       <img
@@ -86,15 +128,20 @@ function DetailedFoodCard({ card }) {
       <button
         type="button"
         data-testid="share-btn"
+        onClick={ () => copyToClipboard() }
       >
-        Share
+        <img src={ shareIcon } alt="share" />
       </button>
-      <button
-        type="button"
+      <input
+        type="image"
+        onClick={ () => changeFavorite() }
+        src={ favoriteRecipe ? favorite : notFavorite }
+        alt="favorite"
         data-testid="favorite-btn"
-      >
-        Favorite
-      </button>
+      />
+      {
+        (copied) && <span>Link copied!</span>
+      }
       <p data-testid="recipe-category">{strCategory}</p>
       <iframe
         data-testid="video"
@@ -125,16 +172,9 @@ function DetailedFoodCard({ card }) {
          history={ history }
        />}
       </div>
-      {(local) ? renderButton() : (
-        <button
-          className="start-button"
-          type="button"
-          data-testid="start-recipe-btn"
-          onClick={ () => handleClick() }
-        >
-          Start Recipe
-
-        </button>)}
+      {
+        setStorage()
+      }
     </div>
   );
 }
