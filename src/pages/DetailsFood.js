@@ -18,8 +18,6 @@ function DetailsFoods() {
 
   return (
     <div>
-      <h1>oi</h1>
-
       {(detaildFood && detaildFood.length > 0)
       && <DetailedCard card={ detaildFood } path={ pathname } /> }
     </div>
