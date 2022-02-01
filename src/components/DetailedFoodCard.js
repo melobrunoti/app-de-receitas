@@ -17,6 +17,7 @@ function DetailedFoodCard({ card }) {
     idMeal,
   } = card[0];
   const ingredientsArr = [];
+  const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const measureArr = [];
   const history = useHistory();
   const { pathname } = useLocation();
@@ -36,8 +37,40 @@ function DetailedFoodCard({ card }) {
   Object.entries(card[0]).forEach((key) => {
     if (key[0].includes('strMeasure') && key[1]) measureArr.push(key[1]);
   });
+
   const handleClick = () => {
-    history.push(`/foods/${idMeal}/in-progress`);
+    if (local) {
+      local.meals[idMeal] = ingredientsArr;
+      localStorage.setItem('inProgressRecipes', JSON.stringify(local));
+      history.push(`/drinks/${idMeal}/in-progress`);
+    }
+    localStorage
+      .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
+  };
+
+  const renderButton = () => {
+    if (!local.meals[idMeal]) {
+      return (
+        <button
+          className="start-button"
+          type="button"
+          data-testid="start-recipe-btn"
+          onClick={ () => handleClick() }
+        >
+          Start Recipe
+
+        </button>);
+    }
+    return (
+      <button
+        type="button"
+        className="start-button"
+        data-testid="start-recipe-btn"
+        onClick={ () => handleClick() }
+      >
+        Continue Recipe
+
+      </button>);
   };
 
   return (
@@ -92,16 +125,16 @@ function DetailedFoodCard({ card }) {
          history={ history }
        />}
       </div>
+      {(local) ? renderButton() : (
+        <button
+          className="start-button"
+          type="button"
+          data-testid="start-recipe-btn"
+          onClick={ () => handleClick() }
+        >
+          Start Recipe
 
-      <button
-        className="start-button"
-        type="button"
-        data-testid="start-recipe-btn"
-        onClick={ () => handleClick() }
-      >
-        Start Recipe
-
-      </button>
+        </button>)}
     </div>
   );
 }

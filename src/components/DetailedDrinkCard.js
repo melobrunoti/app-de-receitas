@@ -16,6 +16,7 @@ function DetailedDrinkCard({ card }) {
   } = card[0];
 
   const history = useHistory();
+  const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const ingredientsArr = [];
   const { pathname } = useLocation();
   const { recommendations, setRecommendations } = useContext(RecipesContext);
@@ -29,7 +30,38 @@ function DetailedDrinkCard({ card }) {
   }, [setRecommendations]);
 
   const handleClick = () => {
-    history.push(`/drinks/${idDrink}/in-progress`);
+    if (local) {
+      local.cocktails[idDrink] = ingredientsArr;
+      localStorage.setItem('inProgressRecipes', JSON.stringify(local));
+      history.push(`/drinks/${idDrink}/in-progress`);
+    }
+    localStorage
+      .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
+  };
+
+  const renderButton = () => {
+    if (!local.cocktails[idDrink]) {
+      return (
+        <button
+          className="start-button"
+          type="button"
+          data-testid="start-recipe-btn"
+          onClick={ () => handleClick() }
+        >
+          Start Recipe
+
+        </button>);
+    }
+    return (
+      <button
+        type="button"
+        className="start-button"
+        data-testid="start-recipe-btn"
+        onClick={ () => handleClick() }
+      >
+        Continue Recipe
+
+      </button>);
   };
 
   Object.entries(card[0]).forEach((key) => {
@@ -48,7 +80,7 @@ function DetailedDrinkCard({ card }) {
         data-testid="recipe-photo"
       />
       <h2 data-testid="recipe-title">
-        { strDrink }
+        {strDrink}
       </h2>
 
       <button
@@ -76,29 +108,29 @@ function DetailedDrinkCard({ card }) {
             key={ item }
           >
             {item}
-            { measureArr[index] }
+            {measureArr[index]}
           </li>))}
       </ul>
       <p data-testid="instructions">{strInstructions}</p>
       <div className="carrousel">
-        { (recommendations && recommendations.length > 0)
-       && <RecommendationCard
-         cards={ recommendations }
-         path={ pathname }
-         MAX_RENDER={ 6 }
-         history={ history }
-       />}
+        {(recommendations && recommendations.length > 0)
+          && <RecommendationCard
+            cards={ recommendations }
+            path={ pathname }
+            MAX_RENDER={ 6 }
+            history={ history }
+          />}
       </div>
+      {(local) ? renderButton() : (
+        <button
+          className="start-button"
+          type="button"
+          data-testid="start-recipe-btn"
+          onClick={ () => handleClick() }
+        >
+          Start Recipe
 
-      <button
-        className="start-button"
-        type="button"
-        data-testid="start-recipe-btn"
-        onClick={ () => handleClick() }
-      >
-        Start Recipe
-
-      </button>
+        </button>)}
     </div>
   );
 }
