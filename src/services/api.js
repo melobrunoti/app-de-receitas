@@ -76,11 +76,19 @@ export async function fetchById(endpoint, path) {
   const DRINKS_URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${endpoint}`;
 
   if (path.includes('foods')) {
-    const result = await fetch(FOODS_URL).then((response) => response.json());
-    return result.meals;
+    try {
+      const result = await fetch(FOODS_URL).then((response) => response.json());
+      return result.meals;
+    } catch (err) {
+      return (err);
+    }
   }
-  const result = await fetch(DRINKS_URL).then((response) => response.json());
-  return result.drinks;
+  try {
+    const result = await fetch(DRINKS_URL).then((response) => response.json());
+    return result.drinks;
+  } catch (err) {
+    return (err);
+  }
 }
 
 export default fetchApiFoodsWithFilters;

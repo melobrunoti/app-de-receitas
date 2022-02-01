@@ -19,7 +19,7 @@ function DetailsFoods() {
   return (
     <div>
       {(detaildFood && detaildFood.length > 0)
-      && <DetailedCard card={ detaildFood } path={ pathname } /> }
+      && <DetailedCard card={ detaildFood } /> }
     </div>
   );
 }
