@@ -5,14 +5,16 @@ import RecipesContext from '../context/RecipesContext';
 import { fetchFoodApi } from '../services/api';
 import RecommendationCard from './ RecommendationCard';
 
-function DetailedDrink({ card }) {
+function DetailedDrinkCard({ card }) {
   const {
     strDrink,
     strDrinkThumb,
     strCategory,
     strInstructions,
     idDrink,
+    strAlcoholic,
   } = card[0];
+
   const history = useHistory();
   const ingredientsArr = [];
   const { pathname } = useLocation();
@@ -48,6 +50,7 @@ function DetailedDrink({ card }) {
       <h2 data-testid="recipe-title">
         { strDrink }
       </h2>
+
       <button
         type="button"
         data-testid="share-btn"
@@ -60,7 +63,12 @@ function DetailedDrink({ card }) {
       >
         Favorite
       </button>
-      <p data-testid="recipe-category">{strCategory}</p>
+
+      <div data-testid="recipe-category">
+        <p>{strCategory}</p>
+
+        <p>{strAlcoholic}</p>
+      </div>
       <ul>
         {(ingredientsArr.length > 0) && ingredientsArr.map((item, index) => (
           <li
@@ -72,7 +80,7 @@ function DetailedDrink({ card }) {
           </li>))}
       </ul>
       <p data-testid="instructions">{strInstructions}</p>
-      <div>
+      <div className="carrousel">
         { (recommendations && recommendations.length > 0)
        && <RecommendationCard
          cards={ recommendations }
@@ -83,6 +91,7 @@ function DetailedDrink({ card }) {
       </div>
 
       <button
+        className="start-button"
         type="button"
         data-testid="start-recipe-btn"
         onClick={ () => handleClick() }
@@ -94,8 +103,8 @@ function DetailedDrink({ card }) {
   );
 }
 
-DetailedDrink.propTypes = {
+DetailedDrinkCard.propTypes = {
   card: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default DetailedDrink;
+export default DetailedDrinkCard;

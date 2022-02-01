@@ -7,7 +7,7 @@ import RecommendationCard from './ RecommendationCard';
 
 /* import Card from './Card'; */
 
-function DetailedFood({ card }) {
+function DetailedFoodCard({ card }) {
   const {
     strMeal,
     strMealThumb,
@@ -17,6 +17,7 @@ function DetailedFood({ card }) {
     idMeal,
   } = card[0];
   const ingredientsArr = [];
+  const measureArr = [];
   const history = useHistory();
   const { pathname } = useLocation();
   const { recommendations, setRecommendations } = useContext(RecipesContext);
@@ -32,6 +33,9 @@ function DetailedFood({ card }) {
     if (key[0].includes('strIngredient') && key[1]) ingredientsArr.push(key[1]);
   });
 
+  Object.entries(card[0]).forEach((key) => {
+    if (key[0].includes('strMeasure') && key[1]) measureArr.push(key[1]);
+  });
   const handleClick = () => {
     history.push(`/foods/${idMeal}/in-progress`);
   };
@@ -75,10 +79,11 @@ function DetailedFood({ card }) {
             key={ item }
           >
             {item}
+            {measureArr[index]}
           </li>))}
       </ul>
       <p data-testid="instructions">{strInstructions}</p>
-      <div>
+      <div className="carrousel">
         { (recommendations && recommendations.length > 0)
        && <RecommendationCard
          cards={ recommendations }
@@ -89,6 +94,7 @@ function DetailedFood({ card }) {
       </div>
 
       <button
+        className="start-button"
         type="button"
         data-testid="start-recipe-btn"
         onClick={ () => handleClick() }
@@ -100,7 +106,7 @@ function DetailedFood({ card }) {
   );
 }
 
-DetailedFood.propTypes = {
+DetailedFoodCard.propTypes = {
   card: PropTypes.instanceOf(Object).isRequired,
 };
-export default DetailedFood;
+export default DetailedFoodCard;

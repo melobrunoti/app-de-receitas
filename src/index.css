@@ -15,3 +15,13 @@ code {
 img {
   width: 100%;
 }
+
+.carrousel {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.start-button {
+  position: fixed;
+  bottom: 0;
+}
