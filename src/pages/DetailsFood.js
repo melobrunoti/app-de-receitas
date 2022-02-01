@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import DetailedCard from '../components/DetailedCard';
+import DetailedFood from '../components/DetailedFood';
 import { fetchById } from '../services/api';
 
 function DetailsFoods() {
@@ -19,7 +19,7 @@ function DetailsFoods() {
   return (
     <div>
       {(detaildFood && detaildFood.length > 0)
-      && <DetailedCard card={ detaildFood } /> }
+      && <DetailedFood card={ detaildFood } /> }
     </div>
   );
 }
