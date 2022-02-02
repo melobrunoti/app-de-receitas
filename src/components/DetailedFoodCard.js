@@ -7,6 +7,7 @@ import RecommendationCard from './ RecommendationCard';
 import shareIcon from '../images/shareIcon.svg';
 import notFavorite from '../images/whiteHeartIcon.svg';
 import favorite from '../images/blackHeartIcon.svg';
+import { ingredients } from '../globalFunctions';
 
 /* import Card from './Card'; */
 
@@ -22,8 +23,6 @@ function DetailedFoodCard({ card }) {
   const [favoriteRecipe, setFavoriteRecipe] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const ingredientsArr = [];
-  const measureArr = [];
   const history = useHistory();
   const { pathname } = useLocation();
   const { recommendations, setRecommendations } = useContext(RecipesContext);
@@ -35,17 +34,9 @@ function DetailedFoodCard({ card }) {
     })();
   }, [setRecommendations]);
 
-  Object.entries(card[0]).forEach((key) => {
-    if (key[0].includes('strIngredient') && key[1]) ingredientsArr.push(key[1]);
-  });
-
-  Object.entries(card[0]).forEach((key) => {
-    if (key[0].includes('strMeasure') && key[1]) measureArr.push(key[1]);
-  });
-
   const handleClick = () => {
     const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    local.meals[idMeal] = ingredientsArr;
+    local.meals[idMeal] = ingredients(card[0]);
     localStorage.setItem('inProgressRecipes', JSON.stringify(local));
     history.push(`/foods/${idMeal}/in-progress`);
   };
@@ -153,13 +144,12 @@ function DetailedFoodCard({ card }) {
         allowFullScreen
       />
       <ul>
-        {(ingredientsArr.length > 0) && ingredientsArr.map((item, index) => (
+        { ingredients(card[0]).map((item, index) => (
           <li
             data-testid={ `${index}-ingredient-name-and-measure` }
             key={ item }
           >
             {item}
-            {measureArr[index]}
           </li>))}
       </ul>
       <p data-testid="instructions">{strInstructions}</p>
