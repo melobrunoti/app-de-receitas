@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useCallback, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
+import foodOrDrink from '../globalFunctions';
 import { fetchDrinksApi,
   fetchFoodApi,
   fetchFoodCategories,
@@ -17,16 +18,6 @@ function RecipeList() {
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const categoryLimiter = 5;
 
-  // refatorar para uma function global
-  const foodOrDrink = useCallback(async (foodApi, drinkApi, state) => {
-    if (pathname.includes('foods')) {
-      const response = await foodApi();
-      return state(response);
-    }
-    const response = await drinkApi();
-    return state(response);
-  }, [pathname]);
-
   const handleFilter = async ({ target }) => {
     if (filter === target.innerText || target.innerText === 'All') {
       setFilter('');
@@ -38,18 +29,16 @@ function RecipeList() {
   };
 
   useEffect(() => {
-    const fetchAll = async () => {
-      foodOrDrink(fetchFoodApi, fetchDrinksApi, setSearchBarData);
-    };
-    fetchAll();
-  }, [setSearchBarData, pathname, foodOrDrink]);
+    (async () => {
+      foodOrDrink(fetchFoodApi, fetchDrinksApi, setSearchBarData, pathname);
+    })();
+  }, [setSearchBarData, pathname]);
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      foodOrDrink(fetchFoodCategories, fetchDrinksCategories, setCategories);
-    };
-    fetchCategories();
-  }, [setCategories, pathname, foodOrDrink]);
+    (async () => {
+      foodOrDrink(fetchFoodCategories, fetchDrinksCategories, setCategories, pathname);
+    })();
+  }, [setCategories, pathname]);
 
   function chooseCards() {
     if (filteredRecipes.length > 0) {
@@ -80,7 +69,7 @@ function RecipeList() {
       </button>
       <div>
         { (searchBarData && searchBarData.length > 0)
-        && <Card cards={ chooseCards() } path={ pathname } />}
+        && <Card cards={ chooseCards() } path={ pathname } MAX_RENDER={ 12 } />}
       </div>
 
     </div>

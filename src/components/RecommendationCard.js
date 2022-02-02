@@ -1,10 +1,8 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-function Card({ cards, path, MAX_RENDER }) {
+function RecommendationCard() {
   const history = useHistory();
-
   return (
     <div>
       { cards.filter((items, i) => i < MAX_RENDER).map((item, index) => (
@@ -32,13 +30,8 @@ function Card({ cards, path, MAX_RENDER }) {
         </button>
       ))}
 
-    </div>);
+    </div>
+  );
 }
 
-Card.propTypes = {
-  cards: PropTypes.instanceOf(Object).isRequired,
-  path: PropTypes.instanceOf(Object).isRequired,
-  MAX_RENDER: PropTypes.number.isRequired,
-};
-
-export default Card;
+export default RecommendationCard;

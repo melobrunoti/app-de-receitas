@@ -600,10 +600,10 @@ describe('46 - Salve as receitas favoritas no `localStorage` na chave `favoriteR
       const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
       const expectedFavoriteRecipes = [
         {
-          id: '178319',
-          type: 'drink',
-          nationality: '',
-          category: 'Cocktail',
+          id:'178319',
+          type:'drink',
+          nationality:'',
+          category:'Cocktail',
           alcoholicOrNot:  'Alcoholic',
           name: 'Aquamarine',
           image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',

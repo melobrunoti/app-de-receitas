@@ -1,32 +1,28 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 
-function Card({ cards, path, MAX_RENDER }) {
-  const history = useHistory();
-
+function RecommendationCard({ cards, history, path, MAX_RENDER }) {
   return (
     <div>
       { cards.filter((items, i) => i < MAX_RENDER).map((item, index) => (
         <button
           type="button"
           key={ index }
-          data-testid={ `${index}-recipe-card` }
-          onClick={ () => ((path.includes('drinks'))
+          data-testid={ `${index}-recomendation-card` }
+          onClick={ () => ((path.includes('foods'))
             ? history.push(`/drinks/${item.idDrink}`)
             : history.push(`/foods/${item.idMeal}`)) }
         >
           <img
-            src={ (path.includes('drinks')
+            src={ (path.includes('foods')
               ? item.strDrinkThumb : item.strMealThumb) }
-            alt={ (path.includes('drinks')
+            alt={ (path.includes('foods')
               ? item.strDrink : item.strMeal) }
-            data-testid={ `${index}-card-img` }
           />
           <p
-            data-testid={ `${index}-card-name` }
+            data-testid={ `${index}-recomendation-title` }
           >
-            {(path.includes('drinks') ? item.strDrink : item.strMeal)}
+            {(path.includes('foods') ? item.strDrink : item.strMeal)}
 
           </p>
         </button>
@@ -35,10 +31,11 @@ function Card({ cards, path, MAX_RENDER }) {
     </div>);
 }
 
-Card.propTypes = {
+RecommendationCard.propTypes = {
   cards: PropTypes.instanceOf(Object).isRequired,
-  path: PropTypes.instanceOf(Object).isRequired,
+  path: PropTypes.string.isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
   MAX_RENDER: PropTypes.number.isRequired,
 };
 
-export default Card;
+export default RecommendationCard;

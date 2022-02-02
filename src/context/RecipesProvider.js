@@ -14,12 +14,15 @@ const INITIAL_LOGIN = {
 function RecipesProvider({ children }) {
   const [user, setUser] = useState(INITIAL_LOGIN);
   const [searchBarData, setSearchBarData] = useState([]);
+  const [recommendations, setRecommendations] = useState();
 
   const context = {
     user,
     setUser,
     searchBarData,
     setSearchBarData,
+    recommendations,
+    setRecommendations,
   };
 
   return (
