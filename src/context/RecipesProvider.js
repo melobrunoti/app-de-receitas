@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipesContext from './RecipesContext';
 /* import fetchApiFoods from '../services/api'; */
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const INITIAL_LOGIN = {
   login: {
@@ -15,6 +16,10 @@ function RecipesProvider({ children }) {
   const [user, setUser] = useState(INITIAL_LOGIN);
   const [searchBarData, setSearchBarData] = useState([]);
   const [recommendations, setRecommendations] = useState();
+  const [favoriteRecipes, setFavoriteRecipe] = useLocalStorage('favoriteRecipes', []);
+  // https://designcode.io/react-hooks-handbook-uselocalstorage-hook
+
+  const checkFavorite = (id) => favoriteRecipes.some((recipe) => recipe.id === id);
 
   const context = {
     user,
@@ -23,6 +28,10 @@ function RecipesProvider({ children }) {
     setSearchBarData,
     recommendations,
     setRecommendations,
+    favoriteRecipes,
+    setFavoriteRecipe,
+    checkFavorite,
+
   };
 
   return (
