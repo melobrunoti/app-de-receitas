@@ -34,6 +34,16 @@ function DetailedFoodCard({ card }) {
     })();
   }, [setRecommendations]);
 
+  useEffect(() => {
+    (async () => {
+      const localRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+
+      if (localRecipes.some((recipe) => recipe.id === idMeal)) {
+        setFavoriteRecipe(true);
+      }
+    })();
+  }, [favoriteRecipe, idMeal]);
+
   const handleClick = () => {
     const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
     local.meals[idMeal] = ingredients(card[0]);

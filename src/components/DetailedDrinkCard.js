@@ -17,7 +17,7 @@ function DetailedDrinkCard({ card }) {
     strInstructions,
     idDrink,
     strAlcoholic,
-    strArea,
+
   } = card[0];
 
   const history = useHistory();
@@ -33,6 +33,16 @@ function DetailedDrinkCard({ card }) {
       return setRecommendations(response);
     })();
   }, [setRecommendations]);
+
+  useEffect(() => {
+    (async () => {
+      const localRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+
+      if (localRecipes.some((recipe) => recipe.id === idDrink)) {
+        setFavoriteRecipe(true);
+      }
+    })();
+  }, [favoriteRecipe, idDrink]);
 
   const handleClick = () => {
     const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -96,7 +106,7 @@ function DetailedDrinkCard({ card }) {
       const newFav = {
         id: idDrink,
         type: 'drink',
-        nationality: strArea,
+        nationality: '',
         category: strCategory,
         alcoholicOrNot: strAlcoholic,
         name: strDrink,
