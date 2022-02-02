@@ -20,12 +20,14 @@ function DetailedFoodCard({ card }) {
     idMeal,
     strArea } = card[0];
 
-  const [favoriteRecipe, setFavoriteRecipe] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const history = useHistory();
   const { pathname } = useLocation();
-  const { recommendations, setRecommendations } = useContext(RecipesContext);
+  const {
+    recommendations,
+    setRecommendations,
+    setFavoriteRecipe, checkFavorite } = useContext(RecipesContext);
 
   useEffect(() => {
     (async () => {
@@ -33,16 +35,6 @@ function DetailedFoodCard({ card }) {
       return setRecommendations(response);
     })();
   }, [setRecommendations]);
-
-  useEffect(() => {
-    (async () => {
-      const localRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-
-      if (localRecipes.some((recipe) => recipe.id === idMeal)) {
-        setFavoriteRecipe(true);
-      }
-    })();
-  }, [favoriteRecipe, idMeal]);
 
   const handleClick = () => {
     const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -97,25 +89,20 @@ function DetailedFoodCard({ card }) {
   };
 
   const changeFavorite = () => {
-    const localRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-
-    if (favoriteRecipe) {
-      const newFavorites = localRecipes.filter((recipe) => recipe.id !== idMeal);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
-    } else {
-      const newFav = {
-        id: idMeal,
-        type: 'food',
-        nationality: strArea,
-        category: strCategory,
-        alcoholicOrNot: '',
-        name: strMeal,
-        image: strMealThumb,
-      };
-      localRecipes.push(newFav);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(localRecipes));
+    const newFav = {
+      id: idMeal,
+      type: 'food',
+      nationality: strArea,
+      category: strCategory,
+      alcoholicOrNot: '',
+      name: strMeal,
+      image: strMealThumb,
+    };
+    if (!checkFavorite(idMeal)) {
+      return setFavoriteRecipe((prevState) => [...prevState, newFav]);
     }
-    setFavoriteRecipe(!favoriteRecipe);
+    return setFavoriteRecipe((prevState) => (
+      prevState.filter((recipe) => recipe.id !== idMeal)));
   };
 
   return (
@@ -138,7 +125,7 @@ function DetailedFoodCard({ card }) {
       <input
         type="image"
         onClick={ () => changeFavorite() }
-        src={ favoriteRecipe ? favorite : notFavorite }
+        src={ checkFavorite(idMeal) ? favorite : notFavorite }
         alt="favorite"
         data-testid="favorite-btn"
       />
