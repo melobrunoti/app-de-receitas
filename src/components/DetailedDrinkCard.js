@@ -7,6 +7,7 @@ import RecommendationCard from './ RecommendationCard';
 import shareIcon from '../images/shareIcon.svg';
 import notFavorite from '../images/whiteHeartIcon.svg';
 import favorite from '../images/blackHeartIcon.svg';
+import { ingredients } from '../globalFunctions';
 
 function DetailedDrinkCard({ card }) {
   const {
@@ -16,16 +17,15 @@ function DetailedDrinkCard({ card }) {
     strInstructions,
     idDrink,
     strAlcoholic,
+    strArea,
   } = card[0];
 
   const history = useHistory();
   const [favoriteRecipe, setFavoriteRecipe] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const ingredientsArr = [];
   const { pathname } = useLocation();
   const { recommendations, setRecommendations } = useContext(RecipesContext);
-  const measureArr = [];
 
   useEffect(() => {
     (async () => {
@@ -36,7 +36,7 @@ function DetailedDrinkCard({ card }) {
 
   const handleClick = () => {
     const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    local.cocktails[idDrink] = ingredientsArr;
+    local.cocktails[idDrink] = ingredients(card[0]);
     localStorage.setItem('inProgressRecipes', JSON.stringify(local));
     history.push(`/drinks/${idDrink}/in-progress`);
   };
@@ -71,18 +71,14 @@ function DetailedDrinkCard({ card }) {
     if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
       localStorage
         .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    }
+    if (!localStorage.getItem('favoriteRecipes')) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
     }
 
     return renderButton();
   };
-
-  Object.entries(card[0]).forEach((key) => {
-    if (key[0].includes('strIngredient') && key[1]) ingredientsArr.push(key[1]);
-  });
-
-  Object.entries(card[0]).forEach((key) => {
-    if (key[0].includes('strMeasure') && key[1]) measureArr.push(key[1]);
-  });
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -91,6 +87,24 @@ function DetailedDrinkCard({ card }) {
   };
 
   const changeFavorite = () => {
+    const localRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+
+    if (favoriteRecipe) {
+      const newFavorites = localRecipes.filter((recipe) => recipe.id !== idDrink);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+    } else {
+      const newFav = {
+        id: idDrink,
+        type: 'drink',
+        nationality: strArea,
+        category: strCategory,
+        alcoholicOrNot: strAlcoholic,
+        name: strDrink,
+        image: strDrinkThumb,
+      };
+      localRecipes.push(newFav);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(localRecipes));
+    }
     setFavoriteRecipe(!favoriteRecipe);
   };
 
@@ -128,13 +142,12 @@ function DetailedDrinkCard({ card }) {
         <p>{strAlcoholic}</p>
       </div>
       <ul>
-        {(ingredientsArr.length > 0) && ingredientsArr.map((item, index) => (
+        { ingredients(card[0]).map((item, index) => (
           <li
             data-testid={ `${index}-ingredient-name-and-measure` }
             key={ item }
           >
             {item}
-            {measureArr[index]}
           </li>))}
       </ul>
       <p data-testid="instructions">{strInstructions}</p>

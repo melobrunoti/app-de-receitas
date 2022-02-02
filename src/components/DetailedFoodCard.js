@@ -73,6 +73,9 @@ function DetailedFoodCard({ card }) {
         .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
       localStorage.setItem('favoriteRecipes', JSON.stringify([]));
     }
+    if (!localStorage.getItem('favoriteRecipes')) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    }
 
     return renderButton();
   };
@@ -85,23 +88,22 @@ function DetailedFoodCard({ card }) {
 
   const changeFavorite = () => {
     const localRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    console.log(localRecipes);
 
     if (favoriteRecipe) {
-      const newFavorites = localRecipes.filter((recipe) => recipe[id] !== idMeal);
+      const newFavorites = localRecipes.filter((recipe) => recipe.id !== idMeal);
       localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
     } else {
       const newFav = {
         id: idMeal,
-        type: 'meal',
+        type: 'food',
         nationality: strArea,
         category: strCategory,
         alcoholicOrNot: '',
         name: strMeal,
         image: strMealThumb,
       };
-      const newArray = localRecipes.push(newFav);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(newArray));
+      localRecipes.push(newFav);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(localRecipes));
     }
     setFavoriteRecipe(!favoriteRecipe);
   };
