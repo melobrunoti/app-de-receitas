@@ -1,11 +1,11 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 
 function useIngredients() {
   const { pathname } = useLocation();
-  const [checkedIngredients, setCheckedIngredients] = useState([]);
-  const { inProgressRecipes } = useContext(RecipesContext);
+  const { inProgressRecipes,
+    checkedIngredients, setCheckedIngredients } = useContext(RecipesContext);
   const { id } = useParams();
   useEffect(() => {
     const local = inProgressRecipes;
@@ -16,9 +16,9 @@ function useIngredients() {
 
     if (localStorageIngredients) {
       setCheckedIngredients(localStorageIngredients);
-      console.log(localStorageIngredients);
+      /*       console.log(localStorageIngredients); */
     }
-  }, [id, pathname, inProgressRecipes]);
+  }, [id, pathname, inProgressRecipes, setCheckedIngredients]);
 
   useEffect(() => {
     const local = inProgressRecipes;

@@ -15,6 +15,7 @@ const INITIAL_LOGIN = {
 function RecipesProvider({ children }) {
   const [user, setUser] = useState(INITIAL_LOGIN);
   const [searchBarData, setSearchBarData] = useState([]);
+  const [checkedIngredients, setCheckedIngredients] = useState([]);
   const [recommendations, setRecommendations] = useState();
   const [favoriteRecipes, setFavoriteRecipe] = useLocalStorage('favoriteRecipes', []);
   const [inProgressRecipes,
@@ -36,6 +37,8 @@ function RecipesProvider({ children }) {
     checkFavorite,
     inProgressRecipes,
     setInProgressRecipes,
+    checkedIngredients,
+    setCheckedIngredients,
 
   };
 

@@ -23,7 +23,7 @@ function InProgressDrinks() {
         id={ inProgressFood[0].idDrink }
         title={ inProgressFood[0].strDrink }
         thumb={ inProgressFood[0].strDrinkThumb }
-        /*      alcool={ inProgressFood[0].strAlcoholic } */
+        alcool={ inProgressFood[0].strAlcoholic }
         category={ inProgressFood[0].strCategory }
         instructions={ inProgressFood[0].strInstructions }
       />}

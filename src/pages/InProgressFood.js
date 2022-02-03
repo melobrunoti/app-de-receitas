@@ -23,9 +23,10 @@ function InProgressFood() {
         id={ inProgressDrink[0].idMeal }
         title={ inProgressDrink[0].strMeal }
         thumb={ inProgressDrink[0].strMealThumb }
-        alcool={ inProgressDrink[0].strAlcoholic }
+        /* alcool={ inProgressDrink[0].strAlcoholic } */
         category={ inProgressDrink[0].strCategory }
         instructions={ inProgressDrink[0].strInstructions }
+        nationality={ inProgressDrink[0].strArea }
       />}
     </div>
   );
