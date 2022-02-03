@@ -15,8 +15,13 @@ const INITIAL_LOGIN = {
 function RecipesProvider({ children }) {
   const [user, setUser] = useState(INITIAL_LOGIN);
   const [searchBarData, setSearchBarData] = useState([]);
+  const [checkedIngredients, setCheckedIngredients] = useState([]);
   const [recommendations, setRecommendations] = useState();
   const [favoriteRecipes, setFavoriteRecipe] = useLocalStorage('favoriteRecipes', []);
+  const [inProgressRecipes,
+    setInProgressRecipes] = useLocalStorage('inProgressRecipes',
+    { cocktails: {}, meals: {} });
+
   // https://designcode.io/react-hooks-handbook-uselocalstorage-hook
 
   const checkFavorite = (id) => favoriteRecipes.some((recipe) => recipe.id === id);
@@ -31,7 +36,10 @@ function RecipesProvider({ children }) {
     favoriteRecipes,
     setFavoriteRecipe,
     checkFavorite,
-
+    inProgressRecipes,
+    setInProgressRecipes,
+    checkedIngredients,
+    setCheckedIngredients,
   };
 
   return (

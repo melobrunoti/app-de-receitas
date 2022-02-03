@@ -11,7 +11,7 @@ function DetailsFoods() {
   useEffect(() => {
     (async () => {
       const results = await fetchById(id, pathname);
-      console.log(results);
+      // console.log(results);
       return setDetaildFood(results);
     })();
   }, [id, pathname, setDetaildFood]);
