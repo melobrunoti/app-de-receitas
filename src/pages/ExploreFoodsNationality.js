@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import { fecthNationalities, fetchFoodApi } from '../services/api';
+import { fecthNationalities, fetchFoodApi,
+  fetchMealsNationalities } from '../services/api';
 import Card from '../components/Card';
 
 function ExploreFoodsNationality() {
   const [nationalities, setNationalities] = useState([]);
   const [filter, setFilter] = useState([]);
   const { pathname } = useLocation();
-  const nationalitiesLimiter = 11;
+  // const [meals, setMeals] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -18,41 +19,51 @@ function ExploreFoodsNationality() {
     })();
   }, []);
 
-  const handleFilter = async ({ target }) => {
+  useEffect(() => {
+    (async () => {
+      const responseMeals = await fetchFoodApi();
+      setFilter(responseMeals);
+    })();
+  }, []);
+
+  const handleFilter = async ({ target: { value } }) => {
+    console.log(value);
     const responseMeals = await fetchFoodApi();
-    if (target.innerText === 'All') {
+    if (value === 'All') {
       return setFilter(responseMeals);
     }
-    const arrFilter = responseMeals.filter((r) => (
-      r.strArea === target.innerText
-    ));
+    const arrFilter = await fetchMealsNationalities(value);
+    console.log(arrFilter);
     return setFilter(arrFilter);
   };
 
   return (
     <div>
       <Header pageName="Explore Nationalities" searchVisible />
-      <select data-testid="explore-by-nationality-dropdown">
+      <select
+        data-testid="explore-by-nationality-dropdown"
+        onChange={ (e) => handleFilter(e) }
+      >
         <option
           data-testid="All-option"
-          onClick={ (e) => handleFilter(e) }
+          value="All"
         >
           All
         </option>
-        {(nationalities.length > 0) && nationalities.slice(0, nationalitiesLimiter)
+        {(nationalities.length > 0) && nationalities
           .map((n) => (
             <option
-              key={ n }
-              data-testid={ `${n}-option` }
-              onClick={ (e) => handleFilter(e) }
+              key={ n.strArea }
+              data-testid={ `${n.strArea}-option` }
+              value={ n.strArea }
             >
               {n.strArea}
             </option>
           ))}
       </select>
       <div>
-        { (filter.length > 0)
-        && <Card cards={ handleFilter } path={ pathname } MAX_RENDER={ 12 } />}
+        { (filter && filter.length > 0)
+        && <Card cards={ filter } path={ pathname } MAX_RENDER={ 12 } />}
       </div>
       <Footer />
     </div>);

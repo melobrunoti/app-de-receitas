@@ -121,4 +121,10 @@ export async function fecthNationalities() {
   return result.meals;
 }
 
+export async function fetchMealsNationalities(endpoint) {
+  const URL = `www.themealdb.com/api/json/v1/1/filter.php?a=${endpoint}`;
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
 export default fetchApiFoodsWithFilters;
