@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import shareIcon from '../images/shareIcon.svg';
@@ -6,13 +6,7 @@ import shareIcon from '../images/shareIcon.svg';
 function DoneRecipeCard({ storage }) {
   const history = useHistory();
 
-  const [copied, setCopied] = useState(false);
-
-  const copyToClipboard = (recipe) => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    console.log(recipe);
-  };
+  // const [copied, setCopied] = useState(false);
 
   return storage.map((recipe, index) => (
     <div key={ index }>
@@ -50,14 +44,16 @@ function DoneRecipeCard({ storage }) {
         data-testid={ `${index}-horizontal-share-btn` }
         src={ shareIcon }
         alt="share"
-        onClick={ () => copyToClipboard({ recipe }) }
+        onClick={ () => (recipe.type === 'food'
+          ? navigator.clipboard.writeText(`http://localhost:3000/foods/${recipe.id}`)
+          : navigator.clipboard.writeText(`http://localhost:3000/drinks/${recipe.id}`)) }
       />
-      {
+      {/* {
         (copied) && <span>Link copied!</span>
-      }
+      } */}
 
-      {recipe.tags.map((tag) => (
-        <p key={ index } data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</p>
+      {recipe.tags.map((tag, i) => (
+        <p key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</p>
       ))}
 
       <p data-testid={ `${index}-horizontal-top-text` }>
