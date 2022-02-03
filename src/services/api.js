@@ -115,4 +115,10 @@ export async function fecthIngredientsDrinks() {
   return result.drinks;
 }
 
+export async function fecthNationalities() {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
 export default fetchApiFoodsWithFilters;
