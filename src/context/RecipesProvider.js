@@ -21,6 +21,7 @@ function RecipesProvider({ children }) {
   const [inProgressRecipes,
     setInProgressRecipes] = useLocalStorage('inProgressRecipes',
     { cocktails: {}, meals: {} });
+
   // https://designcode.io/react-hooks-handbook-uselocalstorage-hook
 
   const checkFavorite = (id) => favoriteRecipes.some((recipe) => recipe.id === id);
@@ -39,7 +40,6 @@ function RecipesProvider({ children }) {
     setInProgressRecipes,
     checkedIngredients,
     setCheckedIngredients,
-
   };
 
   return (
