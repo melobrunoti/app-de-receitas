@@ -12,7 +12,8 @@ import Card from './Card';
 
 function RecipeList() {
   const { pathname } = useLocation();
-  const { searchBarData, setSearchBarData } = useContext(RecipesContext);
+  const { searchBarData, setSearchBarData,
+    filterIngredient } = useContext(RecipesContext);
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState('');
   const [filteredRecipes, setFilteredRecipes] = useState([]);
@@ -41,6 +42,9 @@ function RecipeList() {
   }, [setCategories, pathname]);
 
   function chooseCards() {
+    if (filterIngredient.length > 0) {
+      return filterIngredient;
+    }
     if (filteredRecipes.length > 0) {
       return filteredRecipes;
     }
