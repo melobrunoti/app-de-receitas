@@ -91,4 +91,51 @@ export async function fetchById(endpoint, path) {
   }
 }
 
+export async function fecthRandomFoods() {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/random.php';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
+export async function fecthRandomDrinks() {
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.drinks;
+}
+
+export async function fecthIngredientsFoods() {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
+export async function fecthIngredientsDrinks() {
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.drinks;
+}
+
+export async function fecthNationalities() {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
+export async function fetchMealsNationalities(endpoint) {
+  const URL = `www.themealdb.com/api/json/v1/1/filter.php?a=${endpoint}`;
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
+export async function fetchFilterIgredients(endpoint, path) {
+  const URL_FOOD = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${endpoint}`;
+  const URL_DRINK = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${endpoint}`;
+  if (path.includes('/foods')) {
+    const resultFood = await fetch(URL_FOOD).then((response) => response.json());
+    return resultFood.meals;
+  }
+  const resultDrink = await fetch(URL_DRINK).then((response) => response.json());
+  return resultDrink.drinks;
+}
+
 export default fetchApiFoodsWithFilters;

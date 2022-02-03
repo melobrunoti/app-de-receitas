@@ -14,7 +14,7 @@ import ExploreFoods from './pages/ExploreFoods';
 import ExploreDrinks from './pages/ExploreDrinks';
 import ExploreDrinksIngredients from './pages/ExploreDrinksIngredients';
 import ExploreFoodIngredients from './pages/ExploreFoodIngredients';
-import ExploreFoodsNationality from './pages/ExplorFoodsNationality';
+import ExploreFoodsNationality from './pages/ExploreFoodsNationality';
 import DetailsFoods from './pages/DetailsFood';
 import DetailsDrinks from './pages/DetailsDrinks';
 import InProgressFoods from './pages/InProgressFood';
