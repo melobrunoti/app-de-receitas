@@ -9,8 +9,8 @@ import Card from '../components/Card';
 function ExploreFoodsNationality() {
   const [nationalities, setNationalities] = useState([]);
   const [filter, setFilter] = useState([]);
+  const [meals, setMeals] = useState([]);
   const { pathname } = useLocation();
-  // const [meals, setMeals] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -22,15 +22,15 @@ function ExploreFoodsNationality() {
   useEffect(() => {
     (async () => {
       const responseMeals = await fetchFoodApi();
+      setMeals(responseMeals);
       setFilter(responseMeals);
     })();
   }, []);
 
   const handleFilter = async ({ target: { value } }) => {
-    console.log(value);
-    const responseMeals = await fetchFoodApi();
     if (value === 'All') {
-      return setFilter(responseMeals);
+      console.log(value);
+      return setFilter(meals);
     }
     const arrFilter = await fetchMealsNationalities(value);
     console.log(arrFilter);
