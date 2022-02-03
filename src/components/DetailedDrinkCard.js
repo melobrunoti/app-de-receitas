@@ -36,9 +36,11 @@ function DetailedDrinkCard({ card }) {
   }, [setRecommendations]);
 
   const handleClick = () => {
-    const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    local.cocktails[idDrink] = ingredients(card[0]);
-    localStorage.setItem('inProgressRecipes', JSON.stringify(local));
+    /*     const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (!local.cocktails[idDrink]) {
+      local.cocktails[idDrink] = [];
+    }
+    localStorage.setItem('inProgressRecipes', JSON.stringify(local)); */
     history.push(`/drinks/${idDrink}/in-progress`);
   };
 
@@ -68,18 +70,7 @@ function DetailedDrinkCard({ card }) {
       </button>);
   };
 
-  const setStorage = () => {
-    if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
-      localStorage
-        .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-    }
-    if (!localStorage.getItem('favoriteRecipes')) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-    }
-
-    return renderButton();
-  };
+  const setStorage = () => renderButton();
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href);
