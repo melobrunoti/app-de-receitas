@@ -21,12 +21,15 @@ function RecipesProvider({ children }) {
   const [inProgressRecipes,
     setInProgressRecipes] = useLocalStorage('inProgressRecipes',
     { cocktails: {}, meals: {} });
+  const [filterIngredient, setFilterIgredient] = useState([]);
 
   // https://designcode.io/react-hooks-handbook-uselocalstorage-hook
 
   const checkFavorite = (id) => favoriteRecipes.some((recipe) => recipe.id === id);
 
   const context = {
+    filterIngredient,
+    setFilterIgredient,
     user,
     setUser,
     searchBarData,

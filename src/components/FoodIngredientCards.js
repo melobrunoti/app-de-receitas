@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { fecthIngredientsFoods } from '../services/api';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import RecipesContext from '../context/RecipesContext';
+import { fecthIngredientsFoods, fetchFilterIgredients } from '../services/api';
 
 function FoodIngredientCards() {
   const [ingredients, setIngrediets] = useState([]);
   const ingredientLimiter = 12;
+  const history = useHistory();
+  const { pathname } = useLocation();
+  const { setFilterIgredient } = useContext(RecipesContext);
 
   useEffect(() => {
     (async () => {
@@ -12,18 +17,29 @@ function FoodIngredientCards() {
     })();
   }, []);
 
+  const clickIngredient = async (e, path) => {
+    const response = await fetchFilterIgredients(e, path);
+    setFilterIgredient(response);
+    history.push('/foods');
+  };
+
   return (
     <div>
       { (ingredients.length > 0) && ingredients.slice(0, ingredientLimiter)
         .map(({ strIngredient }, index) => (
-          <div key={ index } data-testid={ `${index}-ingredient-card` }>
+          <button
+            type="button"
+            key={ index }
+            data-testid={ `${index}-ingredient-card` }
+            onClick={ () => clickIngredient(strIngredient, pathname) }
+          >
             <img
               src={ `https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png` }
               data-testid={ `${index}-card-img` }
               alt={ strIngredient }
             />
             <p data-testid={ `${index}-card-name` }>{strIngredient}</p>
-          </div>
+          </button>
         )) }
     </div>
   );

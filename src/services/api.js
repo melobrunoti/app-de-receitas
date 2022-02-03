@@ -127,4 +127,15 @@ export async function fetchMealsNationalities(endpoint) {
   return result.meals;
 }
 
+export async function fetchFilterIgredients(endpoint, path) {
+  const URL_FOOD = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${endpoint}`;
+  const URL_DRINK = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${endpoint}`;
+  if (path.includes('/foods')) {
+    const resultFood = await fetch(URL_FOOD).then((response) => response.json());
+    return resultFood.meals;
+  }
+  const resultDrink = await fetch(URL_DRINK).then((response) => response.json());
+  return resultDrink.drinks;
+}
+
 export default fetchApiFoodsWithFilters;
