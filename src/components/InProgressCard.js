@@ -107,7 +107,7 @@ function InProgressCard({
             value={ ingredient }
             type="checkbox"
             key={ index }
-            checked={ isChecked(ingredient) }
+            defaultChecked={ isChecked(ingredient) }
 
           />
           { ingredient }
