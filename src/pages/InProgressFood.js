@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import InProgressCard from '../components/InProgressCard';
+import { ingredients } from '../globalFunctions';
+import { fetchById } from '../services/api';
 
-const InProgressFoods = () => (
-  <div>
-    <h1>In Progress Foods</h1>
-  </div>);
+function InProgressFood() {
+  const { id } = useParams();
+  const { pathname } = useLocation();
+  const [inProgressDrink, setInProgressDrink] = useState();
 
-export default InProgressFoods;
+  useEffect(() => {
+    (async () => {
+      const results = await fetchById(id, pathname);
+      return setInProgressDrink(results);
+    })();
+  }, [id, pathname, setInProgressDrink]);
+
+  return (
+    <div>
+      {(inProgressDrink) && <InProgressCard
+        ingredients={ ingredients(inProgressDrink[0]) }
+        id={ inProgressDrink[0].idMeal }
+        title={ inProgressDrink[0].strMeal }
+        thumb={ inProgressDrink[0].strMealThumb }
+        alcool={ inProgressDrink[0].strAlcoholic }
+        category={ inProgressDrink[0].strCategory }
+        instructions={ inProgressDrink[0].strInstructions }
+      />}
+    </div>
+  );
+}
+
+export default InProgressFood;

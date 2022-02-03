@@ -37,9 +37,12 @@ function DetailedFoodCard({ card }) {
   }, [setRecommendations]);
 
   const handleClick = () => {
-    const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    local.meals[idMeal] = ingredients(card[0]);
+  /*   const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (!local.meals[idMeal]) {
+      local.meals[idMeal] = [];
+    }
     localStorage.setItem('inProgressRecipes', JSON.stringify(local));
+    console.log(local); */
     history.push(`/foods/${idMeal}/in-progress`);
   };
 
@@ -69,7 +72,7 @@ function DetailedFoodCard({ card }) {
       </button>);
   };
 
-  const setStorage = () => {
+  /* const setStorage = () => {
     if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
       localStorage
         .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
@@ -80,7 +83,8 @@ function DetailedFoodCard({ card }) {
     }
 
     return renderButton();
-  };
+  }; */
+  const setStorage = () => renderButton();
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href);

@@ -17,6 +17,9 @@ function RecipesProvider({ children }) {
   const [searchBarData, setSearchBarData] = useState([]);
   const [recommendations, setRecommendations] = useState();
   const [favoriteRecipes, setFavoriteRecipe] = useLocalStorage('favoriteRecipes', []);
+  const [inProgressRecipes,
+    setInProgressRecipes] = useLocalStorage('inProgressRecipes',
+    { cocktails: {}, meals: {} });
   // https://designcode.io/react-hooks-handbook-uselocalstorage-hook
 
   const checkFavorite = (id) => favoriteRecipes.some((recipe) => recipe.id === id);
@@ -31,6 +34,8 @@ function RecipesProvider({ children }) {
     favoriteRecipes,
     setFavoriteRecipe,
     checkFavorite,
+    inProgressRecipes,
+    setInProgressRecipes,
 
   };
 

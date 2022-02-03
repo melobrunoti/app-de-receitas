@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+/* import { useState, useEffect } from 'react';
 import foodOrDrink from '../globalFunctions';
 import { fetchDrinksCategories, fetchFoodCategories } from '../services/api';
 
@@ -14,4 +14,4 @@ const useCategories = () => {
   return [categories, setCategories];
 };
 
-export default useCategories;
+export default useCategories; */
