@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import shareIcon from '../images/shareIcon.svg';
 
@@ -8,13 +9,16 @@ function DoneRecipeCard({ storage }) {
 
   const [copied, setCopied] = useState(false);
 
-  const copyToClipboard = (recipe) => {
-    navigator.clipboard.writeText(window.location.href);
+  const handleButton = (id, type) => {
     setCopied(true);
-    console.log(recipe);
+    const clipboard = type === 'food'
+      ? navigator.clipboard.writeText(`http://localhost:3000/foods/${id}`)
+      : navigator.clipboard.writeText(`http://localhost:3000/drinks/${id}`);
+
+    return clipboard;
   };
 
-  return storage.map((recipe, index) => (
+  const createCard = () => storage.map((recipe, index) => (
     <div key={ index }>
       <input
         type="image"
@@ -50,14 +54,11 @@ function DoneRecipeCard({ storage }) {
         data-testid={ `${index}-horizontal-share-btn` }
         src={ shareIcon }
         alt="share"
-        onClick={ () => copyToClipboard({ recipe }) }
+        onClick={ () => handleButton(recipe.id, recipe.type) }
       />
-      {
-        (copied) && <span>Link copied!</span>
-      }
 
-      {recipe.tags.map((tag) => (
-        <p key={ index } data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</p>
+      {recipe.tags.map((tag, i) => (
+        <p key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</p>
       ))}
 
       <p data-testid={ `${index}-horizontal-top-text` }>
@@ -67,6 +68,18 @@ function DoneRecipeCard({ storage }) {
     </div>
 
   ));
+  return (
+    <div>
+      {createCard()}
+      {
+        (copied) && <span>Link copied!</span>
+      }
+    </div>
+  );
 }
+
+DoneRecipeCard.propTypes = {
+  storage: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default DoneRecipeCard;

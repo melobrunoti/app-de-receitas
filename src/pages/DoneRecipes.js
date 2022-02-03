@@ -46,8 +46,8 @@ function DoneRecipes() {
         Drinks
       </button>
 
-      <DoneRecipeCard storage={ storage } />
-      {console.log(originalStorage)}
+      {(storage !== null && storage.length > 0)
+      && <DoneRecipeCard storage={ storage } />}
     </div>
   );
 }
