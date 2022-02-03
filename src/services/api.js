@@ -91,4 +91,28 @@ export async function fetchById(endpoint, path) {
   }
 }
 
+export async function fecthRandomFoods() {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/random.php';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
+export async function fecthRandomDrinks() {
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.drinks;
+}
+
+export async function fecthIngredientsFoods() {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.meals;
+}
+
+export async function fecthIngredientsDrinks() {
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+  const result = await fetch(URL).then((response) => response.json());
+  return result.drinks;
+}
+
 export default fetchApiFoodsWithFilters;
