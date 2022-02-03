@@ -21,11 +21,12 @@ function DetailedDrinkCard({ card }) {
   } = card[0];
 
   const history = useHistory();
-  const [favoriteRecipe, setFavoriteRecipe] = useState(false);
   const [copied, setCopied] = useState(false);
-
   const { pathname } = useLocation();
-  const { recommendations, setRecommendations } = useContext(RecipesContext);
+  const {
+    recommendations,
+    setRecommendations,
+    setFavoriteRecipe, checkFavorite } = useContext(RecipesContext);
 
   useEffect(() => {
     (async () => {
@@ -34,20 +35,12 @@ function DetailedDrinkCard({ card }) {
     })();
   }, [setRecommendations]);
 
-  useEffect(() => {
-    (async () => {
-      const localRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-
-      if (localRecipes.some((recipe) => recipe.id === idDrink)) {
-        setFavoriteRecipe(true);
-      }
-    })();
-  }, [favoriteRecipe, idDrink]);
-
   const handleClick = () => {
-    const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    local.cocktails[idDrink] = ingredients(card[0]);
-    localStorage.setItem('inProgressRecipes', JSON.stringify(local));
+    /*     const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (!local.cocktails[idDrink]) {
+      local.cocktails[idDrink] = [];
+    }
+    localStorage.setItem('inProgressRecipes', JSON.stringify(local)); */
     history.push(`/drinks/${idDrink}/in-progress`);
   };
 
@@ -77,18 +70,7 @@ function DetailedDrinkCard({ card }) {
       </button>);
   };
 
-  const setStorage = () => {
-    if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
-      localStorage
-        .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-    }
-    if (!localStorage.getItem('favoriteRecipes')) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-    }
-
-    return renderButton();
-  };
+  const setStorage = () => renderButton();
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -97,25 +79,20 @@ function DetailedDrinkCard({ card }) {
   };
 
   const changeFavorite = () => {
-    const localRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-
-    if (favoriteRecipe) {
-      const newFavorites = localRecipes.filter((recipe) => recipe.id !== idDrink);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
-    } else {
-      const newFav = {
-        id: idDrink,
-        type: 'drink',
-        nationality: '',
-        category: strCategory,
-        alcoholicOrNot: strAlcoholic,
-        name: strDrink,
-        image: strDrinkThumb,
-      };
-      localRecipes.push(newFav);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(localRecipes));
+    const newFav = {
+      id: idDrink,
+      type: 'drink',
+      nationality: '',
+      category: strCategory,
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink,
+      image: strDrinkThumb,
+    };
+    if (!checkFavorite(idDrink)) {
+      return setFavoriteRecipe((prevState) => [...prevState, newFav]);
     }
-    setFavoriteRecipe(!favoriteRecipe);
+    return setFavoriteRecipe((prevState) => (
+      prevState.filter((recipe) => recipe.id !== idDrink)));
   };
 
   return (
@@ -139,7 +116,7 @@ function DetailedDrinkCard({ card }) {
       <input
         type="image"
         onClick={ () => changeFavorite() }
-        src={ favoriteRecipe ? favorite : notFavorite }
+        src={ checkFavorite(idDrink) ? favorite : notFavorite }
         alt="favorite"
         data-testid="favorite-btn"
       />
