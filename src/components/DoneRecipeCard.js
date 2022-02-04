@@ -43,7 +43,7 @@ function DoneRecipeCard({ storage }) {
       </button>
 
       <p data-testid={ `${index}-horizontal-top-text` }>
-        {`${recipe.type === 'food' ? recipe.nationality : null} - ${recipe.category}`}
+        {`${recipe.type === 'food' ? recipe.nationality : ''} - ${recipe.category}`}
 
       </p>
 
@@ -57,7 +57,7 @@ function DoneRecipeCard({ storage }) {
         onClick={ () => handleButton(recipe.id, recipe.type) }
       />
 
-      {recipe.tags.map((tag, i) => (
+      {(recipe.tags && recipe.tags.length > 0) && recipe.tags.map((tag, i) => (
         <p key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</p>
       ))}
 
@@ -74,6 +74,7 @@ function DoneRecipeCard({ storage }) {
       {
         (copied) && <span>Link copied!</span>
       }
+      {/*  {storage.map((item) => <h1 key={ item.name }>{item.date}</h1>)} */}
     </div>
   );
 }

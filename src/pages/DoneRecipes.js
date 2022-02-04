@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import DoneRecipeCard from '../components/DoneRecipeCard';
 
 import Header from '../components/Header';
+import RecipesContext from '../context/RecipesContext';
 
 function DoneRecipes() {
   const originalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
-  const [storage, setStorage] = useState(JSON.parse(localStorage.getItem('doneRecipes')));
-  console.log(storage);
+  const { doneRecipes, setDoneRecipes } = useContext(RecipesContext);
 
   const foodFilter = () => originalStorage
     .filter((recipe) => recipe.type === 'food')
-    .map((foodRecipe) => setStorage([foodRecipe]));
+    .map((foodRecipe) => setDoneRecipes([foodRecipe]));
 
   const drinkFilter = () => originalStorage
     .filter((recipe) => recipe.type === 'drink')
-    .map((drinkRecipe) => setStorage([drinkRecipe]));
+    .map((drinkRecipe) => setDoneRecipes([drinkRecipe]));
 
-  const allFilter = () => setStorage(originalStorage);
+  const allFilter = () => setDoneRecipes(originalStorage);
 
   return (
     <div>
@@ -46,8 +46,8 @@ function DoneRecipes() {
         Drinks
       </button>
 
-      {(storage !== null && storage.length > 0)
-      && <DoneRecipeCard storage={ storage } />}
+      {(doneRecipes !== null && doneRecipes.length > 0)
+      && <DoneRecipeCard storage={ doneRecipes } />}
     </div>
   );
 }

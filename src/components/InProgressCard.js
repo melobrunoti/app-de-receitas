@@ -8,11 +8,12 @@ import favorite from '../images/blackHeartIcon.svg';
 import useIngredients from '../hooks/useIngredients';
 
 function InProgressCard({
-  id, thumb, ingredients, title, category, instructions, alcool, nationality }) {
+  id, thumb, ingredients, title, category, instructions, alcool, nationality, tags }) {
   const history = useHistory();
   const { pathname } = useLocation();
   const [copied, setCopied] = useState(false);
-  const { setFavoriteRecipe, checkFavorite } = useContext(RecipesContext);
+  const { setFavoriteRecipe, checkFavorite,
+    setDoneRecipes } = useContext(RecipesContext);
   const [checkedIngredients, setCheckedIngredients] = useIngredients();
 
   const copyToClipboard = () => {
@@ -54,6 +55,16 @@ function InProgressCard({
     }
   }
 
+  function callDate() {
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = today.getFullYear();
+
+    today = `${dd}/${mm}/${yyyy}`;
+    return today;
+  }
+
   const changeFavorite = () => {
     const newFav = {
       id,
@@ -63,6 +74,7 @@ function InProgressCard({
       alcoholicOrNot: isAlcoolic(),
       name: title,
       image: thumb,
+
     };
     console.log(newFav);
     console.log(hasNationality());
@@ -71,6 +83,29 @@ function InProgressCard({
     }
     return setFavoriteRecipe((prevState) => (
       prevState.filter((recipe) => recipe.id !== id)));
+  };
+
+  const splitTags = () => {
+    if (tags) {
+      return tags.split(',');
+    }
+  };
+
+  const finishRecipe = () => {
+    const newRecipe = {
+      id,
+      type: chooseType(),
+      nationality: hasNationality(),
+      category,
+      alcoholicOrNot: isAlcoolic(),
+      name: title,
+      image: thumb,
+      date: callDate(),
+      tags: splitTags(),
+    };
+    setDoneRecipes((prevState) => [...prevState, newRecipe]);
+
+    history.push('/done-recipes');
   };
 
   return (
@@ -107,7 +142,7 @@ function InProgressCard({
             value={ ingredient }
             type="checkbox"
             key={ index }
-            defaultChecked={ isChecked(ingredient) }
+            checked={ isChecked(ingredient) }
 
           />
           { ingredient }
@@ -120,7 +155,7 @@ function InProgressCard({
         data-testid="finish-recipe-btn"
         type="button"
         disabled={ checkedIngredients.length !== ingredients.length }
-        onClick={ () => history.push('/done-recipes') }
+        onClick={ () => finishRecipe() }
 
       >
         Finish Recipe
@@ -140,6 +175,7 @@ InProgressCard.propTypes = {
   title: PropTypes.string.isRequired,
   alcool: PropTypes.instanceOf(Object).isRequired,
   nationality: PropTypes.string.isRequired,
+  tags: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default InProgressCard;

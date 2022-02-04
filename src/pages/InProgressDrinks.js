@@ -26,6 +26,7 @@ function InProgressDrinks() {
         alcool={ inProgressFood[0].strAlcoholic }
         category={ inProgressFood[0].strCategory }
         instructions={ inProgressFood[0].strInstructions }
+        tags={ inProgressFood[0].strTags }
       />}
     </div>
   );

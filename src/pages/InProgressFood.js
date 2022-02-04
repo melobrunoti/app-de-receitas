@@ -27,6 +27,7 @@ function InProgressFood() {
         category={ inProgressDrink[0].strCategory }
         instructions={ inProgressDrink[0].strInstructions }
         nationality={ inProgressDrink[0].strArea }
+        tags={ inProgressDrink[0].strTags }
       />}
     </div>
   );
