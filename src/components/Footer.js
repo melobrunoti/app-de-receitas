@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import drinkIcon from '../images/drinkIcon.svg';
+// import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import foodIcon from '../images/mealIcon.svg';
 
@@ -11,14 +11,14 @@ function Footer(props) {
   const { history } = props;
   return (
     <footer data-testid="footer">
-      <input
-        type="image"
+      <button
+        type="button"
         data-testid="drinks-bottom-btn"
-        title="Drinks"
-        src={ drinkIcon }
-        alt="drinks button"
+        className="footer-drink"
         onClick={ () => history.push('/drinks') }
-      />
+      >
+        <i className="fas fa-cocktail" />
+      </button>
       <input
         type="image"
         data-testid="explore-bottom-btn"

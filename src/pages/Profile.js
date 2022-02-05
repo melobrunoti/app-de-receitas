@@ -3,6 +3,8 @@ import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.m
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
+import '../styles/profile.css';
+
 function Profile(props) {
   const history = useHistory();
   const { pathname } = useLocation();
@@ -32,36 +34,42 @@ function Profile(props) {
   }
 
   return (
-    <div>
+    <div className="profile-container">
       <Header pageName="Profile" searchVisible={ false } />
-      <h1>Profile</h1>
 
-      <p data-testid="profile-email">{userEmail}</p>
+      <p className="profile-email" data-testid="profile-email">{userEmail}</p>
 
-      <button
-        type="button"
-        data-testid="profile-done-btn"
-        onClick={ redirectDoneRecipes }
-      >
-        Done Recipes
-      </button>
+      <div className="profile-btn-container">
 
-      <button
-        type="button"
-        data-testid="profile-favorite-btn"
-        onClick={ redirectFavoriteRecipes }
-      >
-        Favorite Recipes
-      </button>
+        <button
+          className="profile-btns"
+          type="button"
+          data-testid="profile-done-btn"
+          onClick={ redirectDoneRecipes }
+        >
+          Done Recipes
+        </button>
 
-      <button
-        type="button"
-        data-testid="profile-logout-btn"
-        onClick={ logout }
-      >
-        Logout
+        <button
+          className="profile-btns"
+          type="button"
+          data-testid="profile-favorite-btn"
+          onClick={ redirectFavoriteRecipes }
+        >
+          Favorite Recipes
+        </button>
 
-      </button>
+        <button
+          className="profile-btns"
+          type="button"
+          data-testid="profile-logout-btn"
+          onClick={ logout }
+        >
+          Logout
+
+        </button>
+      </div>
+
       { renderFooter()}
     </div>
   );

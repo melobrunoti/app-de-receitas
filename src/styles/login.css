@@ -37,6 +37,7 @@ form {
 form input{
   border: none;
   border-bottom: 1px solid var(--title-color);
+  font-size: 15px;
   height: 25px;
   margin-top: 8%;
 }

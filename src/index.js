@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import RecipesProvider from './context/RecipesProvider';
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '@fortawesome/fontawesome-free/js/all';
 
 ReactDOM.render(
   <BrowserRouter>

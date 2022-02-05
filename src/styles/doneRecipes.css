@@ -1,0 +1,19 @@
+.done-filter-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.done-filter-container button {
+  background-color: transparent;
+  border: 1px solid var(--green-title);
+  border-radius: 3px;
+  color: var(--green-title);
+  margin-top: 5%;
+  padding: 1.5%;
+  width: 28%;
+}
+
+.done-filter-container button:focus {
+  background-color: var(--green-title);
+  color: white;
+}

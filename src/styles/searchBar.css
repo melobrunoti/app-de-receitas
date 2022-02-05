@@ -1,0 +1,76 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.search-input {
+  background-color: var(--cream-color);
+  border: none;
+  border-radius: 3px;
+  color: var(--title-color);
+  height: 40px;
+  margin: 4% 0;
+  padding: 8px;
+  outline: none;
+  width: 100%;
+}
+
+.search-filter-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+}
+
+.search-filter-container label {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 40px;
+}
+
+.search-filter-container label p {
+  color: white;
+  margin-left: 2%;
+}
+
+.seacrh-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-btn {
+  background-color: var(--title-color);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-family: 'Nanum Myeongjo', serif;
+  margin: 4% 0;
+  padding: 3%;
+  outline: none;
+  width: 100%;
+}
+
+input[type="radio"] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  /* display: inline-block; */
+  width: 21px;
+  height: 21px;
+  padding: 5px;
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 1px solid var(--cream-color);
+  background-color: var(--cream-color);
+  border-radius: 50%;
+}
+
+/* appearance for checked radiobutton */
+input[type="radio"]:checked {
+  background-color: var(--title-color);
+}
+
