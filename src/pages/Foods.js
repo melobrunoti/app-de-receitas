@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 
+import '../styles/foodsAndDrinks.css';
+
 function Foods(props) {
   const { searchBarData } = useContext(RecipesContext);
   const history = useHistory();

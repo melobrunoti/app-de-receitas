@@ -1,12 +1,15 @@
 .header-container {
   align-items: center;
+  background-color: var(--green-title);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 1%;
 }
 
 .header-icons-and-title {
-  align-items: baseline;
+  align-items: center;
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -16,4 +19,16 @@
 .header-icons-and-title button {
   background-color: transparent;
   border: none;
+}
+
+.header-title {
+  color: white;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.header-container i {
+  color: white;
+  font-size: 1.5em;
 }

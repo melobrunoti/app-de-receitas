@@ -3,6 +3,8 @@ import { useParams, useLocation } from 'react-router-dom';
 import DetailedDrinkCard from '../components/DetailedDrinkCard';
 import { fetchById } from '../services/api';
 
+import '../styles/detailsFoodAndDrinks.css';
+
 function DetailsDrinks() {
   const [detaildDrinks, setDetaildDrinks] = useState([]);
   const { pathname } = useLocation();
@@ -18,7 +20,6 @@ function DetailsDrinks() {
   return (
 
     <div>
-      <h1>Details Drinks</h1>
 
       {(detaildDrinks && detaildDrinks.length > 0)
       && <DetailedDrinkCard card={ detaildDrinks } /> }

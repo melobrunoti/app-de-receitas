@@ -4,9 +4,6 @@ import { useHistory, useLocation } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import { fetchFoodApi } from '../services/api';
 import RecommendationCard from './ RecommendationCard';
-import shareIcon from '../images/shareIcon.svg';
-import notFavorite from '../images/whiteHeartIcon.svg';
-import favorite from '../images/blackHeartIcon.svg';
 import { ingredients } from '../globalFunctions';
 
 function DetailedDrinkCard({ card }) {
@@ -96,49 +93,58 @@ function DetailedDrinkCard({ card }) {
   };
 
   return (
-    <div>
+    <div className="details-drink-container">
       <img
         src={ strDrinkThumb }
         alt={ strDrink }
         data-testid="recipe-photo"
       />
-      <h2 data-testid="recipe-title">
-        {strDrink}
-      </h2>
+      <div className="recipe-container">
+        <div className="title-container">
+          <h2 data-testid="recipe-title">
+            {strDrink}
+          </h2>
 
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ () => copyToClipboard() }
-      >
-        <img src={ shareIcon } alt="share" />
-      </button>
-      <input
-        type="image"
-        onClick={ () => changeFavorite() }
-        src={ checkFavorite(idDrink) ? favorite : notFavorite }
-        alt="favorite"
-        data-testid="favorite-btn"
-      />
-      {
-        (copied) && <span>Link copied!</span>
-      }
-      <div data-testid="recipe-category">
-        <p>{strCategory}</p>
-
-        <p>{strAlcoholic}</p>
-      </div>
-      <ul>
-        { ingredients(card[0]).map((item, index) => (
-          <li
-            data-testid={ `${index}-ingredient-name-and-measure` }
-            key={ item }
+          <button
+            type="button"
+            id="favorite-btn"
+            onClick={ () => changeFavorite() }
+            data-testid="favorite-btn"
           >
-            {item}
-          </li>))}
-      </ul>
-      <p data-testid="instructions">{strInstructions}</p>
+            { checkFavorite(idDrink)
+              ? <i className="bi bi-heart-fill" /> : <i className="bi bi-heart" /> }
+          </button>
+          <button
+            type="button"
+            data-testid="share-btn"
+            onClick={ () => copyToClipboard() }
+          >
+            <i className="bi bi-share-fill" />
+          </button>
+        </div>
+
+        {
+          (copied) && <span>Link copied!</span>
+        }
+        <div data-testid="recipe-category">
+          <p>{strCategory}</p>
+
+          <p>{strAlcoholic}</p>
+        </div>
+        <ul>
+          { ingredients(card[0]).map((item, index) => (
+            <li
+              data-testid={ `${index}-ingredient-name-and-measure` }
+              key={ item }
+            >
+              {item}
+            </li>))}
+        </ul>
+        <p className="instructions" data-testid="instructions">{strInstructions}</p>
+      </div>
+
       <div className="carrousel">
+        <p>Recommendations: </p>
         {(recommendations && recommendations.length > 0)
           && <RecommendationCard
             cards={ recommendations }

@@ -3,6 +3,8 @@ import { useParams, useLocation } from 'react-router-dom';
 import DetailedFoodCard from '../components/DetailedFoodCard';
 import { fetchById } from '../services/api';
 
+import '../styles/detailsFoodAndDrinks.css';
+
 function DetailsFoods() {
   const { id } = useParams();
   const { pathname } = useLocation();

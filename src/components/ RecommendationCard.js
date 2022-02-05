@@ -3,7 +3,7 @@ import React from 'react';
 
 function RecommendationCard({ cards, history, path, MAX_RENDER }) {
   return (
-    <div>
+    <div className="recommendation-container">
       { cards.filter((items, i) => i < MAX_RENDER).map((item, index) => (
         <button
           type="button"

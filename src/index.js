@@ -6,6 +6,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import RecipesProvider from './context/RecipesProvider';
 
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 ReactDOM.render(
   <BrowserRouter>
     <RecipesProvider>

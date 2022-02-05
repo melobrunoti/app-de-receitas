@@ -1,5 +1,13 @@
+:root {
+  --title-color: rgb(142, 65, 46);
+  --green-title: rgb(113, 131, 85);
+  --gray-title: rgb(61, 61, 61);
+  --cream-color: rgb(237, 237, 233);
+}
+
 * {
   box-sizing: border-box;
   margin: 0%;
   padding: 0;
+  color: var(--gray-title);
 }

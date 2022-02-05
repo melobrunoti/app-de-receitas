@@ -6,30 +6,34 @@ function Card({ cards, path, MAX_RENDER }) {
   const history = useHistory();
 
   return (
-    <div>
+    <div className="card-container">
       { cards.filter((items, i) => i < MAX_RENDER).map((item, index) => (
-        <button
-          type="button"
-          key={ index }
-          data-testid={ `${index}-recipe-card` }
-          onClick={ () => ((path.includes('drinks'))
-            ? history.push(`/drinks/${item.idDrink}`)
-            : history.push(`/foods/${item.idMeal}`)) }
-        >
-          <img
-            src={ (path.includes('drinks')
-              ? item.strDrinkThumb : item.strMealThumb) }
-            alt={ (path.includes('drinks')
-              ? item.strDrink : item.strMeal) }
-            data-testid={ `${index}-card-img` }
-          />
-          <p
-            data-testid={ `${index}-card-name` }
+        <div key="i" className="individual-card">
+          <button
+            className="card-btn"
+            type="button"
+            key={ index }
+            data-testid={ `${index}-recipe-card` }
+            onClick={ () => ((path.includes('drinks'))
+              ? history.push(`/drinks/${item.idDrink}`)
+              : history.push(`/foods/${item.idMeal}`)) }
           >
-            {(path.includes('drinks') ? item.strDrink : item.strMeal)}
+            <img
+              src={ (path.includes('drinks')
+                ? item.strDrinkThumb : item.strMealThumb) }
+              alt={ (path.includes('drinks')
+                ? item.strDrink : item.strMeal) }
+              data-testid={ `${index}-card-img` }
+            />
+            <p
+              data-testid={ `${index}-card-name` }
+            >
+              {(path.includes('drinks') ? item.strDrink : item.strMeal)}
 
-          </p>
-        </button>
+            </p>
+          </button>
+        </div>
+
       ))}
 
     </div>);
