@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Montserrat:wght@300;500;800&family=Nanum+Myeongjo&display=swap');
-
 .login{
   align-items: center;
-  background-color: var(--backgorund-color);
+  background-color: var(--background-color);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -44,7 +42,7 @@ form input{
 }
 
 form input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px var(--backgorund-color) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--background-color) inset;
 }
 
 form input:focus {

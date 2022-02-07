@@ -1,18 +1,18 @@
 .header-container {
   align-items: center;
-  background-color: var(--green-title);
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1%;
+  padding: 2%;
 }
 
 .header-icons-and-title {
   align-items: center;
-  color: var(--backgorund-color);
+  color: transparent;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 100%;
 }
 
@@ -22,13 +22,14 @@
 }
 
 .header-title {
-  color: var(--backgorund-color);
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.5em;
+  color: var(--green-title);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
   margin: 0;
 }
 
-.header-container i {
-  color: var(--backgorund-color);
-  font-size: 1.5em;
+.bi-person-circle, .bi-search {
+  color: var(--green-title);
+  font-size: 22px;
+  padding-top: 40px;
 }

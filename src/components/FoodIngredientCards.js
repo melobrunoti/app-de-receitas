@@ -37,6 +37,7 @@ function FoodIngredientCards() {
             onClick={ () => clickIngredient(strIngredient, pathname) }
           >
             <img
+              className="ingredient-img"
               src={ `https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png` }
               data-testid={ `${index}-card-img` }
               alt={ strIngredient }

@@ -50,7 +50,7 @@ function Login() {
             disabled={ password.length <= minNumber || !email.match(/\S+@\S+\.\S+/) }
             onClick={ () => handleClick() }
           >
-            Enter
+            Login
           </button>
         </form>
       </div>

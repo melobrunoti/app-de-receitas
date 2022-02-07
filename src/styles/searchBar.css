@@ -5,12 +5,12 @@
 }
 
 .search-input {
-  background-color: var(--cream-color);
-  border: none;
-  border-radius: 3px;
+  background-color: var(--background-color);
+  border: 1px solid var(--green-title);
+  border-radius: 8px;
   color: var(--title-color);
   height: 40px;
-  margin: 4% 0;
+  margin: 8% 0;
   padding: 8px;
   outline: none;
   width: 100%;
@@ -26,11 +26,12 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  height: 40px;
+  font-size: 1em;
+  height: 35px;
 }
 
 .search-filter-container label p {
-  color: white;
+  color: var(--green-title);
   margin-left: 2%;
 }
 
@@ -41,11 +42,13 @@
 }
 
 .search-btn {
-  background-color: var(--title-color);
-  border: none;
-  border-radius: 3px;
-  color: white;
-  font-family: 'Nanum Myeongjo', serif;
+  background-color: var(--background-color);
+  border: 1px solid var(--green-title);
+  border-radius: 8px;
+  color: var(--green-title);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.1em;
   margin: 4% 0;
   padding: 3%;
   outline: none;
@@ -53,19 +56,15 @@
 }
 
 input[type="radio"] {
-  /* remove standard background appearance */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  /* create custom radiobutton appearance */
-  /* display: inline-block; */
   width: 21px;
   height: 21px;
   padding: 5px;
-  /* background-color only for content */
   background-clip: content-box;
-  border: 1px solid var(--cream-color);
-  background-color: var(--cream-color);
+  border: 1px solid var(--green-title);
+  background-color: var(--green-title);
   border-radius: 50%;
 }
 

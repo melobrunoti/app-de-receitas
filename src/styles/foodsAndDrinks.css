@@ -1,9 +1,9 @@
 .recipe-container {
-  background-color: var(--backgorund-color);
+  background-color: var(--background-color);
 }
 
 .category-container {
-  background-color: var(--backgorund-color);
+  background-color: var(--background-color);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .card-container {
-  background-color: var(--backgorund-color);
+  background-color: var(--background-color);
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -32,16 +32,15 @@
   background-color: rgb(255, 255, 255);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
-  font-family: 'Montserrat', sans-serif;
   margin: 2% 0;
   width: 45%;
 }
 
 .card-name {
   color: var(--title-color);
-  font-family: 'Nanum Myeongjo', serif;
   font-size: 1.1em;
 }
+
 
 .individual-card button, .individual-card img {
   background-color: rgb(255, 255, 255);

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import { fecthRandomFoods } from '../services/api';
 
 import '../styles/exploreFoodsAndDrinks.css';
@@ -19,7 +18,19 @@ function ExploreFoods(props) {
 
   return (
     <div>
-      <Header pageName="Explore Foods" searchVisible={ false } />
+      <header className="explore-foods-header-container">
+        <Link to="/profile">
+          <i className="bi bi-person-circle explore-foods-header-icon" />
+        </Link>
+
+        <p
+          data-testid="page-title"
+          className="header-explore-foods-title"
+        >
+          explore foods
+
+        </p>
+      </header>
       <div className="explore-foods-container">
         <button
           type="button"
@@ -28,7 +39,6 @@ function ExploreFoods(props) {
           onClick={ () => history.push('/explore/foods/ingredients') }
         >
           By Ingredient
-          <FontAwesomeIcon icon="carrot" className="explore-foods-icons" />
         </button>
         <button
           type="button"
@@ -37,7 +47,6 @@ function ExploreFoods(props) {
           onClick={ () => history.push('/explore/foods/nationalities') }
         >
           By Nationality
-          <FontAwesomeIcon icon="flag" className="explore-foods-icons" />
         </button>
         <button
           type="button"
@@ -46,7 +55,6 @@ function ExploreFoods(props) {
           onClick={ () => supriseMeClick() }
         >
           Surprise me!
-          <i className="bi bi-gift-fill explore-foods-icons" />
         </button>
       </div>
 

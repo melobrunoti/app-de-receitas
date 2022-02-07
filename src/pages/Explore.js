@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Icon } from '@iconify/react';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 
 import '../styles/explore.css';
 
@@ -10,7 +10,9 @@ function Explore(props) {
   const history = useHistory();
   return (
     <div>
-      <Header pageName="Explore" searchVisible={ false } />
+      <header className="explore-header">
+        <p>explore</p>
+      </header>
       <section className="explore-container">
         <button
           type="button"
@@ -26,7 +28,8 @@ function Explore(props) {
           name="Explore Drinks"
           onClick={ () => history.push('/explore/drinks') }
         >
-          <FontAwesomeIcon icon="glass-cheers" className="explore-icons" />
+          {/* <FontAwesomeIcon icon="glass-cheers" className="explore-icons" /> */}
+          <Icon icon="fluent:drink-wine-16-filled" className="explore-icons" />
         </button>
       </section>
 

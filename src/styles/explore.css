@@ -4,20 +4,34 @@
 }
 
 .explore-container button {
-  border: none;
   background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 41%;
 }
 
 .explore-container button:nth-child(1) {
-  margin-top: 50%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('../images/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg');
+  background-size: cover;
+  /* border-bottom: 1px solid var(--green-title); */
 }
-
 .explore-container button:nth-child(2) {
-  margin-top: 30%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('../images/sam-hojati-pb7oJwtNVU4-unsplash.jpg');
+  background-size: cover;
 }
 
 .explore-icons {
-  color: var(--title-color);
-  font-size: 3em;
+  color: white;
+  font-size: 28px;
 }
 
+.explore-header {
+  width: 100%;
+  position: fixed;
+}
+
+.explore-header p{
+  color: white;
+  margin-top: 3%;
+  text-align: center;
+}

@@ -35,6 +35,7 @@ function SearchBar() {
       <input
         className="search-input"
         type="text"
+        placeholder="Digite aqui"
         data-testid="search-input"
         onChange={ ({ target }) => setSearchInput(target.value) }
       />

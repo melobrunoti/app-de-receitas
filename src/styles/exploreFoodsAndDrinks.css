@@ -1,21 +1,74 @@
+.explore-foods-header-container {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  padding: 2% 0;
+  width: 100%;
+  position: fixed
+}
+
+.explore-foods-header-icon {
+  color: white;
+  margin-left: 70%;
+}
+
+.header-explore-foods-title {
+  color: white;
+  text-align: center;
+  margin: auto;
+}
+
 .explore-foods-container, .explore-drinks-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 86vh;
   margin: auto;
-  width: 90%;
+  width: 100%;
 }
 
 .explore-foods-btn, .explore-drinks-btn {
   background-color: var(--green-title);
   border: none;
-  border-radius: 3px;
   color: white;
-  margin-top: 10%;
-  padding: 3%;
-  width: 90%;
+  width: 100%;
+}
+
+.explore-foods-btn {
+  border: none;
+  margin: 0;
+  padding: 27%;
+}
+
+.explore-drinks-btn {
+  border: none;
+  margin: 0;
+  padding: 41.5% 0;
+}
+
+.explore-foods-container button:nth-child(1) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('../images/rodion-kutsaev-EPwuZxdketc-unsplash.jpg');
+  background-size: cover;
+}
+
+.explore-foods-container button:nth-child(2) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('../images/pexels-pixabay-414916.jpg');
+  background-size: cover;
+}
+
+.explore-foods-container button:nth-child(3) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('../images/nina-mercado-_qN6tmGjmtg-unsplash.jpg');
+  background-size: cover;
+}
+
+.explore-drinks-container button:nth-child(1) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('../images/cristina-anne-costello-4jsmBl30x_A-unsplash.jpg');
+  background-size: cover;
+}
+
+.explore-drinks-container button:nth-child(2) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('../images/nina-mercado-CnrDuY0tFrg-unsplash.jpg');
+  background-size: cover;
 }
 
 .explore-foods-icons, .explore-drinks-icons {

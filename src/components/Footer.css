@@ -1,13 +1,22 @@
 
 footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-section {
   background-color: var(--green-title);
   bottom: 0;
-  color: var(--backgorund-color);
+  border-radius: 10px 10px 0 0;
+  color: var(--background-color);
   display: flex;
   height: 45px;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  justify-self: center;
+  margin: auto;
   position: fixed;
-  width: 100%;
+  width: 85%;
 }
 
 footer button {
@@ -17,7 +26,7 @@ footer button {
 }
 
 .footer-icons {
-  color: var(--backgorund-color);
-  font-size: 1.6em;
+  color: var(--background-color);
+  font-size: 22px;
 }
 

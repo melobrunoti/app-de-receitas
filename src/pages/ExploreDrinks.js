@@ -1,8 +1,6 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useHistory, Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 import { fecthRandomDrinks } from '../services/api';
 
 import '../styles/exploreFoodsAndDrinks.css';
@@ -18,7 +16,19 @@ function ExploreDrinks(props) {
 
   return (
     <div>
-      <Header pageName="Explore Drinks" searchVisible={ false } />
+      <header className="explore-foods-header-container">
+        <Link to="/profile">
+          <i className="bi bi-person-circle explore-foods-header-icon" />
+        </Link>
+
+        <p
+          data-testid="page-title"
+          className="header-explore-foods-title"
+        >
+          explore foods
+
+        </p>
+      </header>
       <div className="explore-drinks-container">
         <button
           type="button"
@@ -27,7 +37,6 @@ function ExploreDrinks(props) {
           onClick={ () => history.push('/explore/drinks/ingredients') }
         >
           By Ingredient
-          <FontAwesomeIcon icon="lemon" className="explore-drinks-icons" />
         </button>
         <button
           type="button"
@@ -36,7 +45,6 @@ function ExploreDrinks(props) {
           onClick={ () => supriseMeClick() }
         >
           Surprise me!
-          <i className="bi bi-gift-fill explore-drinks-icons" />
         </button>
       </div>
 

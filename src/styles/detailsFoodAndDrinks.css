@@ -5,8 +5,9 @@
 
 .details-food-container h2, .details-drink-container h2 {
   color: var(--title-color);
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 5% 0;
+  text-shadow: 2px 2px 3px rgb(212, 211, 211);
   width: 80%;
 }
 
@@ -18,7 +19,7 @@
 }
 
 .category-title {
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   color: var(--green-title);
 }
@@ -63,31 +64,33 @@ li::before {
 }
 
 .carrousel {
-  background-color: var(--cream-color);
+  background-color: rgb(199, 204, 188);
   padding: 3% 3% 8%;
 }
 
 .carrousel p:nth-child(1){
   background-color: transparent;
-  color: var(--title-color);
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.3em;
+  color: var(--green-title);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.2em;
+  margin: 7% 0  2% 3%;
 }
 
 .recommendation-container button{
-  background-color: var(--cream-color);
+  background-color: rgb(199, 204, 188);
   width: 70%;
 }
 
 .recommendation-container img {
-  background-color: var(--cream-color);
+  background-color: rgb(199, 204, 188);
   border-radius: 15px;
   padding: 3%;
 }
 
 .recommendation-container p {
-  background-color: var(--cream-color);
-  color: var(--title-color);
+  background-color: rgb(199, 204, 188);
+  color: var(--green-title);
   font-size: 16px;
 }
 
