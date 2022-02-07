@@ -1,0 +1,23 @@
+.explore-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-container button {
+  border: none;
+  background-color: transparent;
+}
+
+.explore-container button:nth-child(1) {
+  margin-top: 50%;
+}
+
+.explore-container button:nth-child(2) {
+  margin-top: 30%;
+}
+
+.explore-icons {
+  color: var(--title-color);
+  font-size: 3em;
+}
+

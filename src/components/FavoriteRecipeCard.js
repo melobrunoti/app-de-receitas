@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 
+import '../styles/favoriteRecipes.css';
+
 function FavoriteRecipeCard({ filter }) {
   const history = useHistory();
   const {
@@ -61,6 +63,7 @@ function FavoriteRecipeCard({ filter }) {
             </button>
 
             <p
+              className="favorite-description"
               data-testid={ `${index}-horizontal-top-text` }
             >
               {
@@ -71,6 +74,7 @@ function FavoriteRecipeCard({ filter }) {
             </p>
             <div className="favorite-share-btn-container">
               <button
+                className="favorite-share-btn"
                 type="button"
                 data-testid={ `${index}-horizontal-favorite-btn` }
                 onClick={ () => unfavorite(recipe.id) }
@@ -78,6 +82,7 @@ function FavoriteRecipeCard({ filter }) {
                 <i className="bi bi-heart-fill" />
               </button>
               <button
+                className="favorite-share-btn"
                 id={ recipe.id }
                 type="button"
                 data-testid={ `${index}-horizontal-share-btn` }
@@ -94,7 +99,7 @@ function FavoriteRecipeCard({ filter }) {
         ))
       );
     }
-    return <h1>No favorite recipe.</h1>;
+    return <h1 className="no-favorite-recipe">No favorite recipe.</h1>;
   }
 
   return renderRecipes();

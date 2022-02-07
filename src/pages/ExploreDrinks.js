@@ -1,10 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { fecthRandomDrinks } from '../services/api';
 
-function ExploreDrinks() {
+import '../styles/exploreFoodsAndDrinks.css';
+
+function ExploreDrinks(props) {
   const history = useHistory();
 
   const supriseMeClick = async () => {
@@ -16,21 +19,28 @@ function ExploreDrinks() {
   return (
     <div>
       <Header pageName="Explore Drinks" searchVisible={ false } />
-      <button
-        type="button"
-        data-testid="explore-by-ingredient"
-        onClick={ () => history.push('/explore/drinks/ingredients') }
-      >
-        By Ingredient
-      </button>
-      <button
-        type="button"
-        data-testid="explore-surprise"
-        onClick={ () => supriseMeClick() }
-      >
-        Surprise me!
-      </button>
-      <Footer />
+      <div className="explore-drinks-container">
+        <button
+          type="button"
+          className="explore-drinks-btn"
+          data-testid="explore-by-ingredient"
+          onClick={ () => history.push('/explore/drinks/ingredients') }
+        >
+          By Ingredient
+          <FontAwesomeIcon icon="lemon" className="explore-drinks-icons" />
+        </button>
+        <button
+          type="button"
+          className="explore-drinks-btn"
+          data-testid="explore-surprise"
+          onClick={ () => supriseMeClick() }
+        >
+          Surprise me!
+          <i className="bi bi-gift-fill explore-drinks-icons" />
+        </button>
+      </div>
+
+      <Footer { ...props } />
     </div>);
 }
 export default ExploreDrinks;

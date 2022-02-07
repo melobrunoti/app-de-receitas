@@ -8,7 +8,7 @@ import '../styles/doneRecipes.css';
 function DoneRecipes() {
   const originalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
   const [storage, setStorage] = useState(JSON.parse(localStorage.getItem('doneRecipes')));
-  console.log(storage);
+  // console.log(storage);
 
   const foodFilter = () => originalStorage
     .filter((recipe) => recipe.type === 'food')
@@ -49,8 +49,10 @@ function DoneRecipes() {
         </button>
       </div>
 
-      {(storage !== null && storage.length > 0)
+      <div className="done-recipe-container">
+        {(storage !== null && storage.length > 0)
       && <DoneRecipeCard storage={ storage } />}
+      </div>
     </div>
   );
 }

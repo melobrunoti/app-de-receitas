@@ -3,6 +3,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import { fecthIngredientsDrinks, fetchFilterIgredients } from '../services/api';
 
+import '../styles/exploreByIngredient.css';
+
 function DrinkIngredientCards() {
   const [ingredients, setIngrediets] = useState([]);
   const ingredientLimiter = 12;
@@ -24,11 +26,12 @@ function DrinkIngredientCards() {
   };
 
   return (
-    <div>
+    <div className="ingredient-container">
       { (ingredients.length > 0) && ingredients.slice(0, ingredientLimiter)
         .map(({ strIngredient1 }, index) => (
           <button
             type="button"
+            className="ingredient-individual"
             key={ index }
             data-testid={ `${index}-ingredient-card` }
             onClick={ () => clickIngredient(strIngredient1, pathname) }

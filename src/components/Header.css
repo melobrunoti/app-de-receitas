@@ -9,7 +9,7 @@
 
 .header-icons-and-title {
   align-items: center;
-  color: white;
+  color: var(--backgorund-color);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -22,13 +22,13 @@
 }
 
 .header-title {
-  color: white;
+  color: var(--backgorund-color);
   font-family: 'Nanum Myeongjo', serif;
   font-size: 1.5em;
   margin: 0;
 }
 
 .header-container i {
-  color: white;
+  color: var(--backgorund-color);
   font-size: 1.5em;
 }

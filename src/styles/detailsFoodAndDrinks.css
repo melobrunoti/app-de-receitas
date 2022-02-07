@@ -1,6 +1,6 @@
-* {
-  font-family: 'Montserrat', sans-serif;
+.details-food-container{
   font-size: 17px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .details-food-container h2, .details-drink-container h2 {
@@ -26,7 +26,7 @@
 .details-food-container button, .details-drink-container button {
   border: none;
   background-color: transparent;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .recipe-container {
@@ -42,6 +42,7 @@
 }
 
 ul {
+  color: var(--gray-title);
   margin-top: 8%;
   list-style: none;
 }
@@ -57,6 +58,7 @@ li::before {
 }
 
 .instructions{
+  color: var(--gray-title);
   line-height: 190%;
 }
 
@@ -66,23 +68,27 @@ li::before {
 }
 
 .carrousel p:nth-child(1){
-  color: var(--green-title);
-  /* color: white; */
+  background-color: transparent;
+  color: var(--title-color);
   font-family: 'Nanum Myeongjo', serif;
   font-size: 1.3em;
 }
 
 .recommendation-container button{
+  background-color: var(--cream-color);
   width: 70%;
 }
 
 .recommendation-container img {
+  background-color: var(--cream-color);
   border-radius: 15px;
   padding: 3%;
 }
 
 .recommendation-container p {
+  background-color: var(--cream-color);
   color: var(--title-color);
+  font-size: 16px;
 }
 
 .start-button{

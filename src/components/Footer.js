@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
-// import drinkIcon from '../images/drinkIcon.svg';
-import exploreIcon from '../images/exploreIcon.svg';
-import foodIcon from '../images/mealIcon.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './Footer.css';
 
@@ -17,24 +14,22 @@ function Footer(props) {
         className="footer-drink"
         onClick={ () => history.push('/drinks') }
       >
-        <i className="fas fa-cocktail" />
+        <FontAwesomeIcon icon="cocktail" className="footer-icons" />
       </button>
-      <input
-        type="image"
+      <button
+        type="button"
         data-testid="explore-bottom-btn"
-        title="Explore"
-        src={ exploreIcon }
-        alt="explore button"
         onClick={ () => history.push('/explore') }
-      />
-      <input
-        type="image"
+      >
+        <FontAwesomeIcon icon="compass" className="footer-icons" />
+      </button>
+      <button
+        type="button"
         data-testid="food-bottom-btn"
-        title="Foods"
-        src={ foodIcon }
-        alt="foods button"
         onClick={ () => history.push('/foods') }
-      />
+      >
+        <FontAwesomeIcon icon="utensils" className="footer-icons" />
+      </button>
     </footer>
   );
 }

@@ -8,7 +8,7 @@ function Card({ cards, path, MAX_RENDER }) {
   return (
     <div className="card-container">
       { cards.filter((items, i) => i < MAX_RENDER).map((item, index) => (
-        <div key="i" className="individual-card">
+        <div key={ item.idDrink } className="individual-card">
           <button
             className="card-btn"
             type="button"
@@ -26,6 +26,7 @@ function Card({ cards, path, MAX_RENDER }) {
               data-testid={ `${index}-card-img` }
             />
             <p
+              className="card-name"
               data-testid={ `${index}-card-name` }
             >
               {(path.includes('drinks') ? item.strDrink : item.strMeal)}
@@ -41,7 +42,7 @@ function Card({ cards, path, MAX_RENDER }) {
 
 Card.propTypes = {
   cards: PropTypes.instanceOf(Object).isRequired,
-  path: PropTypes.instanceOf(Object).isRequired,
+  path: PropTypes.string.isRequired,
   MAX_RENDER: PropTypes.number.isRequired,
 };
 

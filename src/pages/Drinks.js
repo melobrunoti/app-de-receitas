@@ -13,7 +13,7 @@ function Drinks(props) {
   function renderFooter() {
     const { location } = props;
     const { pathname } = location;
-    console.log(props);
+    // console.log(props);
 
     if (pathname === '/drinks') return <Footer { ...props } />;
   }

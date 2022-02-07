@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch } from 'react-router-dom';
 import Drinks from './pages/Drinks';
@@ -20,6 +23,8 @@ import DetailsDrinks from './pages/DetailsDrinks';
 import InProgressFoods from './pages/InProgressFood';
 import InProgressDrinks from './pages/InProgressDrinks';
 import NotFound from './components/NotFound';
+
+library.add(faCheckSquare, faCoffee);
 
 function App() {
   return (

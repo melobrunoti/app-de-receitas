@@ -6,7 +6,9 @@ import { fecthNationalities, fetchFoodApi,
   fetchMealsNationalities } from '../services/api';
 import Card from '../components/Card';
 
-function ExploreFoodsNationality() {
+import '../styles/exploreByNationality.css';
+
+function ExploreFoodsNationality(props) {
   const [nationalities, setNationalities] = useState([]);
   const [filter, setFilter] = useState([]);
   const [meals, setMeals] = useState([]);
@@ -33,14 +35,43 @@ function ExploreFoodsNationality() {
       return setFilter(meals);
     }
     const arrFilter = await fetchMealsNationalities(value);
-    console.log(arrFilter);
+    // console.log(arrFilter);
     return setFilter(arrFilter);
   };
 
   return (
     <div>
       <Header pageName="Explore Nationalities" searchVisible />
+      <section className="natio-container">
+        <select
+          className="natio-select"
+          data-testid="explore-by-nationality-dropdown"
+          onChange={ (e) => handleFilter(e) }
+        >
+          <option
+            data-testid="All-option"
+            value="All"
+          >
+            All
+          </option>
+          {(nationalities.length > 0) && nationalities
+            .map((n) => (
+              <option
+                key={ n.strArea }
+                data-testid={ `${n.strArea}-option` }
+                value={ n.strArea }
+              >
+                {n.strArea}
+              </option>
+            ))}
+        </select>
+        <div>
+          { (filter && filter.length > 0)
+        && <Card cards={ filter } path={ pathname } MAX_RENDER={ 12 } />}
+        </div>
+      </section>
       <select
+        className="natio-select"
         data-testid="explore-by-nationality-dropdown"
         onChange={ (e) => handleFilter(e) }
       >
@@ -65,7 +96,7 @@ function ExploreFoodsNationality() {
         { (filter && filter.length > 0)
         && <Card cards={ filter } path={ pathname } MAX_RENDER={ 12 } />}
       </div>
-      <Footer />
+      <Footer { ...props } />
     </div>);
 }
 

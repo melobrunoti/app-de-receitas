@@ -2,12 +2,18 @@
   --title-color: rgb(142, 65, 46);
   --green-title: rgb(113, 131, 85);
   --gray-title: rgb(61, 61, 61);
-  --cream-color: rgb(237, 237, 233);
+  --cream-color: rgb(231, 216, 201);
+  --white-color: white;
+  --backgorund-color: rgb(255, 255, 250);
 }
 
 * {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
   margin: 0%;
   padding: 0;
+}
+
+* p {
   color: var(--gray-title);
 }

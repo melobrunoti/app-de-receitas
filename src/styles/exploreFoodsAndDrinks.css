@@ -1,0 +1,23 @@
+.explore-foods-container, .explore-drinks-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 86vh;
+  margin: auto;
+  width: 90%;
+}
+
+.explore-foods-btn, .explore-drinks-btn {
+  background-color: var(--green-title);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  margin-top: 10%;
+  padding: 3%;
+  width: 90%;
+}
+
+.explore-foods-icons, .explore-drinks-icons {
+  margin-left: 8%;
+}

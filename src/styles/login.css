@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Montserrat:wght@300;500;800&family=Nanum+Myeongjo&display=swap');
 
 .login{
+  align-items: center;
+  background-color: var(--backgorund-color);
   display: flex;
   flex-direction: row;
-  align-items: center;
-  
   justify-content: center;
   height: 100vh;
 }
@@ -35,11 +35,16 @@ form {
 }
 
 form input{
+  background-color: transparent;
   border: none;
   border-bottom: 1px solid var(--title-color);
   font-size: 15px;
   height: 25px;
   margin-top: 8%;
+}
+
+form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--backgorund-color) inset;
 }
 
 form input:focus {
@@ -49,7 +54,7 @@ form input:focus {
 }
 
 form button {
-  background-color: var(--title-color);
+  background-color: var(--green-title);
   border: none;
   border-radius: 5px;
   color: white;
@@ -61,5 +66,5 @@ form button {
 }
 
 form button:disabled {
-  background-color: rgb(222, 226, 230);
+  background-color: rgb(238, 222, 211);
 }

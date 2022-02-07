@@ -3,12 +3,12 @@ import FoodIngredientCards from '../components/FoodIngredientCards';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-function ExploreFoodIngredients() {
+function ExploreFoodIngredients(props) {
   return (
     <div>
       <Header pageName="Explore Ingredients" searchVisible={ false } />
       <FoodIngredientCards />
-      <Footer />
+      <Footer { ...props } />
     </div>);
 }
 

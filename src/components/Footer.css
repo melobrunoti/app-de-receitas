@@ -1,9 +1,8 @@
 
 footer {
-  background-color: rgb(173, 169, 169);
-  border: solid none none none;
+  background-color: var(--green-title);
   bottom: 0;
-  color: white;
+  color: var(--backgorund-color);
   display: flex;
   height: 45px;
   justify-content: space-evenly;
@@ -17,20 +16,8 @@ footer button {
   cursor: pointer;
 }
 
-footer input, .footer-drink {
-  background-color: turquoise;
-  color: red !important;
-}
-
-.footer-drink {
-  background-color: transparent !important;
-  width: fit-content;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-drink svg {
-  font-size: 40px;
-  color: red !important;
+.footer-icons {
+  color: var(--backgorund-color);
+  font-size: 1.6em;
 }
 
