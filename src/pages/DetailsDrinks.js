@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useHistory } from 'react-router-dom';
 import DetailedDrinkCard from '../components/DetailedDrinkCard';
+import ReturnButton from '../components/ReturnButton';
 import { fetchById } from '../services/api';
 
 function DetailsDrinks() {
+  const history = useHistory();
   const [detaildDrinks, setDetaildDrinks] = useState([]);
   const { pathname } = useLocation();
   const { id } = useParams();
@@ -18,8 +20,7 @@ function DetailsDrinks() {
   return (
 
     <div>
-      <h1>Details Drinks</h1>
-
+      <ReturnButton push={ () => history.push('/drinks') } />
       {(detaildDrinks && detaildDrinks.length > 0)
       && <DetailedDrinkCard card={ detaildDrinks } /> }
     </div>

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
 import Header from '../components/Header';
+import ReturnButton from '../components/ReturnButton';
 
 const FavoriteRecipes = () => {
+  const history = useHistory();
   const [filter, setFilter] = useState('');
 
   function changeFilter({ id }) {
@@ -21,6 +24,7 @@ const FavoriteRecipes = () => {
   return (
     <div>
       <Header pageName="Favorite Recipes" searchVisible={ false } />
+      <ReturnButton push={ () => history.push('/foods') } />
       <main>
         <button
           id="allBtn"

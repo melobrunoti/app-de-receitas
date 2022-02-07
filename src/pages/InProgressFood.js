@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useHistory } from 'react-router-dom';
 import InProgressCard from '../components/InProgressCard';
+import ReturnButton from '../components/ReturnButton';
 import { ingredients } from '../globalFunctions';
 import { fetchById } from '../services/api';
 
 function InProgressFood() {
+  const history = useHistory();
   const { id } = useParams();
   const { pathname } = useLocation();
   const [inProgressDrink, setInProgressDrink] = useState();
@@ -18,6 +20,7 @@ function InProgressFood() {
 
   return (
     <div>
+      <ReturnButton push={ () => history.push(`/foods/${id}`) } />
       {(inProgressDrink) && <InProgressCard
         ingredients={ ingredients(inProgressDrink[0]) }
         id={ inProgressDrink[0].idMeal }

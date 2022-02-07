@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { fecthRandomDrinks } from '../services/api';
 
-function ExploreDrinks() {
+function ExploreDrinks(props) {
   const history = useHistory();
 
   const supriseMeClick = async () => {
@@ -30,7 +30,7 @@ function ExploreDrinks() {
       >
         Surprise me!
       </button>
-      <Footer />
+      <Footer { ...props } />
     </div>);
 }
 export default ExploreDrinks;

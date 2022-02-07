@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import DoneRecipeCard from '../components/DoneRecipeCard';
 
 import Header from '../components/Header';
+import ReturnButton from '../components/ReturnButton';
 import RecipesContext from '../context/RecipesContext';
 
 function DoneRecipes() {
+  const history = useHistory();
   const originalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
   const { doneRecipes, setDoneRecipes } = useContext(RecipesContext);
 
@@ -21,7 +24,7 @@ function DoneRecipes() {
   return (
     <div>
       <Header pageName="Done Recipes" searchVisible={ false } />
-      <h1>Done Recipes</h1>
+      <ReturnButton push={ () => history.push('/foods') } />
       <button
         type="button"
         data-testid="filter-by-all-btn"

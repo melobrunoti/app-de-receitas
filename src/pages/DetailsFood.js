@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useHistory } from 'react-router-dom';
 import DetailedFoodCard from '../components/DetailedFoodCard';
+import ReturnButton from '../components/ReturnButton';
 import { fetchById } from '../services/api';
 
 function DetailsFoods() {
+  const history = useHistory();
   const { id } = useParams();
   const { pathname } = useLocation();
   const [detaildFood, setDetaildFood] = useState([]);
@@ -18,8 +20,9 @@ function DetailsFoods() {
 
   return (
     <div>
+      <ReturnButton push={ () => history.push('/foods') } />
       {(detaildFood && detaildFood.length > 0)
-      && <DetailedFoodCard card={ detaildFood } /> }
+      && <DetailedFoodCard card={ detaildFood } />}
     </div>
   );
 }
