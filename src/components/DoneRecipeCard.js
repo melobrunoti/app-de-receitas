@@ -77,43 +77,6 @@ function DoneRecipeCard({ storage }) {
         </div>
       </section>
 
-<<<<<<< HEAD
-      <button
-        type="button"
-        data-testid={ `${index}-horizontal-name` }
-        onClick={ () => (recipe.type === 'drink'
-          ? history.push(`/drinks/${recipe.id}`)
-          : history.push(`/foods/${recipe.id}`)) }
-      >
-        {recipe.name}
-
-      </button>
-
-      <p data-testid={ `${index}-horizontal-top-text` }>
-        {`${recipe.type === 'food' ? recipe.nationality : ''} - ${recipe.category}`}
-
-      </p>
-
-      <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
-
-      <input
-        type="image"
-        data-testid={ `${index}-horizontal-share-btn` }
-        src={ shareIcon }
-        alt="share"
-        onClick={ () => handleButton(recipe.id, recipe.type) }
-      />
-
-      {(recipe.tags && recipe.tags.length > 0) && recipe.tags.map((tag, i) => (
-        <p key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</p>
-      ))}
-
-      <p data-testid={ `${index}-horizontal-top-text` }>
-        {recipe.type === 'drink' ? recipe.alcoholicOrNot : null }
-
-      </p>
-=======
->>>>>>> app-receitas-css
     </div>
 
   ));
@@ -123,12 +86,7 @@ function DoneRecipeCard({ storage }) {
       {
         (copied) && <span>Link copied!</span>
       }
-<<<<<<< HEAD
-      {/*  {storage.map((item) => <h1 key={ item.name }>{item.date}</h1>)} */}
-    </div>
-=======
     </>
->>>>>>> app-receitas-css
   );
 }
 

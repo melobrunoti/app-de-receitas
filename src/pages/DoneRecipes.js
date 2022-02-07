@@ -12,7 +12,6 @@ function DoneRecipes() {
   const history = useHistory();
   const originalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
   const { doneRecipes, setDoneRecipes } = useContext(RecipesContext);
-  const [storage, setStorage] = useState(JSON.parse(localStorage.getItem('doneRecipes')));
   // console.log(storage);
 
   const foodFilter = () => originalStorage
@@ -58,7 +57,7 @@ function DoneRecipes() {
 
       <div className="done-recipe-container">
         {(storage !== null && storage.length > 0)
-      && <DoneRecipeCard storage={ storage } />}
+      && <DoneRecipeCard storage={ doneRecipes } />}
       </div>
     </div>
   );
