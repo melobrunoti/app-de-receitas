@@ -2,8 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 
-import shareIcon from '../images/shareIcon.svg';
-import favorite from '../images/blackHeartIcon.svg';
+import '../styles/favoriteRecipes.css';
 
 function FavoriteRecipeCard({ filter }) {
   const history = useHistory();
@@ -42,17 +41,29 @@ function FavoriteRecipeCard({ filter }) {
         ? favoriteRecipes.filter((recipe) => recipe.type === filter) : favoriteRecipes;
       return (
         filtered.map((recipe, index) => (
-          <div key={ index }>
+          <div key={ index } className="favorite-individual-card">
             <input
               type="image"
-              style={ { width: '100vw' } }
+              className="favorite-img"
               src={ recipe.image }
               data-testid={ `${index}-horizontal-image` }
               alt={ recipe.name }
               onClick={ () => redirect(recipe.type, recipe.id) }
               onKeyDown={ () => redirect(recipe.type, recipe.id) }
             />
+
+            <button
+              type="button"
+              className="favorite-recipe-name"
+              data-testid={ `${index}-horizontal-name` }
+              onClick={ () => redirect(recipe.type, recipe.id) }
+              onKeyDown={ () => redirect(recipe.type, recipe.id) }
+            >
+              { recipe.name }
+            </button>
+
             <p
+              className="favorite-description"
               data-testid={ `${index}-horizontal-top-text` }
             >
               {
@@ -61,31 +72,26 @@ function FavoriteRecipeCard({ filter }) {
                   : recipe.alcoholicOrNot
               }
             </p>
-            <button
-              type="button"
-              data-testid={ `${index}-horizontal-name` }
-              onClick={ () => redirect(recipe.type, recipe.id) }
-              onKeyDown={ () => redirect(recipe.type, recipe.id) }
-            >
-              { recipe.name }
-            </button>
-            <input
-              id={ recipe.id }
-              type="image"
-              data-testid={ `${index}-horizontal-share-btn` }
-              src={ shareIcon }
-              alt="compartilhar"
-              title="Compartilhar"
-              onClick={ () => copyToClipboard(recipe.id, recipe.type) }
-            />
-            <input
-              type="image"
-              data-testid={ `${index}-horizontal-favorite-btn` }
-              src={ favorite }
-              alt="favorita"
-              title="Desfavoritar"
-              onClick={ () => unfavorite(recipe.id) }
-            />
+            <div className="favorite-share-btn-container">
+              <button
+                className="favorite-share-btn"
+                type="button"
+                data-testid={ `${index}-horizontal-favorite-btn` }
+                onClick={ () => unfavorite(recipe.id) }
+              >
+                <i className="bi bi-heart-fill" />
+              </button>
+              <button
+                className="favorite-share-btn"
+                id={ recipe.id }
+                type="button"
+                data-testid={ `${index}-horizontal-share-btn` }
+                onClick={ () => copyToClipboard(recipe.id, recipe.type) }
+              >
+                <i className="bi bi-share-fill" />
+              </button>
+            </div>
+
             {
               (copied) && <span>Link copied!</span>
             }
@@ -93,7 +99,7 @@ function FavoriteRecipeCard({ filter }) {
         ))
       );
     }
-    return <h1>No favorite recipe.</h1>;
+    return <h1 className="no-favorite-recipe">No favorite recipe.</h1>;
   }
 
   return renderRecipes();

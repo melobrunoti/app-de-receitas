@@ -4,6 +4,8 @@ import DetailedFoodCard from '../components/DetailedFoodCard';
 import ReturnButton from '../components/ReturnButton';
 import { fetchById } from '../services/api';
 
+import '../styles/detailsFoodAndDrinks.css';
+
 function DetailsFoods() {
   const history = useHistory();
   const { id } = useParams();

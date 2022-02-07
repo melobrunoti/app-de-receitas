@@ -1,0 +1,68 @@
+.login{
+  align-items: center;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-container{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  padding: 15%;
+  width: 75%;
+}
+
+.login-container, form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container p {
+  color: var(--title-color);
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 2em;
+  font-weight:400;
+}
+
+form {
+  font-family: 'Montserrat', sans-serif;
+}
+
+form input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--title-color);
+  font-size: 15px;
+  height: 25px;
+  margin-top: 8%;
+}
+
+form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--background-color) inset;
+}
+
+form input:focus {
+  border-bottom: 3px solid var(--title-color);
+  outline: none;
+  
+}
+
+form button {
+  background-color: var(--green-title);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 1.2em;
+  margin-top: 15%;
+  padding: 1%;
+  width: 100%;
+}
+
+form button:disabled {
+  background-color: rgb(238, 222, 211);
+}

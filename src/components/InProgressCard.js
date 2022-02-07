@@ -2,9 +2,6 @@ import PropTypes from 'prop-types';
 import React, { useState, useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
-import shareIcon from '../images/shareIcon.svg';
-import notFavorite from '../images/whiteHeartIcon.svg';
-import favorite from '../images/blackHeartIcon.svg';
 import useIngredients from '../hooks/useIngredients';
 
 function InProgressCard({
@@ -109,51 +106,64 @@ function InProgressCard({
   };
 
   return (
-    <div>
+    <div className="details-food-container">
       <img data-testid="recipe-photo" src={ thumb } alt={ title } />
-      <h2 data-testid="recipe-title">{title}</h2>
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ () => copyToClipboard() }
-      >
-        <img src={ shareIcon } alt="share" />
-      </button>
-      <input
-        type="image"
-        onClick={ () => changeFavorite() }
-        src={ checkFavorite(id) ? favorite : notFavorite }
-        alt="favorite"
-        data-testid="favorite-btn"
-      />
-      {
-        (copied) && <span>Link copied!</span>
-      }
-      <p data-testid="recipe-category">{category}</p>
 
-      {ingredients.map((ingredient, index) => (
-        <label
-          htmlFor={ ingredient[1] }
-          key={ index }
-          data-testid={ `${index}-ingredient-step` }
-        >
-          <input
-            onChange={ () => toggle(ingredient) }
-            value={ ingredient }
-            type="checkbox"
-            key={ index }
-            checked={ isChecked(ingredient) }
+      <div className="recipe-container">
+        <div className="title-container">
+          <h2 data-testid="recipe-title">{title}</h2>
 
-          />
-          { ingredient }
-        </label>
+          <button
+            type="button"
+            onClick={ () => changeFavorite() }
+            data-testid="favorite-btn"
+          >
+            { checkFavorite(id)
+              ? <i className="bi bi-heart-fill" /> : <i className="bi bi-heart" /> }
+          </button>
+          <button
+            type="button"
+            data-testid="share-btn"
+            onClick={ () => copyToClipboard() }
+          >
+            <i className="bi bi-share-fill" />
+          </button>
+        </div>
 
-      ))}
-      <p />
-      <p data-testid="instructions">{instructions}</p>
+        {
+          (copied) && <span>Link copied!</span>
+        }
+        <p className="category-title" data-testid="recipe-category">{category}</p>
+
+        <div className="progress-ingredient-container">
+          {ingredients.map((ingredient, index) => (
+            <label
+              htmlFor={ ingredient[1] }
+              key={ index }
+              data-testid={ `${index}-ingredient-step` }
+            >
+              <input
+                onChange={ () => toggle(ingredient) }
+                value={ ingredient }
+                type="checkbox"
+                key={ index }
+                defaultChecked={ isChecked(ingredient) }
+
+              />
+              { ingredient }
+            </label>
+
+          ))}
+        </div>
+
+        <p />
+        <p className="instructions" data-testid="instructions">{instructions}</p>
+      </div>
+
       <button
         data-testid="finish-recipe-btn"
         type="button"
+        className="finish-btn"
         disabled={ checkedIngredients.length !== ingredients.length }
         onClick={ () => finishRecipe() }
 

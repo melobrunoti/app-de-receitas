@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import shareIcon from '../images/shareIcon.svg';
+import '../styles/doneRecipes.css';
 
 function DoneRecipeCard({ storage }) {
   const history = useHistory();
@@ -19,18 +19,65 @@ function DoneRecipeCard({ storage }) {
   };
 
   const createCard = () => storage.map((recipe, index) => (
-    <div key={ index }>
+    <div key={ index } className="individual-done-recipe-container">
       <input
         type="image"
+        className="done-recipe-img"
         src={ recipe.image }
         alt="recipe image"
-        style={ { width: '200px' } }
         data-testid={ `${index}-horizontal-image` }
         onClick={ () => (recipe.type === 'food'
           ? history.push(`/foods/${recipe.id}`)
           : history.push(`/drinks/${recipe.id}`)) }
       />
+      <section className="done-recipe-content">
+        <button
+          type="button"
+          className="done-recipe-title"
+          data-testid={ `${index}-horizontal-name` }
+          onClick={ () => (recipe.type === 'drink'
+            ? history.push(`/drinks/${recipe.id}`)
+            : history.push(`/foods/${recipe.id}`)) }
+        >
+          {recipe.name}
 
+        </button>
+
+        <section className="done-natio-tag">
+          <p data-testid={ `${index}-horizontal-top-text` }>
+            {`${recipe.type === 'food' ? recipe.nationality : ''} ${recipe.category}`}
+
+          </p>
+
+          {recipe.tags.slice(0, 2).map((tag, i) => (
+            <p
+              key={ i }
+              data-testid={ `${index}-${tag}-horizontal-tag` }
+            >
+              {tag}
+
+            </p>
+          ))}
+
+          <p data-testid={ `${index}-horizontal-top-text` }>
+            {recipe.type === 'drink' ? recipe.alcoholicOrNot : null }
+          </p>
+        </section>
+
+        <div className="done-share-date-container">
+          <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
+          <button
+            type="button"
+            className="done-share-btn"
+            data-testid={ `${index}-horizontal-share-btn` }
+            onClick={ () => handleButton(recipe.id, recipe.type) }
+          >
+            <i className="bi bi-share-fill" />
+          </button>
+        </div>
+      </section>
+
+<<<<<<< HEAD
       <button
         type="button"
         data-testid={ `${index}-horizontal-name` }
@@ -65,17 +112,23 @@ function DoneRecipeCard({ storage }) {
         {recipe.type === 'drink' ? recipe.alcoholicOrNot : null }
 
       </p>
+=======
+>>>>>>> app-receitas-css
     </div>
 
   ));
   return (
-    <div>
+    <>
       {createCard()}
       {
         (copied) && <span>Link copied!</span>
       }
+<<<<<<< HEAD
       {/*  {storage.map((item) => <h1 key={ item.name }>{item.date}</h1>)} */}
     </div>
+=======
+    </>
+>>>>>>> app-receitas-css
   );
 }
 

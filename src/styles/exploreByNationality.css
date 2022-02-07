@@ -1,0 +1,18 @@
+.natio-container {
+  background-color: var(--background-color);
+}
+
+.natio-select {
+  background-color: rgba(255, 255, 250, 0.4);
+  border: 1px solid var(--green-title);
+  color: var(--gray-title);
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  height: 30px;
+  justify-self: center;
+  margin: auto;
+  margin-top: 3%;
+  outline: none;
+  width: 90%;
+}
+

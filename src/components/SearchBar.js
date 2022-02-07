@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import fetchApiFoodsWithFilters, { fetchApiDrinksWithFilters } from '../services/api';
 
+import '../styles/searchBar.css';
+
 function SearchBar() {
   const { setSearchBarData } = useContext(RecipesContext);
   const [radioSearch, setRadioSearch] = useState('ingredient');
@@ -29,13 +31,15 @@ function SearchBar() {
   }
 
   return (
-    <div>
+    <div className="search-container">
       <input
+        className="search-input"
         type="text"
+        placeholder="Digite aqui"
         data-testid="search-input"
         onChange={ ({ target }) => setSearchInput(target.value) }
       />
-      <div>
+      <div className="search-filter-container">
         <label htmlFor="ingredient">
           <input
             data-testid="ingredient-search-radio"
@@ -45,7 +49,7 @@ function SearchBar() {
             checked={ radioSearch === 'ingredient' }
             onChange={ (e) => { setRadioSearch(e.target.value); } }
           />
-          Ingredient
+          <p>Ingredient</p>
         </label>
         <label htmlFor="name">
           <input
@@ -56,7 +60,7 @@ function SearchBar() {
             checked={ radioSearch === 'name' }
             onChange={ (e) => { setRadioSearch(e.target.value); } }
           />
-          Name
+          <p>Name</p>
         </label>
         <label htmlFor="firstLetter">
           <input
@@ -67,16 +71,20 @@ function SearchBar() {
             checked={ radioSearch === 'firstLetter' }
             onChange={ (e) => { setRadioSearch(e.target.value); } }
           />
-          First Letter
+          <p>First Letter</p>
         </label>
+      </div>
+      <div className="seacrh-btn-container">
         <button
           type="button"
+          className="search-btn"
           data-testid="exec-search-btn"
           onClick={ () => handleSearch() }
         >
           Search
         </button>
       </div>
+
     </div>
   );
 }

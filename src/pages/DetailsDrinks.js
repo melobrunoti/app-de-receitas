@@ -4,6 +4,8 @@ import DetailedDrinkCard from '../components/DetailedDrinkCard';
 import ReturnButton from '../components/ReturnButton';
 import { fetchById } from '../services/api';
 
+import '../styles/detailsFoodAndDrinks.css';
+
 function DetailsDrinks() {
   const history = useHistory();
   const [detaildDrinks, setDetaildDrinks] = useState([]);
@@ -21,6 +23,7 @@ function DetailsDrinks() {
 
     <div>
       <ReturnButton push={ () => history.push('/drinks') } />
+
       {(detaildDrinks && detaildDrinks.length > 0)
       && <DetailedDrinkCard card={ detaildDrinks } /> }
     </div>

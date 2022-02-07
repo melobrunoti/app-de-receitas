@@ -1,10 +1,13 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import { fecthRandomFoods } from '../services/api';
 
-function ExploreFoods() {
+import '../styles/exploreFoodsAndDrinks.css';
+
+function ExploreFoods(props) {
   const history = useHistory();
 
   const supriseMeClick = async () => {
@@ -15,29 +18,54 @@ function ExploreFoods() {
 
   return (
     <div>
-      <Header pageName="Explore Foods" searchVisible={ false } />
-      <button
-        type="button"
-        data-testid="explore-by-ingredient"
-        onClick={ () => history.push('/explore/foods/ingredients') }
-      >
-        By Ingredient
-      </button>
-      <button
-        type="button"
-        data-testid="explore-by-nationality"
-        onClick={ () => history.push('/explore/foods/nationalities') }
-      >
-        By Nationality
-      </button>
-      <button
-        type="button"
-        data-testid="explore-surprise"
-        onClick={ () => supriseMeClick() }
-      >
-        Surprise me!
-      </button>
-      <Footer />
+      <header className="explore-foods-header-container">
+        <Link to="/profile">
+          <i className="bi bi-person-circle explore-foods-header-icon" />
+        </Link>
+
+        <p
+          data-testid="page-title"
+          className="header-explore-foods-title"
+        >
+          explore foods
+
+        </p>
+      </header>
+      <div className="explore-foods-container">
+        <button
+          type="button"
+          className="explore-foods-btn"
+          data-testid="explore-by-ingredient"
+          onClick={ () => history.push('/explore/foods/ingredients') }
+        >
+          By Ingredient
+        </button>
+        <button
+          type="button"
+          className="explore-foods-btn"
+          data-testid="explore-by-nationality"
+          onClick={ () => history.push('/explore/foods/nationalities') }
+        >
+          By Nationality
+        </button>
+        <button
+          type="button"
+          className="explore-foods-btn"
+          data-testid="explore-surprise"
+          onClick={ () => supriseMeClick() }
+        >
+          Surprise me!
+        </button>
+      </div>
+
+      <Footer { ...props } />
     </div>);
 }
+
+ExploreFoods.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
+}.isRequired;
+
 export default ExploreFoods;

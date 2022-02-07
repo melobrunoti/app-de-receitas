@@ -53,24 +53,27 @@ function RecipeList() {
 
   return (
     <div className="recipe-container">
-      {(categories.length > 0) && categories.slice(0, categoryLimiter)
-        .map(({ strCategory }) => (
-          <button
-            data-testid={ `${strCategory}-category-filter` }
-            type="button"
-            key={ strCategory }
-            onClick={ (e) => handleFilter(e) }
-          >
-            {strCategory}
-          </button>)) }
-      <button
-        data-testid="All-category-filter"
-        type="button"
-        onClick={ (e) => handleFilter(e) }
-      >
-        All
+      <div className="category-container">
+        {(categories.length > 0) && categories.slice(0, categoryLimiter)
+          .map(({ strCategory }) => (
+            <button
+              data-testid={ `${strCategory}-category-filter` }
+              type="button"
+              key={ strCategory }
+              onClick={ (e) => handleFilter(e) }
+            >
+              {strCategory}
+            </button>)) }
+        <button
+          data-testid="All-category-filter"
+          type="button"
+          onClick={ (e) => handleFilter(e) }
+        >
+          All
 
-      </button>
+        </button>
+      </div>
+
       <div>
         { (searchBarData && searchBarData.length > 0)
         && <Card cards={ chooseCards() } path={ pathname } MAX_RENDER={ 12 } />}

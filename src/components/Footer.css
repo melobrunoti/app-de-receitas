@@ -1,12 +1,22 @@
+
 footer {
-  background-color: rgb(173, 169, 169);
-  border: solid none none none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-section {
+  background-color: var(--green-title);
   bottom: 0;
+  border-radius: 10px 10px 0 0;
+  color: var(--background-color);
   display: flex;
   height: 45px;
-  justify-content: space-between;
+  justify-content: space-around;
+  justify-self: center;
+  margin: auto;
   position: fixed;
-  width: 100%;
+  width: 85%;
 }
 
 footer button {
@@ -15,6 +25,8 @@ footer button {
   cursor: pointer;
 }
 
-footer button img {
-  width: 40px;
+.footer-icons {
+  color: var(--background-color);
+  font-size: 22px;
 }
+

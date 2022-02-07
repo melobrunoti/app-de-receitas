@@ -1,0 +1,83 @@
+.done-filter-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.done-filter-container button {
+  background-color: transparent;
+  border: 1px solid var(--green-title);
+  border-radius: 3px;
+  color: var(--green-title);
+  margin-top: 5%;
+  padding: 1.5%;
+  width: 28%;
+}
+
+.done-filter-container button:focus {
+  background-color: var(--green-title);
+  color: white;
+}
+
+.done-recipe-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.individual-done-recipe-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(248, 249, 250);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  height: 380px;
+  margin: 8% 0;
+  width: 45%;
+}
+
+.done-recipe-img {
+  border-radius: 8px;
+  width: 100%;
+}
+
+.done-recipe-content {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 95%;
+}
+
+.done-recipe-title {
+  color: var(--title-color);
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 1.2em;
+  margin-top: 3%;
+  position: fixed;
+  top: 290px;
+  width: 45%;
+}
+
+.done-recipe-title, .done-share-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.done-natio-tag {
+  margin-top: 30%;
+}
+
+.done-natio-tag p, .done-share-date-container p{
+  font-size: 15px;
+}
+
+.done-share-date-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline;
+  position: fixed;
+  top: 480px;
+  width: 45%;
+}

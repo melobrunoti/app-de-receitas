@@ -1,0 +1,53 @@
+.recipe-container {
+  background-color: var(--background-color);
+}
+
+.category-container {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin: 5% 0;
+}
+
+.category-container button {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--green-title);
+  color: var(--green-title);
+  font-family: 'Montserrat', sans-serif;
+  margin: 2% 5% 2% 5%;
+}
+
+.card-container {
+  background-color: var(--background-color);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.individual-card {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  margin: 2% 0;
+  width: 45%;
+}
+
+.card-name {
+  color: var(--title-color);
+  font-size: 1.1em;
+}
+
+
+.individual-card button, .individual-card img {
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  border: none;
+}
+
+.individual-card p {
+  padding-top: 8%;
+}
