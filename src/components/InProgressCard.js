@@ -13,6 +13,9 @@ function InProgressCard({
     setDoneRecipes } = useContext(RecipesContext);
   const [checkedIngredients, setCheckedIngredients] = useIngredients();
 
+  console.log(checkedIngredients);
+  console.log(ingredients);
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href.split('/in')[0]);
     setCopied(true);
@@ -183,7 +186,7 @@ InProgressCard.propTypes = {
   instructions: PropTypes.string.isRequired,
   thumb: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  alcool: PropTypes.string.isRequired,
+  alcool: PropTypes.string,
   nationality: PropTypes.string,
   tags: PropTypes.string,
 };
@@ -191,6 +194,7 @@ InProgressCard.propTypes = {
 InProgressCard.defaultProps = {
   nationality: '',
   tags: '',
+  alcool: '',
 };
 
 export default InProgressCard;

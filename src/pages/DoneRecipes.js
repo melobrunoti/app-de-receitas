@@ -1,27 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import DoneRecipeCard from '../components/DoneRecipeCard';
 import Header2 from '../components/Header2';
-
-import RecipesContext from '../context/RecipesContext';
 
 import '../styles/doneRecipes.css';
 
 function DoneRecipes() {
   const history = useHistory();
-  const originalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
-  const { doneRecipes, setDoneRecipes } = useContext(RecipesContext);
-  // console.log(storage);
 
-  const foodFilter = () => originalStorage
-    .filter((recipe) => recipe.type === 'food')
-    .map((foodRecipe) => setDoneRecipes([foodRecipe]));
+  const [filter, setFilter] = useState('');
 
-  const drinkFilter = () => originalStorage
-    .filter((recipe) => recipe.type === 'drink')
-    .map((drinkRecipe) => setDoneRecipes([drinkRecipe]));
-
-  const allFilter = () => setDoneRecipes(originalStorage);
+  function changeFilter({ id }) {
+    switch (id) {
+    case 'allBtn':
+      return setFilter('');
+    case 'foodBtn':
+      return setFilter('food');
+    case 'drinkBtn':
+      return setFilter('drink');
+    default:
+      return filter;
+    }
+  }
 
   return (
     <div>
@@ -29,33 +29,35 @@ function DoneRecipes() {
 
       <div className="done-filter-container">
         <button
+          id="allBtn"
           type="button"
           data-testid="filter-by-all-btn"
-          onClick={ () => allFilter() }
+          onClick={ (e) => changeFilter(e.target) }
         >
           All
         </button>
 
         <button
+          id="foodBtn"
           type="button"
           data-testid="filter-by-food-btn"
-          onClick={ () => foodFilter() }
+          onClick={ (e) => changeFilter(e.target) }
         >
           Food
         </button>
 
         <button
+          id="drinkBtn"
           type="button"
           data-testid="filter-by-drink-btn"
-          onClick={ () => drinkFilter() }
+          onClick={ (e) => changeFilter(e.target) }
         >
           Drinks
         </button>
       </div>
 
       <div className="done-recipe-container">
-        {(doneRecipes !== null && doneRecipes.length > 0)
-      && <DoneRecipeCard storage={ doneRecipes } />}
+        <DoneRecipeCard filter={ filter } />
       </div>
     </div>
   );

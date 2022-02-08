@@ -35,7 +35,7 @@ function Profile(props) {
   return (
     <div className="profile-container">
       <header className="profile-header">
-        <p className="profile-header-title">profile</p>
+        <p className="profile-header-title">Profile</p>
       </header>
 
       <p className="profile-email" data-testid="profile-email">{userEmail}</p>

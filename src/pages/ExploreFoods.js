@@ -18,16 +18,6 @@ function ExploreFoods(props) {
 
   return (
     <div>
-      <header className="explore-foods-header-container">
-
-        <p
-          data-testid="page-title"
-          className="header-explore-foods-title"
-        >
-          explore foods
-
-        </p>
-      </header>
       <div className="explore-foods-container">
         <button
           type="button"

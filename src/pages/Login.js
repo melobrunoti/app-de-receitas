@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
+import logo from '../images/2.svg';
 
 import '../styles/login.css';
 
@@ -26,7 +27,7 @@ function Login() {
   return (
     <div className="login">
       <div className="login-container">
-        <p>App de Receitas</p>
+        <img src={ logo } alt="cook it logo" />
         <form>
           <input
             type="email"

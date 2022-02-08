@@ -6,6 +6,7 @@ footer {
 }
 
 .footer-section {
+  align-items: center;
   background-color: var(--green-title);
   bottom: 0;
   border-radius: 10px 10px 0 0;
@@ -19,14 +20,18 @@ footer {
   width: 85%;
 }
 
-footer button {
-  background: none;
-  border: none;
-  cursor: pointer;
+.footer-section a {
+  font-size: 1.3em;
+  text-decoration: none;
+  color: rgb(65, 72, 51);
 }
 
-.footer-icons {
-  color: var(--background-color);
-  font-size: 22px;
+.explore-icon {
+  font-size: 1.3em;
+}
+
+.footer-icon-selected {
+  font-size: 1.6em !important;
+  color: var(--background-color) !important;
 }
 

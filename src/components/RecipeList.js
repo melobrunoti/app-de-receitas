@@ -54,6 +54,14 @@ function RecipeList() {
   return (
     <div className="recipe-container">
       <div className="category-container">
+        <button
+          data-testid="All-category-filter"
+          type="button"
+          onClick={ (e) => handleFilter(e) }
+        >
+          All
+
+        </button>
         {(categories.length > 0) && categories.slice(0, categoryLimiter)
           .map(({ strCategory }) => (
             <button
@@ -64,14 +72,6 @@ function RecipeList() {
             >
               {strCategory}
             </button>)) }
-        <button
-          data-testid="All-category-filter"
-          type="button"
-          onClick={ (e) => handleFilter(e) }
-        >
-          All
-
-        </button>
       </div>
 
       <div>

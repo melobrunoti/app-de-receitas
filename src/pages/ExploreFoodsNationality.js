@@ -71,34 +71,9 @@ function ExploreFoodsNationality(props) {
           { (filter && filter.length > 0)
         && <Card cards={ filter } path={ pathname } MAX_RENDER={ 12 } />}
         </div>
+        <Footer { ...props } />
       </section>
-      <select
-        className="natio-select"
-        data-testid="explore-by-nationality-dropdown"
-        onChange={ (e) => handleFilter(e) }
-      >
-        <option
-          data-testid="All-option"
-          value="All"
-        >
-          All
-        </option>
-        {(nationalities.length > 0) && nationalities
-          .map((n) => (
-            <option
-              key={ n.strArea }
-              data-testid={ `${n.strArea}-option` }
-              value={ n.strArea }
-            >
-              {n.strArea}
-            </option>
-          ))}
-      </select>
-      <div>
-        { (filter && filter.length > 0)
-        && <Card cards={ filter } path={ pathname } MAX_RENDER={ 12 } />}
-      </div>
-      <Footer { ...props } />
+
     </div>);
 }
 

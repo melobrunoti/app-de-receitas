@@ -25,7 +25,7 @@ const FavoriteRecipes = () => {
 
   return (
     <div>
-      <Header2 pageName="favorite recipe" push={ () => history.push('/profile') } />
+      <Header2 pageName="Favorite Recipes" push={ () => history.push('/profile') } />
       <main>
         <div className="done-filter-container">
           <button

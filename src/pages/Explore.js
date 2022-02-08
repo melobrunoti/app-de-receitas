@@ -10,9 +10,6 @@ function Explore(props) {
   const history = useHistory();
   return (
     <div>
-      <header className="explore-header">
-        <p>explore</p>
-      </header>
       <section className="explore-container">
         <button
           type="button"

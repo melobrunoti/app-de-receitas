@@ -29,7 +29,7 @@ function Foods(props) {
   return (
     <div className="food-container">
 
-      <Header pageName="foods" searchVisible />
+      <Header pageName="Foods" searchVisible />
 
       <RecipeList />
 
