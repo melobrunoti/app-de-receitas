@@ -64,7 +64,7 @@ function DoneRecipeCard({ filter }) {
               </section>
 
               <div className="done-share-date-container">
-                <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
+                <p data-testid={ `${index}-horizontal-done-date` }>{recipe.date}</p>
                 <button
                   type="button"
                   className="done-share-btn"

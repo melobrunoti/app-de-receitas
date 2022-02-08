@@ -1,41 +1,42 @@
 .favorite-container {
   background-color: var(--background-color);
   display: flex;
-  justify-content: center;
   flex-flow: row wrap;
+  justify-content: space-evenly;
   height: 100vh;
-  padding: 8% 0;
   width: 100%;
 }
 
 .favorite-individual-card {
-  background-color: rgb(248, 249, 250);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 40vh;
-  margin: 2%;
-  width: 44%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  height: 280px;
+  margin: 8% 0;
+  width: 45%;
 }
 
 .favorite-img {
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
   width: 100%;
 }
 
 .favorite-recipe-name {
+  align-self: flex-start;
   background-color: transparent;
   border: none;
   color: var(--title-color);
   font-family: 'Nanum Myeongjo', serif;
   font-size: 1.1em;
-  margin-top: 3%;
+  margin: 14px 0 0 8px;
 }
 
 .favorite-description {
-  margin-left: 5%;
+  align-self: flex-start;
+  margin: 8px 0 0 6px;
 }
 
 .favorite-share-btn {
@@ -46,6 +47,7 @@
 .favorite-share-btn-container {
   display: flex !important;
   justify-content: space-evenly;
+  margin-top: 8%;
 }
 
 .no-favorite-recipe {
