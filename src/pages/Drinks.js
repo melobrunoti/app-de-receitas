@@ -29,7 +29,7 @@ function Drinks(props) {
 
   return (
     <div>
-      <Header pageName="Drinks" searchVisible />
+      <Header pageName="drinks" searchVisible />
       { <RecipeList />}
       {
         renderFooter()

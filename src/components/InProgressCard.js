@@ -183,9 +183,14 @@ InProgressCard.propTypes = {
   instructions: PropTypes.string.isRequired,
   thumb: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  alcool: PropTypes.instanceOf(Object).isRequired,
-  nationality: PropTypes.string.isRequired,
-  tags: PropTypes.instanceOf(Object).isRequired,
+  alcool: PropTypes.string.isRequired,
+  nationality: PropTypes.string,
+  tags: PropTypes.string,
+};
+
+InProgressCard.defaultProps = {
+  nationality: '',
+  tags: '',
 };
 
 export default InProgressCard;

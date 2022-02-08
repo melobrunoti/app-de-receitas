@@ -1,10 +1,10 @@
 .ingredient-container {
-  background-color: var(--backgorund-color);
+  background-color: var(--background-color);
   display: flex;
   flex-flow: row wrap;
   margin: auto;
-  margin-top: 8%;
-  margin-bottom: 20%;
+  padding-top: 8%;
+  padding-bottom: 20%;
   width: 95%;
 }
 
@@ -23,8 +23,20 @@
   width: 60%;
 }
 
-.header-ingredient-title {
-  background-color: violet;
+.explore-foods-ingredients-header-container {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  padding: 2% 0;
+  width: 100%;
+}
+
+.header-explore-foods-ingredients-title{
+  color: var(--green-title);
   text-align: center;
-  margin-left: 30px;
+  margin: auto;
+}
+
+.explore-foods-ingredient-header-icon {
+  margin-right: 5%;
 }

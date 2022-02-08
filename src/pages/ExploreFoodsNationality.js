@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 import { fecthNationalities, fetchFoodApi,
   fetchMealsNationalities } from '../services/api';
 import Card from '../components/Card';
 
 import '../styles/exploreByNationality.css';
+import Header2 from '../components/Header2';
 
 function ExploreFoodsNationality(props) {
   const [nationalities, setNationalities] = useState([]);
   const [filter, setFilter] = useState([]);
   const [meals, setMeals] = useState([]);
   const { pathname } = useLocation();
+  const history = useHistory();
 
   useEffect(() => {
     (async () => {
@@ -41,7 +42,8 @@ function ExploreFoodsNationality(props) {
 
   return (
     <div>
-      <Header pageName="Explore Nationalities" searchVisible />
+      <Header2 pageName="by nationality" push={ () => history.push('/explore/foods') } />
+
       <section className="natio-container">
         <select
           className="natio-select"

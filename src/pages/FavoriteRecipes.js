@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
-import Header from '../components/Header';
-import ReturnButton from '../components/ReturnButton';
+import Header2 from '../components/Header2';
 
 import '../styles/doneRecipes.css';
 import '../styles/favoriteRecipes.css';
@@ -26,8 +25,7 @@ const FavoriteRecipes = () => {
 
   return (
     <div>
-      <Header pageName="Favorite Recipes" searchVisible={ false } />
-      <ReturnButton push={ () => history.push('/foods') } />
+      <Header2 pageName="favorite recipe" push={ () => history.push('/profile') } />
       <main>
         <div className="done-filter-container">
           <button

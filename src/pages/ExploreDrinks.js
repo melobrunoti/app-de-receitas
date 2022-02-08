@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { fecthRandomDrinks } from '../services/api';
 
@@ -17,15 +17,12 @@ function ExploreDrinks(props) {
   return (
     <div>
       <header className="explore-foods-header-container">
-        <Link to="/profile">
-          <i className="bi bi-person-circle explore-foods-header-icon" />
-        </Link>
 
         <p
           data-testid="page-title"
           className="header-explore-foods-title"
         >
-          explore foods
+          explore drinks
 
         </p>
       </header>

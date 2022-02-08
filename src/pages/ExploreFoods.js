@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 // import Header from '../components/Header';
 import { fecthRandomFoods } from '../services/api';
@@ -19,9 +19,6 @@ function ExploreFoods(props) {
   return (
     <div>
       <header className="explore-foods-header-container">
-        <Link to="/profile">
-          <i className="bi bi-person-circle explore-foods-header-icon" />
-        </Link>
 
         <p
           data-testid="page-title"

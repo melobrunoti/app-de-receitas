@@ -5,7 +5,7 @@
 
 .details-food-container h2, .details-drink-container h2 {
   color: var(--title-color);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
   margin: 5% 0;
   text-shadow: 2px 2px 3px rgb(212, 211, 211);
   width: 80%;

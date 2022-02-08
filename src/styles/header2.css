@@ -1,0 +1,22 @@
+.header2-container {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+}
+
+.return-btn-header2 {
+  border: none;
+  background-color: transparent;
+}
+
+.header2-page-name {
+  color: var(--green-title);
+  margin: 0;
+}
+
+.header2-icon {
+  margin-right: 3%;
+}

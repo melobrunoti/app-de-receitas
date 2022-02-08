@@ -49,7 +49,7 @@ function DoneRecipeCard({ storage }) {
 
           </p>
 
-          {recipe.tags.slice(0, 2).map((tag, i) => (
+          {/* {recipe.tags.slice(0, 2).map((tag, i) => (
             <p
               key={ i }
               data-testid={ `${index}-${tag}-horizontal-tag` }
@@ -57,7 +57,7 @@ function DoneRecipeCard({ storage }) {
               {tag}
 
             </p>
-          ))}
+          ))} */}
 
           <p data-testid={ `${index}-horizontal-top-text` }>
             {recipe.type === 'drink' ? recipe.alcoholicOrNot : null }

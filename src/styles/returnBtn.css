@@ -1,0 +1,11 @@
+.return-btn {
+  border: none;
+  background-color: transparent;
+  position: fixed;
+}
+
+.bi-arrow-left-circle {
+  color: var(--green-title);
+  font-size: 24px;
+  margin: 60%;
+}

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 
 import '../styles/profile.css';
 
@@ -35,7 +34,9 @@ function Profile(props) {
 
   return (
     <div className="profile-container">
-      <Header pageName="Profile" searchVisible={ false } />
+      <header className="profile-header">
+        <p className="profile-header-title">profile</p>
+      </header>
 
       <p className="profile-email" data-testid="profile-email">{userEmail}</p>
 

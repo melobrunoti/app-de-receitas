@@ -4,10 +4,6 @@
 
 .category-container {
   background-color: var(--background-color);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-flow: row wrap;
   margin: 5% 0;
 }
 
@@ -15,6 +11,8 @@
   background-color: transparent;
   border: none;
   border-bottom: 1px solid var(--green-title);
+  column-count: 2;
+  column-gap: 30px;
   color: var(--green-title);
   font-family: 'Montserrat', sans-serif;
   margin: 2% 5% 2% 5%;

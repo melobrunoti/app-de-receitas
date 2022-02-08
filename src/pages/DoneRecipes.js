@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import DoneRecipeCard from '../components/DoneRecipeCard';
+import Header2 from '../components/Header2';
 
-import Header from '../components/Header';
-import ReturnButton from '../components/ReturnButton';
 import RecipesContext from '../context/RecipesContext';
 
 import '../styles/doneRecipes.css';
@@ -26,8 +25,7 @@ function DoneRecipes() {
 
   return (
     <div>
-      <Header pageName="Done Recipes" searchVisible={ false } />
-      <ReturnButton push={ () => history.push('/foods') } />
+      <Header2 pageName="done recipe" push={ () => history.push('/profile') } />
 
       <div className="done-filter-container">
         <button
@@ -56,7 +54,7 @@ function DoneRecipes() {
       </div>
 
       <div className="done-recipe-container">
-        {(storage !== null && storage.length > 0)
+        {(doneRecipes !== null && doneRecipes.length > 0)
       && <DoneRecipeCard storage={ doneRecipes } />}
       </div>
     </div>

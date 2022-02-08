@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 55vh;
+  height: 70vh;
   margin: auto;
   width: 90%;
 }
@@ -28,4 +28,17 @@
   margin: 5% 0;
   padding: 2%;
   width: 70%;
+}
+
+.profile-btn-container button:nth-child(3) {
+  margin-top: 30%;
+}
+
+.profile-header {
+  padding: 2%;
+}
+
+.profile-header-title {
+  color: var(--green-title);
+  text-align: center;
 }
