@@ -167,7 +167,7 @@ function InProgressCard({
         data-testid="finish-recipe-btn"
         type="button"
         className="finish-btn"
-        disabled={ checkedIngredients.length !== ingredients.length }
+        /* disabled={ checkedIngredients.length !== ingredients.length } */
         onClick={ () => finishRecipe() }
 
       >

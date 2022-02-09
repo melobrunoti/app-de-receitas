@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import RecipesProvider from './context/RecipesProvider';
@@ -10,11 +10,11 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@fortawesome/fontawesome-free/js/all';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <RecipesProvider>
       <App />
     </RecipesProvider>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root'),
 );
 
