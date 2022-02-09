@@ -1,27 +1,8 @@
-.explore-foods-header-container {
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-  padding: 2% 0;
-  width: 100%;
-  position: fixed
-}
-
-.explore-foods-header-icon {
-  color: white;
-  margin-left: 70%;
-}
-
-.header-explore-foods-title {
-  color: white;
-  text-align: center;
-  margin: auto;
-}
-
 .explore-foods-container, .explore-drinks-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100vh;
   align-items: center;
   margin: auto;
   width: 100%;
@@ -37,13 +18,13 @@
 .explore-foods-btn {
   border: none;
   margin: 0;
-  padding: 27%;
+  height: 34%;
 }
 
 .explore-drinks-btn {
   border: none;
   margin: 0;
-  padding: 41.5% 0;
+  height: 50%;
 }
 
 .explore-foods-container button:nth-child(1) {

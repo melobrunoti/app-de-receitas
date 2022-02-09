@@ -1,13 +1,14 @@
 .explore-container {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .explore-container button {
   background-color: transparent;
   border: none;
   margin: 0;
-  padding: 41%;
+  height: 50%;
 }
 
 .explore-container button:nth-child(1) {

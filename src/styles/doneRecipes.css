@@ -38,7 +38,8 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
-  height: 43%;
+  min-height: 45%;
+  max-height: 50%;
   margin: 8% 0;
   width: 45%;
 }
