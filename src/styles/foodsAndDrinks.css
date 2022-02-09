@@ -1,6 +1,6 @@
 .recipe-container {
   background-color: var(--background-color);
-  width: 100%;
+  max-width: 100%;
 }
 
 .category-container {

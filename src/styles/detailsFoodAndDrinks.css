@@ -29,9 +29,9 @@
   font-size: 1.2em;
 }
 
-.recipe-container {
+/* .recipe-container {
   padding: 5%;
-}
+} */
 
 .bi-heart-fill, .bi-heart, .bi-share-fill{
   color: var(--green-title);
