@@ -14,7 +14,7 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
-  height: 280px;
+  height: 40%;
   margin: 8% 0;
   width: 45%;
 }
@@ -36,6 +36,7 @@
 
 .favorite-description {
   align-self: flex-start;
+  font-size: 0.9em;
   margin: 8px 0 0 6px;
 }
 
@@ -47,7 +48,7 @@
 .favorite-share-btn-container {
   display: flex !important;
   justify-content: space-evenly;
-  margin-top: 8%;
+  margin-top: 14%;
 }
 
 .no-favorite-recipe {
