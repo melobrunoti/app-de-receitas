@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
 import '../styles/Footer.css';
+import RecipesContext from '../context/RecipesContext';
 
 function Footer() {
+  const { setFilterIgredient } = useContext(RecipesContext);
   return (
     <footer data-testid="footer">
       <section className="footer-section">
@@ -13,6 +15,7 @@ function Footer() {
           exact
           to="/drinks"
           data-testid="drinks-bottom-btn"
+          onClick={ () => setFilterIgredient([]) }
         >
           <Icon icon="bx:bxs-drink" className="footer-icons" />
         </NavLink>
@@ -31,6 +34,7 @@ function Footer() {
           data-testid="food-bottom-btn"
           exact
           to="/foods"
+          onClick={ () => setFilterIgredient([]) }
         >
           <Icon icon="emojione-monotone:fork-and-knife" className="footer-icons" />
         </NavLink>
