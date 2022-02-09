@@ -25,7 +25,7 @@ function DoneRecipes() {
 
   return (
     <div>
-      <Header2 pageName="done recipe" push={ () => history.push('/profile') } />
+      <Header2 pageName="Done Recipe" push={ () => history.push('/profile') } />
 
       <div className="done-filter-container">
         <button

@@ -42,7 +42,7 @@ function ExploreFoodsNationality(props) {
 
   return (
     <div>
-      <Header2 pageName="by nationality" push={ () => history.push('/explore/foods') } />
+      <Header2 pageName="By Nationality" push={ () => history.push('/explore/foods') } />
 
       <section className="natio-container">
         <select

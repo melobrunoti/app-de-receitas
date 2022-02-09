@@ -8,7 +8,7 @@ function ExploreDrinksIngredients(props) {
   const history = useHistory();
   return (
     <div>
-      <Header2 pageName="byingredient" push={ () => history.push('/explore/drinks/') } />
+      <Header2 pageName="By Ingredient" push={ () => history.push('/explore/drinks/') } />
       <DrinkIngredientCards />
       <Footer { ...props } />
     </div>);

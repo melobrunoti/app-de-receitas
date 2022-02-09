@@ -9,7 +9,7 @@ function ExploreFoodIngredients(props) {
 
   return (
     <div>
-      <Header2 pageName="by ingredient" push={ () => history.push('/explore/foods') } />
+      <Header2 pageName="By Ingredient" push={ () => history.push('/explore/foods') } />
       <FoodIngredientCards />
       <Footer { ...props } />
     </div>);

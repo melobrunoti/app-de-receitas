@@ -52,13 +52,19 @@ function DoneRecipeCard({ filter }) {
               </button>
 
               <section className="done-natio-tag">
-                <p data-testid={ `${index}-horizontal-top-text` }>
+                <p
+                  className="done-category"
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
                   {`${recipe.type === 'food'
                     ? recipe.nationality : ''} ${recipe.category}`}
 
                 </p>
 
-                <p data-testid={ `${index}-horizontal-top-text` }>
+                <p
+                  className="done-alcholic"
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
                   {recipe.type === 'drink' ? recipe.alcoholicOrNot : null }
                 </p>
               </section>
