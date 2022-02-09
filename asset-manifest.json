@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/app-de-receitas/static/css/main.d8ef1e78.css",
-    "main.js": "/app-de-receitas/static/js/main.c66f8ee3.js",
+    "main.js": "/app-de-receitas/static/js/main.758d0b42.js",
     "static/media/nina-mercado-CnrDuY0tFrg-unsplash.jpg": "/app-de-receitas/static/media/nina-mercado-CnrDuY0tFrg-unsplash.669a46724452ea472875.jpg",
     "static/media/rodion-kutsaev-EPwuZxdketc-unsplash.jpg": "/app-de-receitas/static/media/rodion-kutsaev-EPwuZxdketc-unsplash.35eaa88b00f26e823c97.jpg",
     "static/media/pexels-pixabay-414916.jpg": "/app-de-receitas/static/media/pexels-pixabay-414916.803bbc4b9361cef7e7cb.jpg",
@@ -15,10 +15,10 @@
     "static/media/2.svg": "/app-de-receitas/static/media/2.957beeba6375f8f6e667c503d6aef6f4.svg",
     "index.html": "/app-de-receitas/index.html",
     "main.d8ef1e78.css.map": "/app-de-receitas/static/css/main.d8ef1e78.css.map",
-    "main.c66f8ee3.js.map": "/app-de-receitas/static/js/main.c66f8ee3.js.map"
+    "main.758d0b42.js.map": "/app-de-receitas/static/js/main.758d0b42.js.map"
   },
   "entrypoints": [
     "static/css/main.d8ef1e78.css",
-    "static/js/main.c66f8ee3.js"
+    "static/js/main.758d0b42.js"
   ]
 }
