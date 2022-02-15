@@ -23,7 +23,7 @@
 .profile-btns {
   background-color: var(--background-color);
   border: 1px solid var(--green-title);
-  border-radius: 3px;
+  border-radius: .8rem;
   color: var(--green-title);
   margin: 5% 0;
   padding: 2%;
@@ -41,4 +41,47 @@
 .profile-header-title {
   color: var(--green-title);
   text-align: center;
+}
+
+@media (min-width: 600px) {
+  .profile-email{
+    margin-top: 5%;
+  }
+
+  .profile-btn-container {
+    margin-top: 0;
+    width: 70%;
+  }
+
+  .profile-btns {
+    margin: 2% 0;
+    padding: 2%;
+    width: 60%;
+  }
+
+  .profile-btns:hover {
+    background-color: var(--green-title);
+    box-shadow: 0 .5rem 1rem rgba(54, 54, 54, .4);
+    color: white;
+  }
+
+  .profile-btn-container button:nth-child(3) {
+    margin-top: 8%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .profile-email{
+    margin-top: 5%;
+  }
+
+  .profile-btns {
+    margin: 2% 0;
+    padding: 1.5%;
+    width: 40%;
+  }
+
+  .profile-btn-container button:nth-child(3) {
+    margin-top: 5%;
+  }
 }

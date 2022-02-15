@@ -60,7 +60,7 @@
 .done-recipe-title {
   color: var(--title-color);
   font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   margin-top: 8%;
   width: 45%;
 }
@@ -88,4 +88,57 @@
   align-items: baseline;
   justify-content: space-between;
   margin-left: 6%;
+}
+
+@media (min-width: 600px) {
+  .done-filter-container {
+    margin: auto;
+    width: 80%;
+  }
+  
+  .done-filter-container button {
+    padding: 1% 0;
+    width: 25%;
+  }
+
+  .individual-done-recipe-container {
+    width: 20%;
+  }
+  
+  .done-recipe-title {
+    font-size: 1.2rem;
+    margin-top: 8%;
+    width: 40%;
+  }
+  
+  .done-natio-tag p {
+    font-size: .9rem;
+    margin-top: .4rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .done-recipe-container {
+    height: 100%;
+    padding-bottom: 8%;
+    margin: auto;
+    width: 80%;
+  }
+
+  .done-filter-container {
+    width: 75%;
+  }
+
+  .done-filter-container button {
+    padding: 1% 0;
+    width: 20%;
+  }
+
+  .individual-done-recipe-container {
+    width: 20%;
+  }
+  
+  .done-natio-tag p {
+    font-size: 1rem;
+  }
 }

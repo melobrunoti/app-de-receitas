@@ -49,26 +49,31 @@ function DetailedFoodCard({ card }) {
     const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (!local.meals[idMeal]) {
       return (
+        <div className="start-button-container">
+          <button
+            className="start-button"
+            type="button"
+            data-testid="start-recipe-btn"
+            onClick={ () => handleClick() }
+          >
+            Start Recipe
+
+          </button>
+        </div>);
+    }
+    return (
+      <div className="start-button-container">
         <button
-          className="start-button"
           type="button"
+          className="start-button"
           data-testid="start-recipe-btn"
           onClick={ () => handleClick() }
         >
-          Start Recipe
+          Continue Recipe
 
-        </button>);
-    }
-    return (
-      <button
-        type="button"
-        className="start-button"
-        data-testid="start-recipe-btn"
-        onClick={ () => handleClick() }
-      >
-        Continue Recipe
-
-      </button>);
+        </button>
+      </div>
+    );
   };
 
   /* const setStorage = () => {
@@ -111,6 +116,7 @@ function DetailedFoodCard({ card }) {
   return (
     <div className="details-food-container">
       <img
+        className="food-image"
         src={ strMealThumb }
         alt={ strMeal }
         data-testid="recipe-photo"
@@ -146,6 +152,7 @@ function DetailedFoodCard({ card }) {
         <p className="category-title" data-testid="recipe-category">{strCategory}</p>
 
         <iframe
+          className="details-video"
           data-testid="video"
           width="340"
           src={ strYoutube.replace('watch?v=', 'embed/') }

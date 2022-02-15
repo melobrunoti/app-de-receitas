@@ -1,5 +1,5 @@
 .details-food-container{
-  font-size: 17px;
+  font-size: 1.1rem;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -19,14 +19,14 @@
 
 .category-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
+  font-size: 1.3rem;
   color: var(--green-title);
 }
 
 .details-food-container button, .details-drink-container button {
   border: none;
   background-color: transparent;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 /* .recipe-container {
@@ -53,13 +53,15 @@ li {
 
 li::before {
   content: "• ";
-  font-size: 30px;
+  font-size: 1.8rem;
   color: var(--green-title);
 }
 
 .instructions{
   color: var(--gray-title);
   line-height: 190%;
+  margin: auto;
+  width: 90%;
 }
 
 .carrousel {
@@ -72,7 +74,7 @@ li::before {
   color: var(--green-title);
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   margin: 7% 0  2% 3%;
 }
 
@@ -83,33 +85,41 @@ li::before {
 
 .recommendation-container img {
   background-color: rgb(199, 204, 188);
-  border-radius: 15px;
+  border-radius: 1rem;
   padding: 3%;
 }
 
 .recommendation-container p {
   background-color: rgb(199, 204, 188);
   color: var(--green-title);
-  font-size: 16px;
+  font-size: 1rem;
+}
+
+.start-button-container, .finish-button-container {
+  display: flex;
+  justify-content: center;
 }
 
 .start-button{
   /* border: 1px solid var(--title-color); */
-  background-color: var(--green-title) !important;
+  background-color: rgba(113, 131, 85, 0.8) !important;
   border-radius: 5px;
   color: white;
   font-size: 1em !important;
-  padding: 1%;
+  padding: 2%;
+  width: 90%;
 }
 
 .finish-btn {
-  background-color: var(--green-title) !important;
+  background-color: rgba(113, 131, 85, 0.8) !important;
   border-radius: 5px;
   color: white;
-  font-size: 1.2em !important;
+  font-size: 1rem;
   padding: 2%;
-  margin-left: 30%;
-  margin-bottom: 10%;
+  width: 90%;
+
+  position: fixed;
+  bottom: 0;
 }
 
 .progress-ingredient-container{
@@ -120,5 +130,80 @@ li::before {
 
 .progress-ingredient-container input[type="checkbox"] {
   margin-right: 2%;
+}
+
+@media (min-width: 600px) {
+  .details-food-container, .details-drink-container{
+    margin: auto;
+    width: 60%;
+  }
+  .food-image, .drink-image{
+    border-radius: .8rem;
+    width: 100%;
+  }
+  .details-video {
+    height: 30vh;
+  }
+
+  .carrousel {
+    height: 40%;
+    margin-bottom: 8%;
+    padding: 2%;
+  }
+  .carrousel p:nth-child(1){
+    background-color: transparent;
+    color: var(--green-title);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 3% 0;
+  }
+  
+  .recommendation-container button{
+    background-color: rgb(199, 204, 188);
+    margin: 2% 0;
+    width: 25%;
+  }
+  .recommendation-container img {
+    width: 100%;
+  }
+  
+  .recommendation-container p {
+    background-color: rgb(199, 204, 188);
+    color: var(--green-title);
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .start-button{
+    padding: .5%;
+    width: 60%;
+  }
+
+  .finish-btn {
+    padding: .5%;
+    width: 60%;
+  }
+  
+}
+
+@media (min-width: 1000px) {
+  .details-food-container, .details-drink-container{
+    margin: auto;
+    width: 40%;
+  }
+  .details-video {
+    height: 35vh;
+  }
+
+  .start-button{
+    padding: .5%;
+    width: 40%;
+  }
+
+  .finish-btn {
+    padding: .5%;
+    width: 40%;
+  }
 }
 

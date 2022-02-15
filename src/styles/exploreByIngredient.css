@@ -24,20 +24,35 @@
   width: 60%;
 }
 
-.explore-foods-ingredients-header-container {
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-  padding: 2% 0;
-  width: 100%;
+
+@media (min-width: 600px) {
+  .ingredient-container {
+    padding-top: 5%;
+    padding-bottom: 10%;
+    width: 80%;
+  }
+
+  .ingredient-individual {
+    width: 20%;
+  }
+  
+  .ingredient-img {
+    width: 60%;
+  }
 }
 
-.header-explore-foods-ingredients-title{
-  color: var(--green-title);
-  text-align: center;
-  margin: auto;
-}
+@media (min-width: 1000px) {
+  .ingredient-container {
+    width: 70%;
+  }
 
-.explore-foods-ingredient-header-icon {
-  margin-right: 5%;
+  .ingredient-individual {
+    font-size: 1rem;
+    margin: 1.5%;
+    width: 15%;
+  }
+  
+  .ingredient-img {
+    width: 60%;
+  }
 }

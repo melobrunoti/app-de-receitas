@@ -35,3 +35,15 @@ footer {
   color: var(--background-color) !important;
 }
 
+@media (min-width: 600px) {
+  .footer-section {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .footer-section {
+    width: 50%;
+  }
+}
+

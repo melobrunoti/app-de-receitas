@@ -163,17 +163,19 @@ function InProgressCard({
         <p className="instructions" data-testid="instructions">{instructions}</p>
       </div>
 
-      <button
-        data-testid="finish-recipe-btn"
-        type="button"
-        className="finish-btn"
-        /* disabled={ checkedIngredients.length !== ingredients.length } */
-        onClick={ () => finishRecipe() }
+      <div className="finish-button-container">
+        <button
+          data-testid="finish-recipe-btn"
+          type="button"
+          className="finish-btn"
+          /* disabled={ checkedIngredients.length !== ingredients.length } */
+          onClick={ () => finishRecipe() }
+        >
+          Finish Recipe
 
-      >
-        Finish Recipe
+        </button>
+      </div>
 
-      </button>
     </div>
 
   );

@@ -15,8 +15,7 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
-  min-height: 40%;
-  max-height: 45%;
+  height: max-content;
   margin-top: 8%;
   width: 45%;
 }
@@ -50,11 +49,45 @@
 .favorite-share-btn-container {
   display: flex !important;
   justify-content: space-evenly;
-  margin-top: 14%;
+  margin: 14% 0 5% 0;
 }
 
 .no-favorite-recipe {
   font-family: 'Nanum Myeongjo', serif;
   font-size: 2em;
   margin-top: 50%;
+}
+
+@media (min-width: 600px) {
+  .favorite-container {
+    margin: auto;
+    height: max-content;
+    width: 90%;
+  }
+
+  .favorite-individual-card {
+    margin-inline: 1%;
+    width: 30%;
+  }
+
+  .favorite-recipe-name {
+    font-size: 1.1rem;
+  }
+
+  .favorite-share-btn-container {
+    margin-bottom: 2%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .favorite-container {
+    margin: auto;
+    height: max-content;
+    width: 80%;
+  }
+
+  .favorite-individual-card {
+    margin-inline: 1%;
+    width: 25%;
+  }
 }

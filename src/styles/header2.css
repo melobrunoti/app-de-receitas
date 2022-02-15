@@ -20,3 +20,17 @@
 .header2-icon {
   margin-right: 3%;
 }
+
+@media (min-width: 600px) {
+  .header2-container {
+    margin: auto;
+    width: 70%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .header2-container  {
+    margin: auto;
+    width: 60%;
+  }
+}

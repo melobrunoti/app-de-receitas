@@ -95,6 +95,7 @@ function DetailedDrinkCard({ card }) {
   return (
     <div className="details-drink-container">
       <img
+        className="drink-image"
         src={ strDrinkThumb }
         alt={ strDrink }
         data-testid="recipe-photo"

@@ -36,3 +36,19 @@
   margin-top: 3%;
   text-align: center;
 }
+
+@media (min-width: 600px) {
+  .explore-container {
+    display: flex;
+    flex-direction: row;
+    height: 100;
+    background-position: center;
+    width: 100%;
+  }
+  .explore-container button {
+    background-position: top;
+    height: 100%;
+    width: 100%;
+  }
+}
+

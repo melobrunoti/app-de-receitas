@@ -55,3 +55,14 @@
 .explore-foods-icons, .explore-drinks-icons {
   margin-left: 8%;
 }
+
+@media (min-width: 1000px) {
+  .explore-foods-container, .explore-drinks-container {
+    flex-direction: row;
+  }
+
+  .explore-foods-btn, .explore-drinks-btn {
+    background-position: center;
+    height: 100%;
+  }
+}

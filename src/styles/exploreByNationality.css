@@ -17,3 +17,15 @@
   width: 90%;
 }
 
+@media (min-width: 600px) {
+  .natio-select {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .natio-select {
+    width: 60%;
+  }
+}
+
