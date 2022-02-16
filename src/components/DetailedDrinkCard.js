@@ -45,26 +45,32 @@ function DetailedDrinkCard({ card }) {
     const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (!local.cocktails[idDrink]) {
       return (
-        <button
-          className="start-button"
-          type="button"
-          data-testid="start-recipe-btn"
-          onClick={ () => handleClick() }
-        >
-          Start Recipe
+        <div className="start-button-container">
+          <button
+            className="start-button"
+            type="button"
+            data-testid="start-recipe-btn"
+            onClick={ () => handleClick() }
+          >
+            Start Recipe
 
-        </button>);
+          </button>
+        </div>
+        );
     }
     return (
-      <button
+      <div className="start-button-container">
+        <button
         type="button"
         className="start-button"
         data-testid="start-recipe-btn"
         onClick={ () => handleClick() }
-      >
+        >
         Continue Recipe
 
-      </button>);
+       </button>
+      </div>
+      );
   };
 
   const setStorage = () => renderButton();
