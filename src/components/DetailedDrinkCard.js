@@ -56,21 +56,21 @@ function DetailedDrinkCard({ card }) {
 
           </button>
         </div>
-        );
+      );
     }
     return (
       <div className="start-button-container">
         <button
-        type="button"
-        className="start-button"
-        data-testid="start-recipe-btn"
-        onClick={ () => handleClick() }
+          type="button"
+          className="start-button"
+          data-testid="start-recipe-btn"
+          onClick={ () => handleClick() }
         >
-        Continue Recipe
+          Continue Recipe
 
-       </button>
+        </button>
       </div>
-      );
+    );
   };
 
   const setStorage = () => renderButton();
