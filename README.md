@@ -19,3 +19,5 @@ O projeto foi realizado em grupo, minha equipe foi composta por:
 - Alissandra Lima (https://github.com/anaualima);
 - Danielle Silva (https://github.com/daniellelsilva);
 - Lucca Neiva (https://github.com/luccaneivas);
+
+Live app : https://melobrunoti.github.io/app-de-receitas/#/
