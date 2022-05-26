@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/app-de-receitas/static/css/main.d8ef1e78.css",
-    "main.js": "/app-de-receitas/static/js/main.758d0b42.js",
+    "main.css": "/app-de-receitas/static/css/main.56484713.css",
+    "main.js": "/app-de-receitas/static/js/main.43c4c45f.js",
     "static/media/nina-mercado-CnrDuY0tFrg-unsplash.jpg": "/app-de-receitas/static/media/nina-mercado-CnrDuY0tFrg-unsplash.669a46724452ea472875.jpg",
+    "static/media/pexels-vlada-karpovich-6947188.jpg": "/app-de-receitas/static/media/pexels-vlada-karpovich-6947188.c1db2f4bfb9a7033da8b.jpg",
     "static/media/rodion-kutsaev-EPwuZxdketc-unsplash.jpg": "/app-de-receitas/static/media/rodion-kutsaev-EPwuZxdketc-unsplash.35eaa88b00f26e823c97.jpg",
     "static/media/pexels-pixabay-414916.jpg": "/app-de-receitas/static/media/pexels-pixabay-414916.803bbc4b9361cef7e7cb.jpg",
     "static/media/cristina-anne-costello-4jsmBl30x_A-unsplash.jpg": "/app-de-receitas/static/media/cristina-anne-costello-4jsmBl30x_A-unsplash.c4df19a8a1cbd0eb3c0c.jpg",
     "static/media/nina-mercado-_qN6tmGjmtg-unsplash.jpg": "/app-de-receitas/static/media/nina-mercado-_qN6tmGjmtg-unsplash.f43defd1b565b316ca14.jpg",
     "static/media/sam-hojati-pb7oJwtNVU4-unsplash.jpg": "/app-de-receitas/static/media/sam-hojati-pb7oJwtNVU4-unsplash.46b5b624d30f722055a8.jpg",
-    "static/media/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg": "/app-de-receitas/static/media/joseph-gonzalez-zcUgjyqEwe8-unsplash.2472bc8b1b276ab546ce.jpg",
+    "static/media/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg": "/app-de-receitas/static/media/joseph-gonzalez-zcUgjyqEwe8-unsplash.f2898f094385d4298a19.jpg",
     "static/media/bootstrap-icons.woff?": "/app-de-receitas/static/media/bootstrap-icons.4e80a14a205e5b6212ff.woff",
     "static/media/bootstrap-icons.woff2?": "/app-de-receitas/static/media/bootstrap-icons.1f592ce3089115f4c842.woff2",
     "static/media/Design sem nome.png": "/app-de-receitas/static/media/Design sem nome.3ef82f4de2ff73f381d6.png",
     "static/media/2.svg": "/app-de-receitas/static/media/2.957beeba6375f8f6e667c503d6aef6f4.svg",
     "index.html": "/app-de-receitas/index.html",
-    "main.d8ef1e78.css.map": "/app-de-receitas/static/css/main.d8ef1e78.css.map",
-    "main.758d0b42.js.map": "/app-de-receitas/static/js/main.758d0b42.js.map"
+    "main.56484713.css.map": "/app-de-receitas/static/css/main.56484713.css.map",
+    "main.43c4c45f.js.map": "/app-de-receitas/static/js/main.43c4c45f.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8ef1e78.css",
-    "static/js/main.758d0b42.js"
+    "static/css/main.56484713.css",
+    "static/js/main.43c4c45f.js"
   ]
 }
